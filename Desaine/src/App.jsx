@@ -1,6 +1,7 @@
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import BenefitsSection from './components/sections/BenefitsSection'
+import CaseStudySection from './components/sections/CaseStudySection'
 import CtaSection from './components/sections/CtaSection'
 import FaqSection from './components/sections/FaqSection'
 import FounderSection from './components/sections/FounderSection'
@@ -16,6 +17,7 @@ export default function App() {
       <main className="relative z-10">
         <HeroSection />
         <BenefitsSection />
+        <CaseStudySection />
         <FounderSection />
         <SocialProofSection />
         <FaqSection />

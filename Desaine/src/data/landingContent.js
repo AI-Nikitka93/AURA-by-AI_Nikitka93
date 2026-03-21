@@ -12,20 +12,21 @@ import {
 export const navigationItems = [
   { label: 'Ритуал', href: '#ritual' },
   { label: 'Преимущества', href: '#benefits' },
+  { label: 'Кейс', href: '#case-study' },
   { label: 'Создатель', href: '#founder' },
   { label: 'FAQ', href: '#faq' },
 ]
 
 export const heroContent = {
   eyebrow: 'Premium smart jewelry',
-  portfolioBadge: 'Concept page for portfolio',
+  portfolioBadge: 'Conceptual portfolio project',
   title: 'Украшение, которое чувствует ваш ритм',
   subtitle:
     'AURA превращает биоритмы и ауру владельца в свет, паттерн и форму, чтобы вы носили не аксессуар, а личный цифровой ритуал.',
   disclaimer:
-    'AURA — концептуальный лендинг для портфолио AI_Nikitka93. Продукт, офферы и сценарии на странице демонстрационные и не являются реальной витриной магазина.',
-  primaryCta: { label: 'Выберите свой ритуал', href: '#cta' },
-  secondaryCta: { label: 'Посмотреть манифест', href: '#founder' },
+    'AURA — portfolio concept от AI_Nikitka93: brand direction, UX-copy, visual system и frontend implementation. Продуктовые сценарии и офферы на странице демонстрационные и не являются реальной витриной магазина.',
+  primaryCta: { label: 'Смотреть кейс', href: '#case-study' },
+  secondaryCta: { label: 'Открыть GitHub', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
   image:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuAL__xMF1axazoX_ocMzY2glDMsMH2rbrn-MpI6nFE6Wn_fxk4QUXc_ywM3qG3jXNDmBL-vJ3LUm75aIpa-lhdoDWWHrbPZmEz6U2JUqXmuu_q8OHHmJDoccQ7-9qUJSDt0TBSMcudpvf-w5jprkgMW9IWpDD6Sv4LUIYkR7ho_fFheQF993qWHNWwpiPW3rOSV58gOVLh3kRkVR6BRjCLReLXUBwpxIwywa03qKaMlFRB3mIQVkTCpe_ZvedzQzR2FBClWPqeY4PM',
   imageAlt: 'AURA premium smart jewelry hero render',
@@ -82,7 +83,7 @@ export const founderContent = {
     'Каждое изделие начинается не с шаблона, а с авторского отбора формы, света и настроения. Поэтому AURA ощущается не как массовый tech-продукт, а как подпись визионера, который работает материалом, кодом и интуицией сразу.',
   ],
   quote: 'Мы не создаем аксессуары. Мы материализуем сознание в объектах высокой эстетики.',
-  action: 'Читать историю AURA',
+  action: 'Перейти к кейсу проекта',
   image:
     'https://lh3.googleusercontent.com/aida/ADBb0ujCxxyMULsOlVZlWxn-qHNBlBcWLGrISFGhFAeKpAedKh6bzbUD6A9e8McP5TRU9gCpemCNscVBHWhP0H8jEPf9ARRmoPWtx0c1Dd1P8f1ieeDLvIUJ-C-SImg82w0yoyxOpGJHClDNfLWDGeHf7U4KIxVcQUqhxXY-P-tMo5dIJgMyfdYl16RgA8cTbJ6gSkx6Fg8LVBmBydvrex6eG-YGkfjqBTM07OrSY5dqmoyxllZx-9Vdhe55h75SuuoBITaR3mDVr2bv',
   imageAlt: 'Portrait of AI_Nikitka93',
@@ -135,11 +136,13 @@ export const faqItems = [
 ]
 
 export const ctaContent = {
-  title: 'Хватит носить вещи без отклика',
+  title: 'Смотрите проект, а не только концепт',
   subtitle:
-    'Выберите украшение, которое отражает ваш ритм, а не тренд этой недели. Откройте свою AURA и начните личный digital ritual.',
-  button: 'Откройте свою AURA',
-  meta: 'Создано Nikita (AI_Nikitka93)',
+    'AURA показывает, как можно упаковать brand direction, editorial UX-copy, liquid-glass UI и frontend implementation в единый portfolio case.',
+  button: 'Вернуться к началу кейса',
+  secondaryButton: 'Открыть GitHub репозиторий',
+  secondaryHref: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93',
+  meta: 'Portfolio case by Nikitka93',
 }
 
 export const disclaimerContent = {
@@ -147,7 +150,36 @@ export const disclaimerContent = {
   validationText:
     'Эта секция показывает, как мог бы выглядеть validation/social proof модуль. Метрики, отзывы и коммерческие сигналы не относятся к реальному запуску и используются только как часть portfolio concept.',
   footer:
-    'Это концептуальная portfolio page. Продукт, офферы, отзывы и сценарии на странице демонстрационные и не являются реальным storefront.',
+    'Это conceptual portfolio page. Проект демонстрирует brand thinking, product storytelling и frontend craft. Продукт, офферы, отзывы и сценарии на странице не являются реальным storefront.',
+}
+
+export const caseStudyContent = {
+  eyebrow: 'Case Study',
+  title: 'Что именно показывает этот проект',
+  description:
+    'AURA — не просто визуальный концепт, а собранный portfolio case, где бренд-стратегия, UX-тексты, интерфейсная система и frontend deployment сведены в один демонстрационный продукт.',
+  cards: [
+    {
+      title: 'Brand Direction',
+      body: 'Позиционирование, tone of voice, dark-mode палитра и Liquid Glass токены собраны в цельную систему, чтобы концепт выглядел как премиальный fashion-tech бренд.',
+    },
+    {
+      title: 'UX Copy System',
+      body: 'Hero, benefits, founder narrative, CTA и FAQ написаны как editorial-конверсионный слой без фейковых коммерческих обещаний и неподтвержденных claims.',
+    },
+    {
+      title: 'Frontend Build',
+      body: 'Лендинг разложен на React-компоненты, собран на Vite + Tailwind и опубликован как рабочий статический сайт через GitHub Pages и Cloudflare fallback.',
+    },
+    {
+      title: 'Portfolio Framing',
+      body: 'Проект честно подан как concept case: он демонстрирует процесс, вкус, упаковку и инженерную реализацию, а не притворяется реальным live-commerce бизнесом.',
+    },
+  ],
+  links: [
+    { label: 'Live Site', href: 'https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/' },
+    { label: 'GitHub Repo', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
+  ],
 }
 
 export const footerLinks = [

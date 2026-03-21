@@ -32,7 +32,7 @@ export default function FounderSection() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <a href="#cta" className="inline-flex items-center gap-3 pt-3 text-sm font-semibold uppercase tracking-[0.24em] text-text hover:text-primary">
+          <a href="#case-study" className="inline-flex items-center gap-3 pt-3 text-sm font-semibold uppercase tracking-[0.24em] text-text hover:text-primary">
             {founderContent.action}
             <ArrowRight className="h-4 w-4" />
           </a>

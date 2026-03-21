@@ -17,8 +17,8 @@ export default function Navbar({ items }) {
               </a>
             ))}
           </div>
-          <a href="#cta" className="primary-button px-4 py-2 text-[10px] uppercase tracking-[0.22em] sm:px-5 sm:py-2.5 sm:text-xs">
-            Выбрать
+          <a href="#case-study" className="primary-button px-4 py-2 text-[10px] uppercase tracking-[0.22em] sm:px-5 sm:py-2.5 sm:text-xs">
+            Смотреть кейс
           </a>
         </nav>
 

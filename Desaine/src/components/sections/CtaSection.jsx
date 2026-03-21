@@ -12,9 +12,14 @@ export default function CtaSection() {
               {ctaContent.title}
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-text-soft sm:mt-6 sm:text-base sm:leading-7 lg:text-lg">{ctaContent.subtitle}</p>
-            <a href="#ritual" className="primary-button mt-8 w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] sm:mt-10 sm:w-auto sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.24em]">
-              {ctaContent.button}
-            </a>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center">
+              <a href="#ritual" className="primary-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] sm:w-auto sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.24em]">
+                {ctaContent.button}
+              </a>
+              <a href={ctaContent.secondaryHref} target="_blank" rel="noreferrer" className="ghost-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] sm:w-auto sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.24em]">
+                {ctaContent.secondaryButton}
+              </a>
+            </div>
             <p className="mt-8 text-xs uppercase tracking-[0.26em] text-text-soft/60">{ctaContent.meta}</p>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function HeroSection() {
             <a href={heroContent.primaryCta.href} className="primary-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.18em] sm:w-auto sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.2em]">
               {heroContent.primaryCta.label}
             </a>
-            <a href={heroContent.secondaryCta.href} className="ghost-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.18em] sm:w-auto sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.2em]">
+            <a href={heroContent.secondaryCta.href} target="_blank" rel="noreferrer" className="ghost-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.18em] sm:w-auto sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.2em]">
               {heroContent.secondaryCta.label}
             </a>
           </div>
