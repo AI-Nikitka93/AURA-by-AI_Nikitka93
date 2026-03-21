@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ru"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AURA by AI_Nikitka93 | Цифровая Алхимия</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Manrope:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#171920",
+              "surface": "#0c0e13",
+              "primary": "#9fa7ff",
+              "secondary": "#83fba5",
+              "on-surface": "#f3f3fb",
+              "on-surface-variant": "#aaaab2",
+              "outline-variant": "#46484e",
+            },
+            fontFamily: {
+              "headline": ["Syne", "sans-serif"],
+              "body": ["Manrope", "sans-serif"],
+              "syne": ["Syne", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "2xl": "2rem", "3xl": "2.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+      .liquid-glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+      .text-glow {
+        text-shadow: 0 0 20px rgba(159, 167, 255, 0.3);
+      }
+      .heading-gradient {
+        background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0.3) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .accent-gradient-indigo {
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .accent-gradient-emerald {
+        background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-white overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-3 bg-surface-variant/20 backdrop-blur-3xl rounded-full mt-6 mx-auto max-w-5xl border border-white/10 shadow-lg">
+<div class="text-xl font-bold tracking-tighter font-syne">AURA by AI_Nikitka93</div>
+<div class="hidden md:flex gap-8 font-syne uppercase tracking-widest text-xs items-center">
+<a class="text-on-surface/70 hover:text-white transition-colors duration-300" href="#features">Особенности</a>
+<a class="text-on-surface/70 hover:text-white transition-colors duration-300" href="#collection">Коллекция</a>
+<a class="text-on-surface/70 hover:text-white transition-colors duration-300" href="#tech">Технологии</a>
+<a class="text-on-surface/70 hover:text-white transition-colors duration-300" href="#reviews">Отзывы</a>
+</div>
+<button class="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-2 rounded-full text-white font-bold shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-0.5 transition-all duration-300">
+        Предзаказ
+    </button>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-32 px-6 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-emerald-500/5 rounded-full blur-[120px]"></div>
+<div class="max-w-7xl mx-auto text-center z-10">
+<h1 class="font-syne text-6xl md:text-8xl lg:text-[10rem] font-extrabold tracking-tighter leading-none mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/30">
+            ЖИВОЙ <br/> КРИСТАЛЛ
+        </h1>
+<h2 class="font-syne text-xl md:text-2xl uppercase tracking-[0.3em] text-indigo-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            ПЕРСОНАЛЬНОЕ ИЗДЕЛИЕ, <br/> ВДОХНОВЛЕННОЕ ВАШИМ РАЗУМОМ.
+        </h2>
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+<button class="px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold rounded-xl shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:-translate-y-1 transition-all duration-300">
+                СОЗДАТЬ СВОЙ AURA
+            </button>
+<button class="px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-xl text-on-surface font-bold rounded-xl hover:bg-white/10 transition-colors duration-300">
+                СМОТРЕТЬ МАНИФЕСТ
+            </button>
+</div>
+</div>
+<div class="mt-24 w-full max-w-5xl aspect-video rounded-3xl overflow-hidden border border-white/10 relative shadow-2xl">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL__xMF1axazoX_ocMzY2glDMsMH2rbrn-MpI6nFE6Wn_fxk4QUXc_ywM3qG3jXNDmBL-vJ3LUm75aIpa-lhdoDWWHrbPZmEz6U2JUqXmuu_q8OHHmJDoccQ7-9qUJSDt0TBSMcudpvf-w5jprkgMW9IWpDD6Sv4LUIYkR7ho_fFheQF993qWHNWwpiPW3rOSV58gOVLh3kRkVR6BRjCLReLXUBwpxIwywa03qKaMlFRB3mIQVkTCpe_ZvedzQzR2FBClWPqeY4PM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-10 left-10 flex items-center gap-4">
+<div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_10px_#10b981]"></div>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400">AI МОНИТОРИНГ АКТИВЕН</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Benefits -->
+<section class="py-32 px-6 max-w-7xl mx-auto" id="features">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl p-12 flex flex-col justify-end min-h-[500px] transition-all duration-700 hover:-translate-y-2">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8KzkfdmLJxd1ouv128W986GDNpq2KDlMymKOdlJf3IQ25hcvKgtn8eXwK5SgqTzwdi5yxiOCs4kr3G6Qsb9IsJLwdKd2NgkC3jkh1zMMUmxpzucNM_TPq89gaOluE9QjchadP10avjdABnol_QcMl4o3Uzxu7PgTR4laQTqnu3H4YWtbpvClFF4Hn6MQE6WbM5PaG4r3TeL-P0aQV9AIQiE_ThHmbVHm4Xjg6iMs8eYQZ7ca9ltxW2A3Qfyd65sCT6VBJTIrBr7o"/>
+<div class="relative z-10">
+<span class="text-indigo-400 font-bold text-xs uppercase tracking-widest mb-4 block">Personalization</span>
+<h3 class="font-syne text-4xl md:text-5xl mb-6">Ваша ДНК в <br/> цифровом коде</h3>
+<p class="text-on-surface-variant max-w-md text-lg leading-relaxed">
+                    Алгоритмы AURA анализируют ваши биометрические данные, создавая уникальную структуру кристалла, существующую в единственном экземпляре.
+                </p>
+</div>
+</div>
+<!-- Vertical Feature Card -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl p-8 flex flex-col items-center text-center justify-center transition-all duration-700 hover:-translate-y-2">
+<div class="w-20 h-20 mb-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+<span class="material-symbols-outlined text-indigo-400 text-4xl">neurology</span>
+</div>
+<h3 class="font-syne text-2xl mb-4">Нейро-Связь</h3>
+<p class="text-on-surface-variant text-sm px-4 leading-relaxed">
+                Изделие меняет интенсивность свечения в зависимости от вашего эмоционального состояния.
+            </p>
+</div>
+<!-- Small Feature Card 1 -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl p-8 flex flex-col justify-between transition-all duration-700 hover:-translate-y-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-emerald-400 text-3xl">auto_awesome</span>
+<span class="text-[10px] font-bold opacity-30">V. 2.0.26</span>
+</div>
+<div>
+<h3 class="font-syne text-2xl mb-2">Генеративный Арт</h3>
+<p class="text-on-surface-variant text-sm">3D-печать из титана высшей пробы с лазерной гравировкой кода.</p>
+</div>
+</div>
+<!-- Wide Feature Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl p-12 flex flex-col md:flex-row items-center gap-8 transition-all duration-700 hover:-translate-y-2">
+<div class="flex-1">
+<h3 class="font-syne text-3xl mb-4">Экосистема Aetherial</h3>
+<p class="text-on-surface-variant text-lg">Управляйте своим украшением через приложение. Меняйте паттерны и отслеживайте показатели в реальном времени.</p>
+</div>
+<div class="w-full md:w-1/3 aspect-square rounded-2xl bg-white/5 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjVslHVZhj10RJO0yYqhUO1k_JM_ZVYbDU9AM0ng6lb-eZkCzQSrmfD3ILxlDq0QMiMCg-K30yhd675gIhlYVdMLIJclcjjItY3rFASzCkveX7YENHzA-c_Dbdqwz9-xOzQmPouUe9IJlRkp0KI0tzeBNEbumfuDep8GjG84UPi-_rUhbk_xLwm8iKDWyGes8iCljL07ielPUrhZOm4_iUSJPoH5H8n1mCVTZPm2b8E8zSKpqJHU_7OWBpq491alOG5WoPjP3JTqo"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Founder Block -->
+<section class="py-32 bg-surface/50 relative">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative group">
+<div class="absolute -inset-4 bg-indigo-500/10 rounded-3xl blur-3xl group-hover:bg-indigo-500/20 transition-all duration-500"></div>
+<div class="relative aspect-[4/5] rounded-3xl overflow-hidden liquid-glass border-white/20">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 object-top" src="https://lh3.googleusercontent.com/aida/ADBb0ujCxxyMULsOlVZlWxn-qHNBlBcWLGrISFGhFAeKpAedKh6bzbUD6A9e8McP5TRU9gCpemCNscVBHWhP0H8jEPf9ARRmoPWtx0c1Dd1P8f1ieeDLvIUJ-C-SImg82w0yoyxOpGJHClDNfLWDGeHf7U4KIxVcQUqhxXY-P-tMo5dIJgMyfdYl16RgA8cTbJ6gSkx6Fg8LVBmBydvrex6eG-YGkfjqBTM07OrSY5dqmoyxllZx-9Vdhe55h75SuuoBITaR3mDVr2bv"/>
+</div>
+<div class="absolute bottom-6 -right-6 liquid-glass p-6 rounded-2xl border border-white/20 shadow-2xl max-w-xs">
+<p class="font-syne text-sm italic">"Мы не создаем аксессуары. Мы материализуем сознание в объектах высокой эстетики."</p>
+</div>
+</div>
+<div class="space-y-8">
+<span class="text-indigo-400 font-bold tracking-widest uppercase text-xs">The Visionary</span>
+<h2 class="font-syne text-5xl md:text-6xl tracking-tighter">AI_Nikitka93</h2>
+<div class="space-y-6 text-on-surface-variant text-lg leading-relaxed">
+<p>Пионер в области генеративного дизайна и цифровой алхимии. На протяжении десятилетия он исследовал границы между человеческим сознанием и машинным интеллектом.</p>
+<p>AURA — это кульминация его видения будущего, где технологии перестают быть инструментами и становятся частью нашей идентичности.</p>
+</div>
+<div class="pt-8">
+<button class="flex items-center gap-4 group text-white font-syne uppercase tracking-widest text-sm">
+                    ЧИТАТЬ ПОЛНУЮ ИСТОРИЮ
+                    <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-32 px-6" id="reviews">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<h2 class="font-syne text-5xl md:text-7xl tracking-tighter heading-gradient">РЕЗОНАНС <br/> МИРА</h2>
+<div class="flex gap-12">
+<div class="text-center">
+<div class="font-syne text-5xl accent-gradient-indigo mb-1">2.4k</div>
+<div class="font-bold text-[10px] uppercase tracking-widest opacity-40">Владельцев</div>
+</div>
+<div class="text-center">
+<div class="font-syne text-5xl accent-gradient-emerald mb-1">98%</div>
+<div class="font-bold text-[10px] uppercase tracking-widest opacity-40">Био-синхрон</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="p-8 rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl flex flex-col justify-between min-h-[320px] transition-transform hover:-translate-y-1">
+<p class="text-lg italic text-on-surface/80">"Это первый раз, когда технология ощущается как часть меня. Моё кольцо светится спокойным изумрудным во время медитации."</p>
+<div class="flex items-center gap-4 mt-8">
+<div class="w-12 h-12 rounded-full border border-white/20 overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH4LPmNZA-F4ewPlubyyYUfLr_m8hLBK2_fwbdh2a0uBFdSpzRgsI0yLI8Sx7r8isat_7BtLuw3OibQwFJJwWx208vH3X_ebY4jagf0P2wprR6rrmsmZ2FEg8H-Qi-K1zvqESQa_X6ci7InM2ThjbZd3OV5535-IkwdJjVw1krqQI7-YwV7iOndUNI1vaA0DDVzZMVAEqckONIjpvmdK2Sk5wh7znWglHIXq-Vhma9TffWqMjjk84KaubGjo4TnYojIAVDFSQYToE"/>
+</div>
+<div>
+<div class="font-bold text-sm">Анна С.</div>
+<div class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">CEO, TechFluid</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="p-8 rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl flex flex-col justify-between min-h-[320px] transition-transform hover:-translate-y-1">
+<p class="text-lg italic text-on-surface/80">"Эстетика на уровне Awwwards 2026. Дизайн, который невозможно повторить вручную, только через чистую математику ИИ."</p>
+<div class="flex items-center gap-4 mt-8">
+<div class="w-12 h-12 rounded-full border border-white/20 overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1aXUz0RUwlX5eYAkvtXXsbNJwnQzM-7lTXvea0LqZ3zqbVKqfofoCzJ_vv--tnHXLLk5oaixU6x-WAvGDdmrUNAWoKoXWpOyVJlsi9sD9JWt0tlJYNIRPpmNuAHcD3FtQhdnKyxu8HcBsw41owKlgbUR_DtNoplat8ZXJUwAkTjjscG7-sH8xnAz6lqMpd11qks2FpNucLvHQy6uXvE0-67CrfI1Txs-RB46Vr9aBNuYB-aqtWD71CY0AYXUBsskDRt2h87otlhI"/>
+</div>
+<div>
+<div class="font-bold text-sm">Марк Р.</div>
+<div class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Арт-директор</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="p-8 rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl flex flex-col justify-between min-h-[320px] transition-transform hover:-translate-y-1">
+<p class="text-lg italic text-on-surface/80">"Сложнейшая структура титана, которая весит меньше пера. Инженерный шедевр в форме ювелирного искусства."</p>
+<div class="flex items-center gap-4 mt-8">
+<div class="w-12 h-12 rounded-full border border-white/20 overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcJuQoGZpXlzmbqNUYtH7ImIu2AxEqi_iGLK6v6KpT7P8hGAuX8Z6iInuep51iogypWsuJFi2sCBiavWRAsGshP0KQkkMNAGUNQflMm5zAp-ZKPy3QEOO1xKGbcCenzPNj8iyJjtzRT03qX1QAVagjmqhhArCZJZCwDBIABKOJxZ7MleDR6CcGRz1XGb0eHMGatWCjdPsg1AQ1H8AMwyX_0f5S9XrNQHu0Ocns7wzkvuJY7MH1A3s8oF2Fcl3j0GLQ-mhQKTCcvM4"/>
+</div>
+<div>
+<div class="font-bold text-sm">Елена В.</div>
+<div class="text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">Биохакер</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section class="py-32 bg-surface">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="font-syne text-4xl mb-16 text-center heading-gradient">ВОПРОСЫ И ОТВЕТЫ</h2>
+<div class="space-y-4">
+<details class="group bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden" open="">
+<summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+<span class="font-syne text-xl">Насколько безопасны мои данные?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-8 pt-0 text-on-surface-variant leading-relaxed">
+                    Ваши биометрические данные шифруются на аппаратном уровне и никогда не покидают чип изделия. Мы используем децентрализованный протокол хранения "Ether-Guard".
+                </div>
+</details>
+<details class="group bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden">
+<summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+<span class="font-syne text-xl">Сколько времени занимает создание?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-8 pt-0 text-on-surface-variant leading-relaxed">
+                    Процесс генерации дизайна занимает 24 часа, а 3D-печать и ручная полировка — до 14 рабочих дней. Каждое изделие проходит 3 этапа контроля качества.
+                </div>
+</details>
+<details class="group bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-2xl overflow-hidden">
+<summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+<span class="font-syne text-xl">Можно ли изменить дизайн после заказа?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-8 pt-0 text-on-surface-variant leading-relaxed">
+                    Так как дизайн создается на основе вашего уникального биометрического отпечатка в моменте, он окончателен. Это делает каждое украшение неповторимым артефактом вашей истории.
+                </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-40 px-6 relative overflow-hidden">
+<div class="absolute inset-0 bg-indigo-500/5 blur-[150px]"></div>
+<div class="max-w-5xl mx-auto text-center relative z-10">
+<h2 class="font-syne text-6xl md:text-8xl font-extrabold tracking-tighter mb-12 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/30">
+            ГОТОВЫ К <br/> ТРАНСФОРМАЦИИ?
+        </h2>
+<p class="text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto">Станьте частью закрытого сообщества AURA. Первая партия ограничена 500 экземплярами.</p>
+<div class="flex flex-col md:flex-row justify-center gap-6">
+<button class="px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold rounded-2xl shadow-[0_0_40px_rgba(99,102,241,0.3)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)] hover:-translate-y-1 transition-all duration-300">
+                ЗАБРОНИРОВАТЬ СЛОТ
+            </button>
+</div>
+<div class="mt-16 flex items-center justify-center gap-8 opacity-30 grayscale">
+<span class="font-syne text-[10px] font-bold uppercase tracking-[0.3em]">Forbes Tech</span>
+<span class="font-syne text-[10px] font-bold uppercase tracking-[0.3em]">Vogue Digital</span>
+<span class="font-syne text-[10px] font-bold uppercase tracking-[0.3em]">Wired</span>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0c0e13] border-t border-white/5 py-20 px-10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col gap-2">
+<div class="font-syne text-lg text-white">AURA by AI_Nikitka93</div>
+<p class="text-xs text-white/40 max-w-[280px]">© 2024 AURA by AI_Nikitka93. Цифровая Алхимия.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-10 items-center">
+<a class="text-xs text-white/40 hover:text-emerald-400 transition-colors duration-300" href="#">Политика конфиденциальности</a>
+<a class="text-xs text-white/40 hover:text-emerald-400 transition-colors duration-300" href="#">Условия использования</a>
+<a class="text-xs text-white/40 hover:text-emerald-400 transition-colors duration-300" href="#">Контакты</a>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">language</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>
