@@ -4,7 +4,7 @@ import { caseStudyContent } from '../../data/landingContent'
 
 export default function CaseStudySection() {
   return (
-    <section id="case-study" className="py-16 sm:py-20 lg:py-24">
+    <section id="case-study" className="py-12 sm:py-16 lg:py-20">
       <div className="section-shell">
         <SectionHeading
           eyebrow={caseStudyContent.eyebrow}
@@ -12,7 +12,7 @@ export default function CaseStudySection() {
           description={caseStudyContent.description}
         />
 
-        <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2">
+        <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 md:grid-cols-2">
           {caseStudyContent.cards.map((card, index) => (
             <div key={card.title} className="reveal" style={{ transitionDelay: `${index * 100}ms` }}>
               <GlassCard className="min-h-[220px]">
@@ -23,7 +23,7 @@ export default function CaseStudySection() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap reveal">
+        <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap reveal">
           {caseStudyContent.links.map((link) => (
             <a
               key={link.href}

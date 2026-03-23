@@ -4,7 +4,7 @@ import { disclaimerContent, validationCards } from '../../data/landingContent'
 
 export default function SocialProofSection() {
   return (
-    <section id="validation" className="py-16 sm:py-20 lg:py-24">
+    <section id="validation" className="py-12 sm:py-16 lg:py-20">
       <div className="section-shell">
         <SectionHeading
           eyebrow="Validation-ready"
@@ -17,7 +17,7 @@ export default function SocialProofSection() {
           <p className="mt-3 text-sm leading-7 text-text-soft">{disclaimerContent.validationText}</p>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 md:grid-cols-3">
           {validationCards.map((card, index) => {
             const Icon = card.icon
 

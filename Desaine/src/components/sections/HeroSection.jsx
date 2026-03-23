@@ -2,8 +2,8 @@ import { heroContent, heroHighlights } from '../../data/landingContent'
 
 export default function HeroSection() {
   return (
-    <section id="ritual" className="relative overflow-hidden pt-10 sm:pt-14 lg:pt-20">
-      <div className="section-shell grid items-end gap-10 pb-14 pt-8 sm:gap-12 sm:pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24">
+    <section id="ritual" className="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24">
+      <div className="section-shell grid items-center gap-8 pb-16 sm:gap-10 lg:grid-cols-2 lg:pb-20">
         <div className="relative">
           <div className="pointer-events-none absolute -left-6 top-0 h-28 w-28 rounded-full bg-primary/15 blur-[70px] sm:-left-10 sm:top-2 sm:h-40 sm:w-40 sm:blur-[90px] animate-float" />
           <div className="pointer-events-none absolute left-10 top-28 h-16 w-16 rounded-full bg-secondary/10 blur-[56px] sm:left-20 sm:top-40 sm:h-24 sm:w-24 sm:blur-[72px] animate-float" style={{ animationDelay: '1s' }} />

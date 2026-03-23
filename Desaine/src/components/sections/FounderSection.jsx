@@ -3,8 +3,8 @@ import { founderContent } from '../../data/landingContent'
 
 export default function FounderSection() {
   return (
-    <section id="founder" className="py-16 sm:py-20 lg:py-28">
-      <div className="section-shell grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+    <section id="founder" className="py-12 sm:py-16 lg:py-20">
+      <div className="section-shell grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className="reveal-left relative order-2 lg:order-1">
           <div className="pointer-events-none absolute -inset-2 rounded-[36px] bg-primary/10 blur-3xl animate-glow-pulse" />
           <div className="liquid-panel relative overflow-hidden p-3 sm:p-4">

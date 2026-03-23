@@ -5,7 +5,7 @@ import { benefitCards } from '../../data/landingContent'
 
 export default function BenefitsSection() {
   return (
-    <section id="benefits" className="py-16 sm:py-20 lg:py-24">
+    <section id="benefits" className="py-12 sm:py-16 lg:py-20">
       <div className="section-shell">
         <SectionHeading
           eyebrow="Benefits"
@@ -14,7 +14,7 @@ export default function BenefitsSection() {
           align="left"
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:gap-5 md:grid-cols-12">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:gap-5 md:grid-cols-12">
           {benefitCards.map((card, index) => {
             const Icon = card.icon
 
@@ -54,7 +54,7 @@ export default function BenefitsSection() {
         </div>
 
         {/* Ritual Configurator */}
-        <div className="reveal mt-16 sm:mt-20">
+        <div className="reveal mt-8 sm:mt-10">
           <RitualConfigurator />
         </div>
       </div>
