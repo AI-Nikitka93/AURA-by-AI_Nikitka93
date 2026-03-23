@@ -4,12 +4,12 @@ export default function SectionHeading({ eyebrow, title, description, align = 'l
   return (
     <div className={`max-w-3xl ${alignment}`}>
       {eyebrow ? (
-        <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.34em] text-primary/80">{eyebrow}</p>
+        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/80 sm:mb-4 sm:text-[11px]">{eyebrow}</p>
       ) : null}
-      <h2 className="font-display text-4xl tracking-[-0.04em] text-transparent sm:text-5xl lg:text-6xl heading-gradient">
+      <h2 className="font-display text-3xl tracking-[-0.03em] text-transparent sm:text-4xl lg:text-5xl heading-gradient">
         {title}
       </h2>
-      {description ? <p className="mt-6 text-base leading-7 text-text-soft sm:text-lg">{description}</p> : null}
+      {description ? <p className="mt-4 text-sm leading-7 text-text-soft sm:mt-5 sm:text-base">{description}</p> : null}
     </div>
   )
 }
