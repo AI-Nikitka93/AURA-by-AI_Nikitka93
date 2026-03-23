@@ -29,7 +29,7 @@ export const heroContent = {
     'AURA — portfolio concept от AI_Nikitka93: brand direction, UX-copy, visual system и frontend implementation. Продуктовые сценарии и офферы на странице демонстрационные и не являются реальной витриной магазина.',
   primaryCta: { label: 'Смотреть кейс', href: '#case-study' },
   secondaryCta: { label: 'Открыть GitHub', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
-  image: asset('hero-jewelry.png'),
+  image: asset('hero-jewelry.jpg'),
   imageAlt: 'AURA premium smart jewelry hero shot',
   signalLabel: 'AURA signal active',
 }
@@ -47,7 +47,7 @@ export const benefitCards = [
     icon: Sparkles,
     tag: 'AI aura pattern',
     className: 'md:col-span-7 md:min-h-[420px]',
-    image: asset('aura-pattern.jpeg'),
+    image: asset('aura-pattern.jpg'),
   },
   {
     title: 'Считывайтесь как статус, а не как гаджет',
@@ -55,7 +55,7 @@ export const benefitCards = [
     icon: Gem,
     tag: 'Material surface study',
     className: 'md:col-span-5 md:min-h-[420px]',
-    image: asset('metal-detail.jpeg'),
+    image: asset('metal-detail.jpg'),
   },
   {
     title: 'Превратите биоритмы в ежедневный ритуал',
@@ -63,7 +63,7 @@ export const benefitCards = [
     icon: Waves,
     tag: 'Ambient glow sequence',
     className: 'md:col-span-4 md:min-h-[280px]',
-    image: asset('glow-sequence.jpeg'),
+    image: asset('glow-sequence.jpg'),
   },
   {
     title: 'Выбирайте редкость вместо массовости',
@@ -71,7 +71,7 @@ export const benefitCards = [
     icon: Orbit,
     tag: 'Limited piece card',
     className: 'md:col-span-8 md:min-h-[280px]',
-    image: asset('limited-piece.jpeg'),
+    image: asset('limited-piece.jpg'),
   },
 ]
 
@@ -144,7 +144,7 @@ export const ctaContent = {
   secondaryButton: 'Открыть GitHub репозиторий',
   secondaryHref: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93',
   meta: 'Portfolio case by Nikitka93',
-  backgroundImage: asset('bg-texture.jpeg'),
+  backgroundImage: asset('bg-texture.png'),
 }
 
 export const disclaimerContent = {
@@ -182,7 +182,7 @@ export const caseStudyContent = {
     { label: 'Live Site', href: 'https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/' },
     { label: 'GitHub Repo', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
   ],
-  featuredImage: asset('hero-shot.jpeg'),
+  featuredImage: asset('hero-shot.jpg'),
   featuredImageAlt: 'AURA ring worn on hand',
   featuredImageCaption: 'Product in use',
 }
@@ -200,4 +200,4 @@ export const footerMeta = {
   actionIcon: ArrowRight,
 }
 
-export const faqBackground = asset('faq-bg.jpeg')
+export const faqBackground = asset('faq-bg.jpg')

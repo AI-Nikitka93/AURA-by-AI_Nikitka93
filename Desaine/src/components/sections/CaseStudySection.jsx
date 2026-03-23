@@ -27,6 +27,8 @@ export default function CaseStudySection() {
           <img
             src={caseStudyContent.featuredImage}
             alt={caseStudyContent.featuredImageAlt}
+            loading="lazy"
+            decoding="async"
             className="h-[260px] w-full object-cover sm:h-[320px]"
           />
           <div className="border-t border-white/10 px-5 py-4 sm:px-6">

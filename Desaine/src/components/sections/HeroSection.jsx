@@ -43,7 +43,14 @@ export default function HeroSection() {
           <div className="pointer-events-none absolute inset-x-6 top-6 h-16 rounded-full bg-primary/15 blur-[70px] sm:inset-x-10 sm:top-10 sm:h-20 sm:blur-[80px]" />
           <div className="liquid-panel overflow-hidden p-2 sm:p-3">
             <div className="relative overflow-hidden rounded-xl border border-white/10 sm:rounded-[20px]">
-              <img src={heroContent.image} alt={heroContent.imageAlt} className="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 ease-premium hover:scale-105" />
+              <img
+                src={heroContent.image}
+                alt={heroContent.imageAlt}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 ease-premium hover:scale-105"
+              />
               <div className="absolute inset-0 bg-hero-fade" />
               <div className="absolute bottom-2 left-2 right-2 flex flex-wrap items-center gap-2 rounded-xl border border-secondary/20 bg-black/30 px-2 py-1.5 backdrop-blur-xl sm:bottom-3 sm:left-3 sm:right-auto sm:gap-2 sm:rounded-full sm:px-3 sm:py-2">
                 <span className="h-2 w-2 animate-glow-pulse rounded-full bg-secondary sm:h-2.5 sm:w-2.5" />

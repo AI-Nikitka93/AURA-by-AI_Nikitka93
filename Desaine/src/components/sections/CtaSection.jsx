@@ -9,6 +9,8 @@ export default function CtaSection() {
         <img
           src={ctaContent.backgroundImage}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover opacity-[0.08] mix-blend-screen"
         />
       </div>

@@ -9,6 +9,8 @@ export default function FaqSection() {
         <img
           src={faqBackground}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover opacity-10 mix-blend-screen"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,11,16,0.25)_0%,rgba(9,11,16,0.88)_100%)]" />

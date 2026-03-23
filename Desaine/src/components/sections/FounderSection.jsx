@@ -12,6 +12,8 @@ export default function FounderSection() {
               <img
                 src={founderContent.image}
                 alt={founderContent.imageAlt}
+                loading="lazy"
+                decoding="async"
                 className="aspect-[4/5] h-full w-full object-cover object-top grayscale transition duration-700 ease-premium hover:grayscale-0"
               />
             </div>
@@ -20,6 +22,8 @@ export default function FounderSection() {
                 <img
                   src={founderContent.quoteBackground}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover opacity-15"
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,11,16,0.20)_0%,rgba(9,11,16,0.75)_100%)]" />
