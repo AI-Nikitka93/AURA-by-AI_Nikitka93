@@ -14,13 +14,13 @@ export default function BenefitsSection() {
           align="left"
         />
 
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:gap-5 md:grid-cols-12">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5">
           {benefitCards.map((card, index) => {
             const Icon = card.icon
 
             return (
               <div key={card.title} className={`reveal ${index % 2 === 0 ? 'reveal-left' : 'reveal-right'}`} style={{ transitionDelay: `${index * 100}ms` }}>
-                <GlassCard className={`group relative overflow-hidden ${card.className}`}>
+                <GlassCard className="group relative overflow-hidden min-h-[340px]">
                   {card.image ? (
                     <>
                       <img
@@ -43,8 +43,8 @@ export default function BenefitsSection() {
                     </div>
 
                     <div>
-                      <h3 className="max-w-xl font-display text-xl tracking-[-0.04em] text-text sm:text-2xl lg:text-3xl">{card.title}</h3>
-                      <p className="mt-4 max-w-2xl text-sm leading-7 text-text-soft">{card.body}</p>
+                      <h3 className="font-display text-xl tracking-[-0.04em] text-text sm:text-2xl lg:text-3xl">{card.title}</h3>
+                      <p className="mt-4 text-sm leading-7 text-text-soft">{card.body}</p>
                     </div>
                   </div>
                 </GlassCard>
