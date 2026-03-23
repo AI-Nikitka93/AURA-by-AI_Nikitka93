@@ -13,15 +13,17 @@ export default function CaseStudySection() {
         />
 
         <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-5 md:grid-cols-2">
-          {caseStudyContent.cards.map((card) => (
-            <GlassCard key={card.title} className="min-h-[220px]">
-              <h3 className="font-display text-2xl tracking-[-0.04em] text-text">{card.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-text-soft">{card.body}</p>
-            </GlassCard>
+          {caseStudyContent.cards.map((card, index) => (
+            <div key={card.title} className="reveal" style={{ transitionDelay: `${index * 100}ms` }}>
+              <GlassCard className="min-h-[220px]">
+                <h3 className="font-display text-2xl tracking-[-0.04em] text-text">{card.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-text-soft">{card.body}</p>
+              </GlassCard>
+            </div>
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
+        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap reveal">
           {caseStudyContent.links.map((link) => (
             <a
               key={link.href}

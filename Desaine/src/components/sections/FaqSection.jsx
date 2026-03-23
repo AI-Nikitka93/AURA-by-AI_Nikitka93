@@ -15,7 +15,12 @@ export default function FaqSection() {
 
         <div className="mt-12 space-y-4">
           {faqItems.map((item, index) => (
-            <details key={item.question} className="group liquid-panel overflow-hidden" open={index === 0}>
+            <details
+              key={item.question}
+              className="group liquid-panel overflow-hidden reveal"
+              open={index === 0}
+              style={{ transitionDelay: `${index * 80}ms` }}
+            >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-5 py-5 text-left sm:px-6">
                 <span className="font-display text-lg tracking-[-0.03em] text-text sm:text-xl">{item.question}</span>
                 <ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform duration-200 ease-premium group-open:rotate-180" />

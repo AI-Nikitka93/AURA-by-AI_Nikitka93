@@ -27,8 +27,7 @@ export const heroContent = {
     'AURA — portfolio concept от AI_Nikitka93: brand direction, UX-copy, visual system и frontend implementation. Продуктовые сценарии и офферы на странице демонстрационные и не являются реальной витриной магазина.',
   primaryCta: { label: 'Смотреть кейс', href: '#case-study' },
   secondaryCta: { label: 'Открыть GitHub', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
-  image:
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuAL__xMF1axazoX_ocMzY2glDMsMH2rbrn-MpI6nFE6Wn_fxk4QUXc_ywM3qG3jXNDmBL-vJ3LUm75aIpa-lhdoDWWHrbPZmEz6U2JUqXmuu_q8OHHmJDoccQ7-9qUJSDt0TBSMcudpvf-w5jprkgMW9IWpDD6Sv4LUIYkR7ho_fFheQF993qWHNWwpiPW3rOSV58gOVLh3kRkVR6BRjCLReLXUBwpxIwywa03qKaMlFRB3mIQVkTCpe_ZvedzQzR2FBClWPqeY4PM',
+  image: '/assets/crystal-hero.jpg',
   imageAlt: 'AURA premium smart jewelry hero render',
   signalLabel: 'AURA signal active',
 }
@@ -46,8 +45,7 @@ export const benefitCards = [
     icon: Sparkles,
     tag: 'AI aura pattern',
     className: 'md:col-span-7 md:min-h-[420px]',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuA8KzkfdmLJxd1ouv128W986GDNpq2KDlMymKOdlJf3IQ25hcvKgtn8eXwK5SgqTzwdi5yxiOCs4kr3G6Qsb9IsJLwdKd2NgkC3jkh1zMMUmxpzucNM_TPq89gaOluE9QjchadP10avjdABnol_QcMl4o3Uzxu7PgTR4laQTqnu3H4YWtbpvClFF4Hn6MQE6WbM5PaG4r3TeL-P0aQV9AIQiE_ThHmbVHm4Xjg6iMs8eYQZ7ca9ltxW2A3Qfyd65sCT6VBJTIrBr7o',
+    image: '/assets/aura-pattern.jpg',
   },
   {
     title: 'Считывайтесь как статус, а не как гаджет',
@@ -55,6 +53,7 @@ export const benefitCards = [
     icon: Gem,
     tag: 'Inner glow metal detail',
     className: 'md:col-span-5 md:min-h-[420px]',
+    image: '/assets/metal-detail.jpg',
   },
   {
     title: 'Превратите биоритмы в ежедневный ритуал',
@@ -62,6 +61,7 @@ export const benefitCards = [
     icon: Waves,
     tag: 'Ambient glow sequence',
     className: 'md:col-span-4 md:min-h-[280px]',
+    image: '/assets/glow-sequence.jpg',
   },
   {
     title: 'Выбирайте редкость вместо массовости',
@@ -69,8 +69,7 @@ export const benefitCards = [
     icon: Orbit,
     tag: 'Limited piece card',
     className: 'md:col-span-8 md:min-h-[280px]',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBjVslHVZhj10RJO0yYqhUO1k_JM_ZVYbDU9AM0ng6lb-eZkCzQSrmfD3ILxlDq0QMiMCg-K30yhd675gIhlYVdMLIJclcjjItY3rFASzCkveX7YENHzA-c_Dbdqwz9-xOzQmPouUe9IJlRkp0KI0tzeBNEbumfuDep8GjG84UPi-_rUhbk_xLwm8iKDWyGes8iCljL07ielPUrhZOm4_iUSJPoH5H8n1mCVTZPm2b8E8zSKpqJHU_7OWBpq491alOG5WoPjP3JTqo',
+    image: '/assets/limited-piece.jpg',
   },
 ]
 
@@ -84,8 +83,7 @@ export const founderContent = {
   ],
   quote: 'Мы не создаем аксессуары. Мы материализуем сознание в объектах высокой эстетики.',
   action: 'Перейти к кейсу проекта',
-  image:
-    'https://lh3.googleusercontent.com/aida/ADBb0ujCxxyMULsOlVZlWxn-qHNBlBcWLGrISFGhFAeKpAedKh6bzbUD6A9e8McP5TRU9gCpemCNscVBHWhP0H8jEPf9ARRmoPWtx0c1Dd1P8f1ieeDLvIUJ-C-SImg82w0yoyxOpGJHClDNfLWDGeHf7U4KIxVcQUqhxXY-P-tMo5dIJgMyfdYl16RgA8cTbJ6gSkx6Fg8LVBmBydvrex6eG-YGkfjqBTM07OrSY5dqmoyxllZx-9Vdhe55h75SuuoBITaR3mDVr2bv',
+  image: '/assets/founder-portrait.jpg',
   imageAlt: 'Portrait of AI_Nikitka93',
 }
 
