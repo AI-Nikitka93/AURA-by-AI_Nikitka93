@@ -10,7 +10,7 @@ export default function HeroSection() {
           <div className="mb-4 inline-flex animate-fade-in items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-text-soft shadow-insetglass backdrop-blur-glass sm:mb-5 sm:px-4 sm:text-[11px] sm:tracking-[0.24em]">
             {heroContent.portfolioBadge}
           </div>
-          <p className="mb-4 animate-fade-in text-[10px] font-semibold uppercase tracking-[0.28em] text-primary/80 sm:mb-5 sm:text-[11px] sm:tracking-[0.34em]" style={{ animationDelay: '150ms' }}>{heroContent.eyebrow}</p>
+          <p className="mb-3 animate-fade-in text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/80 sm:mb-4 sm:text-[11px] sm:tracking-[0.24em]" style={{ animationDelay: '150ms' }}>{heroContent.eyebrow}</p>
           <h1 className="max-w-4xl animate-fade-in-up font-display text-[clamp(2.9rem,13vw,5.75rem)] leading-[0.94] tracking-[-0.07em] text-transparent heading-gradient">
             {heroContent.title}
           </h1>

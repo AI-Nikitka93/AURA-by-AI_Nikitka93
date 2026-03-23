@@ -4,7 +4,7 @@ import { disclaimerContent, validationCards } from '../../data/landingContent'
 
 export default function SocialProofSection() {
   return (
-    <section id="validation" className="py-12 sm:py-16 lg:py-20">
+    <section id="validation" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell">
         <SectionHeading
           eyebrow="Validation-ready"
@@ -12,12 +12,12 @@ export default function SocialProofSection() {
           description="Неподтвержденные Stitch-цифры и вымышленные отзывы удалены. Секция готова к подстановке реального proof после launch data."
         />
 
-        <div className="reveal mt-6 liquid-glass rounded-2xl px-5 py-4 sm:px-6">
+        <div className="mt-4 liquid-glass rounded-2xl px-5 py-4 sm:px-6 sm:mt-5">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/80">{disclaimerContent.validationTitle}</p>
-          <p className="mt-3 text-sm leading-7 text-text-soft">{disclaimerContent.validationText}</p>
+          <p className="mt-2 text-sm leading-7 text-text-soft">{disclaimerContent.validationText}</p>
         </div>
 
-        <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 md:grid-cols-3">
+        <div className="mt-4 grid gap-4 sm:mt-6 sm:gap-5 md:grid-cols-3">
           {validationCards.map((card, index) => {
             const Icon = card.icon
 

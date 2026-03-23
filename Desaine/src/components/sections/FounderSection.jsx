@@ -21,18 +21,18 @@ export default function FounderSection() {
           </div>
         </div>
 
-        <div className="reveal-right order-1 space-y-6 lg:order-2">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-primary/80">{founderContent.label}</p>
-          <h2 className="font-display text-[clamp(2.25rem,10vw,4.5rem)] tracking-[-0.05em] text-transparent heading-gradient">
+        <div className="reveal-right order-1 space-y-5 lg:order-2">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/80 sm:text-[11px]">{founderContent.label}</p>
+          <h2 className="font-display text-[clamp(2rem,8vw,3.5rem)] tracking-[-0.03em] text-transparent heading-gradient">
             {founderContent.name}
           </h2>
-          <h3 className="font-display text-2xl tracking-[-0.04em] text-text sm:text-3xl">{founderContent.title}</h3>
-          <div className="space-y-5 text-base leading-7 text-text-soft">
+          <h3 className="font-display text-xl tracking-[-0.03em] text-text sm:text-2xl">{founderContent.title}</h3>
+          <div className="space-y-4 text-sm leading-6 text-text-soft sm:text-base">
             {founderContent.description.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <a href="#case-study" className="inline-flex items-center gap-3 pt-3 text-sm font-semibold uppercase tracking-[0.24em] text-text hover:text-primary group">
+          <a href="#case-study" className="inline-flex items-center gap-2 pt-2 text-sm font-semibold uppercase tracking-[0.18em] text-text hover:text-primary group">
             {founderContent.action}
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
