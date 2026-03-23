@@ -2,6 +2,7 @@ import { disclaimerContent, footerLinks, footerMeta } from '../../data/landingCo
 
 export default function Footer() {
   const Icon = footerMeta.actionIcon
+  const base = import.meta.env.BASE_URL
 
   return (
     <footer className="relative z-10 border-t border-white/5 bg-black/20 py-12">
@@ -19,7 +20,7 @@ export default function Footer() {
               {link.label}
             </a>
           ))}
-          <a href="/privacy.html" className="text-sm text-text-soft hover:text-secondary">
+          <a href={`${base}privacy.html`} className="text-sm text-text-soft hover:text-secondary">
             Privacy Policy
           </a>
           <a href="#ritual" className="inline-flex items-center gap-2 text-sm text-text hover:text-primary">

@@ -9,6 +9,8 @@ import {
   Waves,
 } from 'lucide-react'
 
+const asset = (filename) => `${import.meta.env.BASE_URL}assets/${filename}`
+
 export const navigationItems = [
   { label: 'Ритуал', href: '#ritual' },
   { label: 'Преимущества', href: '#benefits' },
@@ -27,7 +29,7 @@ export const heroContent = {
     'AURA — portfolio concept от AI_Nikitka93: brand direction, UX-copy, visual system и frontend implementation. Продуктовые сценарии и офферы на странице демонстрационные и не являются реальной витриной магазина.',
   primaryCta: { label: 'Смотреть кейс', href: '#case-study' },
   secondaryCta: { label: 'Открыть GitHub', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
-  image: '/assets/hero-jewelry.png',
+  image: asset('hero-jewelry.png'),
   imageAlt: 'AURA premium smart jewelry hero shot',
   signalLabel: 'AURA signal active',
 }
@@ -45,7 +47,7 @@ export const benefitCards = [
     icon: Sparkles,
     tag: 'AI aura pattern',
     className: 'md:col-span-7 md:min-h-[420px]',
-    image: '/assets/aura-pattern.jpeg',
+    image: asset('aura-pattern.jpeg'),
   },
   {
     title: 'Считывайтесь как статус, а не как гаджет',
@@ -53,7 +55,7 @@ export const benefitCards = [
     icon: Gem,
     tag: 'Material surface study',
     className: 'md:col-span-5 md:min-h-[420px]',
-    image: '/assets/metal-detail.jpeg',
+    image: asset('metal-detail.jpeg'),
   },
   {
     title: 'Превратите биоритмы в ежедневный ритуал',
@@ -61,7 +63,7 @@ export const benefitCards = [
     icon: Waves,
     tag: 'Ambient glow sequence',
     className: 'md:col-span-4 md:min-h-[280px]',
-    image: '/assets/glow-sequence.jpeg',
+    image: asset('glow-sequence.jpeg'),
   },
   {
     title: 'Выбирайте редкость вместо массовости',
@@ -69,7 +71,7 @@ export const benefitCards = [
     icon: Orbit,
     tag: 'Limited piece card',
     className: 'md:col-span-8 md:min-h-[280px]',
-    image: '/assets/limited-piece.jpeg',
+    image: asset('limited-piece.jpeg'),
   },
 ]
 
@@ -82,9 +84,9 @@ export const founderContent = {
     'Каждое изделие начинается не с шаблона, а с авторского отбора формы, света и настроения. Поэтому AURA ощущается не как массовый tech-продукт, а как подпись визионера, который работает материалом, кодом и интуицией сразу.',
   ],
   quote: 'Мы не создаем аксессуары. Мы материализуем сознание в объектах высокой эстетики.',
-  quoteBackground: '/assets/founder-quote-bg.jpg',
+  quoteBackground: asset('founder-quote-bg.jpg'),
   action: 'Перейти к кейсу проекта',
-  image: '/assets/founder-portrait.jpg',
+  image: asset('founder-portrait.jpg'),
   imageAlt: 'Portrait of AI_Nikitka93',
 }
 
@@ -142,7 +144,7 @@ export const ctaContent = {
   secondaryButton: 'Открыть GitHub репозиторий',
   secondaryHref: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93',
   meta: 'Portfolio case by Nikitka93',
-  backgroundImage: '/assets/bg-texture.jpeg',
+  backgroundImage: asset('bg-texture.jpeg'),
 }
 
 export const disclaimerContent = {
@@ -180,7 +182,7 @@ export const caseStudyContent = {
     { label: 'Live Site', href: 'https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/' },
     { label: 'GitHub Repo', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
   ],
-  featuredImage: '/assets/hero-shot.jpeg',
+  featuredImage: asset('hero-shot.jpeg'),
   featuredImageAlt: 'AURA ring worn on hand',
   featuredImageCaption: 'Product in use',
 }
@@ -198,4 +200,4 @@ export const footerMeta = {
   actionIcon: ArrowRight,
 }
 
-export const faqBackground = '/assets/faq-bg.jpeg'
+export const faqBackground = asset('faq-bg.jpeg')
