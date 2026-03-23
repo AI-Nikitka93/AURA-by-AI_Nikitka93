@@ -2,14 +2,14 @@ export default function SectionHeading({ eyebrow, title, description, align = 'l
   const alignment = align === 'center' ? 'mx-auto text-center' : ''
 
   return (
-    <div className={`max-w-3xl ${alignment}`}>
+    <div className={`${alignment}`}>
       {eyebrow ? (
-        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/80 sm:mb-4 sm:text-[11px]">{eyebrow}</p>
+        <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-primary/80 sm:mb-3 sm:text-[10px]">{eyebrow}</p>
       ) : null}
-      <h2 className="font-display text-3xl tracking-[-0.03em] text-transparent sm:text-4xl lg:text-5xl heading-gradient">
+      <h2 className="font-display text-2xl tracking-[-0.02em] text-transparent sm:text-3xl lg:text-4xl heading-gradient">
         {title}
       </h2>
-      {description ? <p className="mt-4 text-sm leading-7 text-text-soft sm:mt-5 sm:text-base">{description}</p> : null}
+      {description ? <p className="mt-3 text-xs leading-6 text-text-soft sm:mt-4 sm:text-sm">{description}</p> : null}
     </div>
   )
 }
