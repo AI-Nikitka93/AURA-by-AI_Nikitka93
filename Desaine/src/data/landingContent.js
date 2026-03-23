@@ -82,7 +82,7 @@ export const founderContent = {
     'Каждое изделие начинается не с шаблона, а с авторского отбора формы, света и настроения. Поэтому AURA ощущается не как массовый tech-продукт, а как подпись визионера, который работает материалом, кодом и интуицией сразу.',
   ],
   quote: 'Мы не создаем аксессуары. Мы материализуем сознание в объектах высокой эстетики.',
-  quoteBackground: '/assets/founder-quote-bg.jpeg',
+  quoteBackground: '/assets/founder-quote-bg.jpg',
   action: 'Перейти к кейсу проекта',
   image: '/assets/founder-portrait.jpg',
   imageAlt: 'Portrait of AI_Nikitka93',

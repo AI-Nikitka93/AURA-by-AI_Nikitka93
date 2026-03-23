@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="AURA logo">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6F7CFF"/>
+      <stop offset="100%" stop-color="#37D6B5"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="#090B10"/>
+  <circle cx="256" cy="214" r="118" fill="none" stroke="url(#g)" stroke-width="16" opacity="0.95"/>
+  <path d="M171 344 L208 256 L256 140 L304 256 L341 344" fill="none" stroke="url(#g)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M204 284 H308" fill="none" stroke="#F5F7FB" stroke-width="16" stroke-linecap="round"/>
+  <path d="M236 284 L256 232 L276 284" fill="none" stroke="#F5F7FB" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
