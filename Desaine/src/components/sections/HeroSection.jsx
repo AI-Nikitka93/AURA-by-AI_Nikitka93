@@ -17,7 +17,7 @@ export default function HeroSection() {
           <p className="mt-5 max-w-2xl animate-fade-in-up text-sm leading-6 text-text-soft sm:mt-6 sm:text-base sm:leading-7 lg:text-lg" style={{ animationDelay: '200ms' }}>{heroContent.subtitle}</p>
 
           <div className="mt-8 flex animate-fade-in-up flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-4" style={{ animationDelay: '300ms' }}>
-            <a href={heroContent.primaryCta.href} className="primary-button relative w-full overflow-hidden px-6 py-3.5 text-[11px] uppercase tracking-[0.18em] sm:w-auto sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.2em]">
+            <a href={heroContent.primaryCta.href} className="primary-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.18em] sm:w-auto sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.2em]">
               {heroContent.primaryCta.label}
             </a>
             <a href={heroContent.secondaryCta.href} target="_blank" rel="noreferrer" className="ghost-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.18em] sm:w-auto sm:px-7 sm:py-4 sm:text-sm sm:tracking-[0.2em]">

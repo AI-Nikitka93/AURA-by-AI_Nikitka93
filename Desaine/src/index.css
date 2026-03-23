@@ -51,6 +51,11 @@
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(111, 124, 255, 0.5);
   }
+
+  /* Error color utility */
+  .text-error {
+    color: #FF6B8F;
+  }
 }
 
 @layer components {
@@ -98,10 +103,13 @@
 
   .ghost-button {
     @apply inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-text shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-glass hover:bg-white/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    position: relative;
   }
 
   .primary-button {
     @apply inline-flex min-h-[44px] items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-[#0d1020] shadow-halo hover:-translate-y-0.5 hover:brightness-110 active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    position: relative;
+    overflow: hidden;
   }
 
   /* ==========================================
@@ -250,15 +258,6 @@
   }
 
   /* Блик на кнопках */
-  @keyframes sheen {
-    0% {
-      transform: translateX(-100%) skewX(-15deg);
-    }
-    100% {
-      transform: translateX(200%) skewX(-15deg);
-    }
-  }
-
   .primary-button::after {
     content: '';
     position: absolute;
