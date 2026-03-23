@@ -23,6 +23,19 @@ export default function CaseStudySection() {
           ))}
         </div>
 
+        <div className="mt-4 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] reveal-scale sm:mt-5">
+          <img
+            src={caseStudyContent.featuredImage}
+            alt={caseStudyContent.featuredImageAlt}
+            className="h-[260px] w-full object-cover sm:h-[320px]"
+          />
+          <div className="border-t border-white/10 px-5 py-4 sm:px-6">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/80">
+              {caseStudyContent.featuredImageCaption}
+            </p>
+          </div>
+        </div>
+
         <div className="mt-4 flex flex-col gap-3 sm:mt-5 sm:flex-row sm:flex-wrap reveal">
           {caseStudyContent.links.map((link) => (
             <a

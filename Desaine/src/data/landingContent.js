@@ -27,8 +27,8 @@ export const heroContent = {
     'AURA — portfolio concept от AI_Nikitka93: brand direction, UX-copy, visual system и frontend implementation. Продуктовые сценарии и офферы на странице демонстрационные и не являются реальной витриной магазина.',
   primaryCta: { label: 'Смотреть кейс', href: '#case-study' },
   secondaryCta: { label: 'Открыть GitHub', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
-  image: '/assets/crystal-hero.jpg',
-  imageAlt: 'AURA premium smart jewelry hero render',
+  image: '/assets/hero-jewelry.png',
+  imageAlt: 'AURA premium smart jewelry hero shot',
   signalLabel: 'AURA signal active',
 }
 
@@ -45,15 +45,15 @@ export const benefitCards = [
     icon: Sparkles,
     tag: 'AI aura pattern',
     className: 'md:col-span-7 md:min-h-[420px]',
-    image: '/assets/aura-pattern.jpg',
+    image: '/assets/aura-pattern.jpeg',
   },
   {
     title: 'Считывайтесь как статус, а не как гаджет',
     body: 'Кольца и браслеты AURA выглядят как ювелирные объекты editorial-уровня. Технология остается внутри, а снаружи вы видите чистую форму, внутреннее свечение и точную материальность.',
     icon: Gem,
-    tag: 'Inner glow metal detail',
+    tag: 'Material surface study',
     className: 'md:col-span-5 md:min-h-[420px]',
-    image: '/assets/metal-detail.jpg',
+    image: '/assets/metal-detail.jpeg',
   },
   {
     title: 'Превратите биоритмы в ежедневный ритуал',
@@ -61,7 +61,7 @@ export const benefitCards = [
     icon: Waves,
     tag: 'Ambient glow sequence',
     className: 'md:col-span-4 md:min-h-[280px]',
-    image: '/assets/glow-sequence.jpg',
+    image: '/assets/glow-sequence.jpeg',
   },
   {
     title: 'Выбирайте редкость вместо массовости',
@@ -69,7 +69,7 @@ export const benefitCards = [
     icon: Orbit,
     tag: 'Limited piece card',
     className: 'md:col-span-8 md:min-h-[280px]',
-    image: '/assets/limited-piece.jpg',
+    image: '/assets/limited-piece.jpeg',
   },
 ]
 
@@ -82,6 +82,7 @@ export const founderContent = {
     'Каждое изделие начинается не с шаблона, а с авторского отбора формы, света и настроения. Поэтому AURA ощущается не как массовый tech-продукт, а как подпись визионера, который работает материалом, кодом и интуицией сразу.',
   ],
   quote: 'Мы не создаем аксессуары. Мы материализуем сознание в объектах высокой эстетики.',
+  quoteBackground: '/assets/founder-quote-bg.jpeg',
   action: 'Перейти к кейсу проекта',
   image: '/assets/founder-portrait.jpg',
   imageAlt: 'Portrait of AI_Nikitka93',
@@ -141,6 +142,7 @@ export const ctaContent = {
   secondaryButton: 'Открыть GitHub репозиторий',
   secondaryHref: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93',
   meta: 'Portfolio case by Nikitka93',
+  backgroundImage: '/assets/bg-texture.jpeg',
 }
 
 export const disclaimerContent = {
@@ -178,6 +180,9 @@ export const caseStudyContent = {
     { label: 'Live Site', href: 'https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/' },
     { label: 'GitHub Repo', href: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93' },
   ],
+  featuredImage: '/assets/hero-shot.jpeg',
+  featuredImageAlt: 'AURA ring worn on hand',
+  featuredImageCaption: 'Product in use',
 }
 
 export const footerLinks = [
@@ -192,3 +197,5 @@ export const footerMeta = {
   note: 'Premium smart jewelry concept with liquid glass dark mode.',
   actionIcon: ArrowRight,
 }
+
+export const faqBackground = '/assets/faq-bg.jpeg'

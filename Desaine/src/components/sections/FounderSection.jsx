@@ -15,8 +15,16 @@ export default function FounderSection() {
                 className="aspect-[4/5] h-full w-full object-cover object-top grayscale transition duration-700 ease-premium hover:grayscale-0"
               />
             </div>
-            <div className="mt-4 max-w-full rounded-2xl border border-white/10 bg-black/35 px-4 py-3 backdrop-blur-glass lg:absolute lg:bottom-6 lg:left-6 lg:mt-0 lg:max-w-[18rem]">
-              <p className="text-sm italic leading-6 text-text">"{founderContent.quote}"</p>
+            <div className="mt-4 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-black/35 px-4 py-3 backdrop-blur-glass lg:absolute lg:bottom-6 lg:left-6 lg:mt-0 lg:max-w-[18rem]">
+              <div className="pointer-events-none absolute inset-0">
+                <img
+                  src={founderContent.quoteBackground}
+                  alt=""
+                  className="h-full w-full object-cover opacity-15"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,11,16,0.20)_0%,rgba(9,11,16,0.75)_100%)]" />
+              </div>
+              <p className="relative text-sm italic leading-6 text-text">"{founderContent.quote}"</p>
             </div>
           </div>
         </div>

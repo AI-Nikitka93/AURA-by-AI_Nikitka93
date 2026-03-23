@@ -1,11 +1,20 @@
 import { ChevronDown } from 'lucide-react'
 import SectionHeading from '../ui/SectionHeading'
-import { faqItems } from '../../data/landingContent'
+import { faqBackground, faqItems } from '../../data/landingContent'
 
 export default function FaqSection() {
   return (
-    <section id="faq" className="py-8 sm:py-10 lg:py-12">
-      <div className="section-shell max-w-4xl">
+    <section id="faq" className="relative overflow-hidden py-8 sm:py-10 lg:py-12">
+      <div className="pointer-events-none absolute inset-0">
+        <img
+          src={faqBackground}
+          alt=""
+          className="h-full w-full object-cover opacity-10 mix-blend-screen"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,11,16,0.25)_0%,rgba(9,11,16,0.88)_100%)]" />
+      </div>
+
+      <div className="section-shell relative z-10 max-w-4xl">
         <SectionHeading
           eyebrow="FAQ"
           title="Вопросы, которые снимают шум"
