@@ -4,7 +4,7 @@ import { faqItems } from '../../data/landingContent'
 
 export default function FaqSection() {
   return (
-    <section id="faq" className="py-12 sm:py-16 lg:py-20">
+    <section id="faq" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell max-w-4xl">
         <SectionHeading
           eyebrow="FAQ"
@@ -13,7 +13,7 @@ export default function FaqSection() {
           align="center"
         />
 
-        <div className="mt-6 space-y-4">
+        <div className="mt-4 space-y-3">
           {faqItems.map((item, index) => (
             <details
               key={item.question}

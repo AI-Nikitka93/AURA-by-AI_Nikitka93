@@ -3,10 +3,10 @@ import EmailSignupForm from './EmailSignupForm'
 
 export default function CtaSection() {
   return (
-    <section id="cta" className="relative py-12 sm:py-16 lg:py-20">
+    <section id="cta" className="relative py-8 sm:py-10 lg:py-12">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(111,124,255,0.14),transparent_34%)]" />
       <div className="section-shell relative">
-        <div className="liquid-panel overflow-hidden px-5 py-10 text-center sm:px-8 sm:py-12 lg:px-16 lg:py-14 reveal-scale">
+        <div className="liquid-panel overflow-hidden px-5 py-8 text-center sm:px-8 sm:py-10 lg:px-16 lg:py-12 reveal-scale">
           <div className="pointer-events-none absolute inset-x-8 top-8 h-20 rounded-full bg-primary/10 blur-[80px] sm:inset-x-24 sm:top-10 sm:h-24 sm:blur-[100px] animate-glow-pulse" />
           <div className="relative mx-auto max-w-3xl">
             <h2 className="font-display text-[clamp(2.4rem,12vw,4.5rem)] leading-[0.98] tracking-[-0.06em] text-transparent heading-gradient lg:text-7xl">
@@ -25,7 +25,7 @@ export default function CtaSection() {
           </div>
         </div>
 
-        <div className="mx-auto mt-6 max-w-md sm:mt-8 reveal">
+        <div className="mx-auto mt-4 max-w-md sm:mt-6 reveal">
           <EmailSignupForm />
         </div>
       </div>
