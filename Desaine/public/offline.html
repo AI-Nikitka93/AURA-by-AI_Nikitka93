@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090B10" />
+    <title>AURA Offline</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #090b10;
+        --surface: rgba(255, 255, 255, 0.06);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --text: #f5f7fb;
+        --text-soft: #c5ccda;
+        --primary: #6f7cff;
+        --secondary: #37d6b5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at top, rgba(111, 124, 255, 0.16), transparent 38%),
+          radial-gradient(circle at 80% 18%, rgba(55, 214, 181, 0.08), transparent 22%),
+          linear-gradient(180deg, #090b10 0%, #0b0e14 48%, #090b10 100%);
+        color: var(--text);
+        font-family: Manrope, Arial, sans-serif;
+      }
+
+      .panel {
+        width: min(100%, 720px);
+        border: 1px solid var(--stroke);
+        border-radius: 28px;
+        background: var(--surface);
+        backdrop-filter: blur(18px);
+        padding: 32px 24px;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.18),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+          0 24px 60px rgba(0, 0, 0, 0.34);
+      }
+
+      h1 {
+        margin: 12px 0 0;
+        font-family: Syne, Arial, sans-serif;
+        font-size: clamp(2rem, 7vw, 3.6rem);
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+      }
+
+      p {
+        color: var(--text-soft);
+        line-height: 1.75;
+      }
+
+      .eyebrow {
+        color: var(--secondary);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .button {
+        min-height: 44px;
+        padding: 0 20px;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .button.primary {
+        background: var(--primary);
+        color: #0d1020;
+        border-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="panel">
+      <div class="eyebrow">Offline Mode</div>
+      <h1>AURA держит core surface рядом</h1>
+      <p>
+        Соединение временно пропало, но базовые страницы и сохранённые ritual choices можно открыть снова, как только сеть вернётся.
+      </p>
+      <p>
+        Если вы уже выбирали ритуал или оставляли заявку, локальная память устройства сохранит этот контекст до следующей синхронизации.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="./index.html">Открыть AURA</a>
+        <a class="button" href="./privacy.html">Privacy surface</a>
+      </div>
+    </main>
+  </body>
+</html>

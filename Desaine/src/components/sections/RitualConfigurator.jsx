@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Check, Sparkles, Waves, Zap } from 'lucide-react'
+import { Check, Copy, Sparkles, Waves, Zap } from 'lucide-react'
+import { useExperience } from '../../context/ExperienceContext'
 
 const rituals = [
   {
@@ -35,16 +36,30 @@ const rituals = [
 ]
 
 export default function RitualConfigurator() {
-  const [selectedRitual, setSelectedRitual] = useState(null)
-  const [intensity, setIntensity] = useState(50)
-  const [showPreview, setShowPreview] = useState(false)
+  const {
+    experience,
+    setRitual,
+    setIntensity,
+    shareCurrentSelection,
+  } = useExperience()
+  const [shareStatus, setShareStatus] = useState('idle')
 
   const handleSelect = (ritualId) => {
-    setSelectedRitual(ritualId)
-    setShowPreview(true)
+    setRitual(ritualId)
   }
 
-  const selectedRitualData = rituals.find((r) => r.id === selectedRitual)
+  const selectedRitualData = rituals.find((r) => r.id === experience.ritual)
+
+  const handleShare = async () => {
+    try {
+      await shareCurrentSelection()
+      setShareStatus('copied')
+      window.setTimeout(() => setShareStatus('idle'), 2200)
+    } catch {
+      setShareStatus('error')
+      window.setTimeout(() => setShareStatus('idle'), 2200)
+    }
+  }
 
   return (
     <div className="relative">
@@ -63,7 +78,7 @@ export default function RitualConfigurator() {
       <div className="grid gap-4 sm:grid-cols-3">
         {rituals.map((ritual, index) => {
           const Icon = ritual.icon
-          const isSelected = selectedRitual === ritual.id
+          const isSelected = experience.ritual === ritual.id
 
           return (
             <button
@@ -127,7 +142,7 @@ export default function RitualConfigurator() {
       </div>
 
       {/* Preview Panel */}
-      {showPreview && selectedRitualData && (
+      {selectedRitualData && (
         <div className="reveal mt-8 liquid-panel overflow-hidden p-6 sm:p-8">
           <div className="grid gap-6 lg:grid-cols-2">
             {/* Visual Preview */}
@@ -200,12 +215,12 @@ export default function RitualConfigurator() {
 
               {/* Intensity Slider */}
               <div className="mt-6">
-                <div className="mb-3 flex items-center justify-between">
+                <div className="mb-3 flex items-center justify-between gap-4">
                   <label htmlFor="ritual-intensity" className="text-sm font-semibold uppercase tracking-[0.16em] text-secondary">
                     Интенсивность
                   </label>
                   <span className="text-sm font-semibold text-primary">
-                    {intensity}%
+                    {experience.intensity}%
                   </span>
                 </div>
                 <input
@@ -213,13 +228,24 @@ export default function RitualConfigurator() {
                   type="range"
                   min="0"
                   max="100"
-                  value={intensity}
+                  value={experience.intensity}
                   onChange={(e) => setIntensity(Number(e.target.value))}
                   className="h-2 w-full appearance-none rounded-full bg-white/10 outline-none"
                   style={{
-                    background: `linear-gradient(to right, ${selectedRitualData.glowColor} 0%, ${selectedRitualData.glowColor} ${intensity}%, rgba(255,255,255,0.1) ${intensity}%, rgba(255,255,255,0.1) 100%)`,
+                    background: `linear-gradient(to right, ${selectedRitualData.glowColor} 0%, ${selectedRitualData.glowColor} ${experience.intensity}%, rgba(255,255,255,0.1) ${experience.intensity}%, rgba(255,255,255,0.1) 100%)`,
                   }}
                 />
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <button type="button" onClick={handleShare} className="ghost-button px-5 py-3">
+                    <Copy className="mr-2 h-4 w-4" />
+                    Поделиться конфигурацией
+                  </button>
+                  <p className="text-sm leading-6 text-text-soft">
+                    {shareStatus === 'copied' && 'Ссылка на текущий ритуал уже в буфере обмена.'}
+                    {shareStatus === 'error' && 'Не получилось скопировать автоматически, но ссылка доступна через диалог браузера.'}
+                    {shareStatus === 'idle' && 'Выбранный ритуал и интенсивность сохраняются и могут быть отправлены вместе с заявкой.'}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

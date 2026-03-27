@@ -14,6 +14,7 @@ const asset = (filename) => `${import.meta.env.BASE_URL}assets/${filename}`
 export const navigationItems = [
   { label: 'Ритуал', href: '#ritual' },
   { label: 'Преимущества', href: '#benefits' },
+  { label: 'Подбор', href: '#advisor' },
   { label: 'Кейс', href: '#case-study' },
   { label: 'Создатель', href: '#founder' },
   { label: 'FAQ', href: '#faq' },
@@ -190,6 +191,7 @@ export const caseStudyContent = {
 export const footerLinks = [
   { label: 'Манифест', href: '#ritual' },
   { label: 'Преимущества', href: '#benefits' },
+  { label: 'Подбор', href: '#advisor' },
   { label: 'FAQ', href: '#faq' },
 ]
 

@@ -1,0 +1,56 @@
+{
+  "id": "./",
+  "name": "AURA by AI_Nikitka93",
+  "short_name": "AURA",
+  "description": "Premium smart jewelry concept with ritual personalization, companion mode and privacy-first controls.",
+  "start_url": "./index.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#090B10",
+  "theme_color": "#090B10",
+  "lang": "ru",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "categories": ["lifestyle", "shopping", "productivity"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open Advisor",
+      "short_name": "Advisor",
+      "url": "./?focus=advisor#advisor",
+      "description": "Jump directly to the guided fit and compatibility advisor."
+    },
+    {
+      "name": "Open Early Access",
+      "short_name": "Waitlist",
+      "url": "./?focus=waitlist#cta",
+      "description": "Open the early access form with saved ritual data."
+    },
+    {
+      "name": "Privacy Controls",
+      "short_name": "Privacy",
+      "url": "./privacy.html",
+      "description": "Review privacy notice and data controls."
+    }
+  ]
+}
