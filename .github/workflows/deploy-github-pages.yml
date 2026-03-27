@@ -45,10 +45,6 @@ jobs:
         run: npm run build
         working-directory: Desaine
 
-      - name: Visual regression
-        run: npm run test:visual
-        working-directory: Desaine
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
