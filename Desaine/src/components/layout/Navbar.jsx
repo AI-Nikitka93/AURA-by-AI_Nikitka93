@@ -17,7 +17,7 @@ export default function Navbar({ items }) {
     <header className="sticky top-3 z-50 px-3 sm:top-4 sm:px-6">
       <div className="section-shell max-w-6xl px-0">
         <nav className="liquid-glass flex items-center justify-between rounded-full px-4 py-3 sm:px-6">
-          <a href="#ritual" className="max-w-[9.5rem] font-display text-xs leading-tight tracking-[-0.03em] text-text sm:max-w-none sm:text-base">
+          <a href="#ritual" className="max-w-[9.5rem] font-display text-sm leading-tight tracking-[-0.03em] text-text sm:max-w-none sm:text-base">
             AURA by AI_Nikitka93
           </a>
           
@@ -31,7 +31,7 @@ export default function Navbar({ items }) {
                   e.preventDefault()
                   handleNavClick(item.href)
                 }}
-                className="text-[11px] font-semibold uppercase tracking-[0.28em] text-text-soft hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-text-soft hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {item.label}
               </a>
@@ -41,7 +41,7 @@ export default function Navbar({ items }) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-text-soft hover:bg-white/[0.08] hover:text-text md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-text-soft hover:bg-white/[0.08] hover:text-text md:hidden"
             aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
             {isMobileMenuOpen ? (
@@ -58,7 +58,7 @@ export default function Navbar({ items }) {
               e.preventDefault()
               handleNavClick('#case-study')
             }}
-            className="primary-button hidden px-4 py-2 text-[10px] uppercase tracking-[0.22em] sm:px-5 sm:py-2.5 sm:text-xs md:block"
+            className="primary-button hidden px-4 py-2 text-xs uppercase tracking-[0.18em] sm:px-5 sm:py-2.5 sm:text-sm md:block"
           >
             Смотреть кейс
           </a>
@@ -81,7 +81,7 @@ export default function Navbar({ items }) {
                 </span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-text-soft hover:bg-white/[0.08] hover:text-text"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-text-soft hover:bg-white/[0.08] hover:text-text"
                   aria-label="Закрыть меню"
                 >
                   <X className="h-4 w-4" />
@@ -97,7 +97,7 @@ export default function Navbar({ items }) {
                       e.preventDefault()
                       handleNavClick(item.href)
                     }}
-                    className="flex items-center justify-between rounded-xl border border-white/5 px-4 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-text-soft transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:text-text"
+                    className="flex min-h-[52px] items-center justify-between rounded-xl border border-white/5 px-4 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-text-soft transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:text-text"
                     style={{
                       animationDelay: `${index * 50}ms`
                     }}
@@ -114,7 +114,7 @@ export default function Navbar({ items }) {
                     e.preventDefault()
                     handleNavClick('#case-study')
                   }}
-                  className="primary-button flex w-full items-center justify-center py-4 text-xs uppercase tracking-[0.2em]"
+                  className="primary-button flex w-full items-center justify-center py-4 text-sm uppercase tracking-[0.16em]"
                 >
                   Смотреть кейс
                 </a>
@@ -122,7 +122,7 @@ export default function Navbar({ items }) {
                   href="https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-3 flex w-full items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-text-soft transition-colors hover:bg-white/[0.08] hover:text-text"
+                  className="ghost-button mt-3 flex w-full items-center justify-center px-6 py-3.5 text-sm uppercase tracking-[0.16em] text-text-soft hover:text-text"
                 >
                   GitHub
                 </a>
@@ -141,7 +141,7 @@ export default function Navbar({ items }) {
                 e.preventDefault()
                 handleNavClick(item.href)
               }}
-              className="ghost-button shrink-0 px-4 py-2 text-[10px] uppercase tracking-[0.2em]"
+              className="ghost-button shrink-0 px-4 py-2 text-xs uppercase tracking-[0.16em]"
             >
               {item.label}
             </a>

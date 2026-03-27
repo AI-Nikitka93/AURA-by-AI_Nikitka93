@@ -37,14 +37,14 @@ export default function BenefitsSection() {
                       <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] shadow-insetglass">
                         <Icon className="h-4 w-4 text-primary" />
                       </span>
-                      <span className="max-w-full text-[9px] font-semibold uppercase tracking-[0.16em] text-text-soft/50 sm:text-right sm:tracking-[0.18em]">
+                      <span className="max-w-full text-xs font-semibold uppercase tracking-[0.16em] text-secondary sm:text-right sm:text-sm">
                         {card.tag}
                       </span>
                     </div>
 
                     <div>
                       <h3 className="font-display text-lg tracking-[-0.03em] text-text sm:text-xl">{card.title}</h3>
-                      <p className="mt-3 text-xs leading-6 text-text-soft sm:text-sm">{card.body}</p>
+                      <p className="mt-3 text-sm leading-7 text-text-soft sm:text-base">{card.body}</p>
                     </div>
                   </div>
                 </GlassCard>

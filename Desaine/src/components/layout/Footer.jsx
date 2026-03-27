@@ -9,9 +9,9 @@ export default function Footer() {
       <div className="section-shell flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <div className="space-y-3">
           <p className="font-display text-lg tracking-[-0.04em] text-text">{footerMeta.brand}</p>
-          <p className="text-sm text-text-soft">{footerMeta.copy}</p>
-          <p className="max-w-md text-sm text-text-soft/80">{footerMeta.note}</p>
-          <p className="max-w-xl text-xs leading-6 text-text-soft/65">{disclaimerContent.footer}</p>
+          <p className="text-base text-text-soft">{footerMeta.copy}</p>
+          <p className="max-w-md text-base text-text-soft">{footerMeta.note}</p>
+          <p className="max-w-xl text-sm leading-7 text-text-soft">{disclaimerContent.footer}</p>
         </div>
 
         <div className="flex flex-wrap gap-4 sm:flex-row sm:items-center sm:gap-6">
@@ -23,7 +23,7 @@ export default function Footer() {
           <a href={`${base}privacy.html`} className="text-sm text-text-soft hover:text-secondary">
             Privacy Policy
           </a>
-          <a href="#ritual" className="inline-flex items-center gap-2 text-sm text-text hover:text-primary">
+          <a href="#ritual" className="inline-flex min-h-[44px] items-center gap-2 text-sm text-text hover:text-primary">
             Вернуться к началу
             <Icon className="h-4 w-4" />
           </a>

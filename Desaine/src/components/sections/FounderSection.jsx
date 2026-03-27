@@ -34,17 +34,17 @@ export default function FounderSection() {
         </div>
 
         <div className="reveal-right order-1 space-y-5 lg:order-2">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/80 sm:text-[11px]">{founderContent.label}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary sm:text-sm">{founderContent.label}</p>
           <h2 className="font-display text-[clamp(2rem,8vw,3.5rem)] tracking-[-0.03em] text-transparent heading-gradient">
             {founderContent.name}
           </h2>
           <h3 className="font-display text-xl tracking-[-0.03em] text-text sm:text-2xl">{founderContent.title}</h3>
-          <div className="space-y-4 text-sm leading-6 text-text-soft sm:text-base">
+          <div className="space-y-4 text-base leading-8 text-text-soft">
             {founderContent.description.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-          <a href="#case-study" className="inline-flex items-center gap-2 pt-2 text-sm font-semibold uppercase tracking-[0.18em] text-text hover:text-primary group">
+          <a href="#case-study" className="group inline-flex items-center gap-2 pt-2 text-sm font-semibold uppercase tracking-[0.16em] text-text hover:text-primary">
             {founderContent.action}
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>

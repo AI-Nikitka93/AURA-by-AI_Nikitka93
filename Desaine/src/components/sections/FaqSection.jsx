@@ -32,11 +32,11 @@ export default function FaqSection() {
               open={index === 0}
               style={{ transitionDelay: `${index * 80}ms` }}
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-5 py-5 text-left sm:px-6">
+              <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 px-5 py-5 text-left sm:px-6">
                 <span className="font-display text-lg tracking-[-0.03em] text-text sm:text-xl">{item.question}</span>
                 <ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform duration-200 ease-premium group-open:rotate-180" />
               </summary>
-              <div className="px-5 pb-5 text-sm leading-7 text-text-soft sm:px-6 sm:pb-6">{item.answer}</div>
+              <div className="px-5 pb-5 text-base leading-8 text-text-soft sm:px-6 sm:pb-6">{item.answer}</div>
             </details>
           ))}
         </div>

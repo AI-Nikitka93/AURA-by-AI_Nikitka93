@@ -21,16 +21,16 @@ export default function CtaSection() {
             <h2 className="font-display text-[clamp(2.4rem,12vw,4.5rem)] leading-[0.98] tracking-[-0.06em] text-transparent heading-gradient lg:text-7xl">
               {ctaContent.title}
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-text-soft sm:mt-4 sm:text-base sm:leading-7 lg:text-lg">{ctaContent.subtitle}</p>
+            <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-text-soft sm:mt-4 lg:text-lg">{ctaContent.subtitle}</p>
             <div className="mt-4 flex flex-col items-center gap-3 sm:mt-5 sm:flex-row sm:justify-center">
-              <a href="#ritual" className="primary-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] sm:w-auto sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.24em]">
+              <a href="#ritual" className="primary-button w-full px-6 py-3.5 text-sm uppercase tracking-[0.16em] sm:w-auto sm:px-8 sm:py-4 sm:tracking-[0.2em]">
                 {ctaContent.button}
               </a>
-              <a href={ctaContent.secondaryHref} target="_blank" rel="noreferrer" className="ghost-button w-full px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] sm:w-auto sm:px-8 sm:py-4 sm:text-sm sm:tracking-[0.24em]">
+              <a href={ctaContent.secondaryHref} target="_blank" rel="noreferrer" className="ghost-button w-full px-6 py-3.5 text-sm uppercase tracking-[0.16em] sm:w-auto sm:px-8 sm:py-4 sm:tracking-[0.2em]">
                 {ctaContent.secondaryButton}
               </a>
             </div>
-            <p className="mt-4 text-xs uppercase tracking-[0.26em] text-text-soft/60">{ctaContent.meta}</p>
+            <p className="mt-4 text-sm uppercase tracking-[0.18em] text-text-soft">{ctaContent.meta}</p>
           </div>
         </div>
 

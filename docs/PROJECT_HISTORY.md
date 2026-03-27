@@ -111,3 +111,33 @@
 Сделано: Начата debug-итерация по недоступному Pages-домену; подтверждено, что deployment существует, но требуется довести до реально открываемого публичного URL.
 Изменены файлы: docs/PROJECT_HISTORY.md
 Следующий шаг: Повторно проверить pages.dev URL, выполнить redeploy smoke-check и при необходимости задеплоить в альтернативный Pages project.
+
+Дата и время: 2026-03-27 08:55
+Роль: Визуальный инженер и инженерный ИИ-ассистент.
+Сделано: Выполнен пакетный visual uplift для AURA. Поднята читаемость secondary text, добавлены глобальные focus-visible состояния, расширены mobile target sizes, внедрен reduced-motion режим для reveal/canvas motion, переписана privacy page без CDN-конфига Tailwind, добавлен Playwright visual regression контур и baseline snapshots.
+Изменены файлы: .github/workflows/deploy-github-pages.yml, .gitignore, Desaine/package.json, Desaine/package-lock.json, Desaine/playwright.config.js, Desaine/tests/visual.spec.js, Desaine/tests/visual.spec.js-snapshots/*, Desaine/privacy.html, Desaine/src/index.css, Desaine/src/hooks/useScrollReveal.js, Desaine/src/components/ui/ParticleBackground.jsx, Desaine/src/components/ui/SectionHeading.jsx, Desaine/src/components/layout/Navbar.jsx, Desaine/src/components/layout/Footer.jsx, Desaine/src/components/sections/HeroSection.jsx, Desaine/src/components/sections/BenefitsSection.jsx, Desaine/src/components/sections/CaseStudySection.jsx, Desaine/src/components/sections/FounderSection.jsx, Desaine/src/components/sections/SocialProofSection.jsx, Desaine/src/components/sections/FaqSection.jsx, Desaine/src/components/sections/CtaSection.jsx, Desaine/src/components/sections/EmailSignupForm.jsx, Desaine/src/components/sections/RitualConfigurator.jsx
+Результат/доказательство: `npm run build` -> success; `npm run test:visual` -> 3 passed
+Решения/изменения контекста: visual quality теперь поддерживается CI-снапшотами; privacy surface больше не зависит от `cdn.tailwindcss.com`; reduced-motion закрыт в коде, а не только рекомендацией
+Следующий шаг: при желании сделать финальный polishing pass по imagery pipeline (AVIF/WebP, mono/light logo variants) и затем зафиксировать изменения коммитом
+Что блокирует: нет
+Что не проверено: внешний прогон GitHub Actions после изменения workflow
+
+Дата и время: 2026-03-27 09:04
+Роль: Инженерный ИИ-ассистент для автономного выполнения задач в Windows 11.
+Сделано: Выполнен повторный production deploy актуального `Desaine/dist` на Cloudflare Workers static assets через `npx wrangler deploy`. Подтвержден публичный URL обновлённой версии и успешный HTTP smoke-check.
+Изменены файлы: docs/PROJECT_HISTORY.md, docs/STATE.md
+Результат/доказательство: `npx wrangler deploy` -> success, Version ID `ac7e466b-ea12-4a6d-8082-56a4baf630b6`; `Invoke-WebRequest https://aura-portfolio-worker.aiomdurman.workers.dev` -> `200`
+Решения/изменения контекста: рабочим публичным адресом по-прежнему остаётся `workers.dev` URL; он уже содержит последние visual uplift изменения от 2026-03-27
+Следующий шаг: при необходимости сделать commit с Decision Shadow Commit Protocol и отдельно прогнать внешний CI после новых visual tests
+Что блокирует: нет
+Что не проверено: поведение Pages-доменов после этого деплоя не проверялось, так как основной URL уже подтвержден через Worker
+
+Дата и время: 2026-03-27 10:39
+Роль: Инженерный ИИ-ассистент для автономного выполнения задач в Windows 11.
+Сделано: Диагностирована причина медленного открытия публичного сайта: в `Desaine/vite.config.js` был зафиксирован `base: '/AURA-by-AI_Nikitka93/'`, из-за чего Worker-версия отдавала HTML вместо asset-скриптов по неверным путям. Конфиг переведён на относительный `base: './'`, шрифты перенесены из CSS `@import` в `<head>`, visual tests стабилизированы и обновлённая сборка задеплоена на Cloudflare Worker.
+Изменены файлы: Desaine/vite.config.js, Desaine/index.html, Desaine/src/index.css, Desaine/tests/visual.spec.js, Desaine/tests/visual.spec.js-snapshots/privacy-desktop-win32.png, docs/PROJECT_HISTORY.md, docs/STATE.md
+Результат/доказательство: `npm run build` -> success; локальный preview `load ~181ms`; `curl.exe -I https://aura-portfolio-worker.aiomdurman.workers.dev/assets/index-Cqilkw2c.js` -> `200` + `Content-Type: text/javascript`; `npx wrangler deploy` -> success, Version ID `f43f5060-e032-4d47-8750-454e14836fa7`; `npm run test:visual` -> 3 passed
+Решения/изменения контекста: для workers.dev больше нельзя использовать GitHub Pages base path; при проверке длинных full-page visual snapshots добавлен небольшой допустимый порог пиксельного дрейфа
+Следующий шаг: при необходимости заменить внешнюю загрузку Google Fonts на self-hosted WOFF2 и проверить WebPageTest/Lighthouse с внешней сети пользователя
+Что блокирует: нет
+Что не проверено: субъективная скорость открытия у пользователя в его браузере после обновления кэша

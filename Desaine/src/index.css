@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,6 +24,16 @@
 
   button {
     @apply transition-all duration-200 ease-premium;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #6F7CFF;
+    outline-offset: 3px;
   }
 
   ::selection {
@@ -337,4 +345,31 @@
   .reveal-delay-3 { transition-delay: 300ms; }
   .reveal-delay-4 { transition-delay: 400ms; }
   .reveal-delay-5 { transition-delay: 500ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .primary-button::after {
+    display: none;
+  }
 }

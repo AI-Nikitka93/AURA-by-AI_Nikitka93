@@ -49,13 +49,13 @@ export default function RitualConfigurator() {
   return (
     <div className="relative">
       <div className="mb-8 text-center">
-        <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-primary/80">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-secondary sm:text-sm">
           Конфигуратор
         </p>
         <h3 className="font-display text-2xl tracking-[-0.03em] text-text sm:text-3xl">
           Выберите свой ритуал
         </h3>
-        <p className="mt-3 text-sm text-text-soft">
+        <p className="mt-3 text-base text-text-soft">
           Каждый ритуал создаёт уникальную сигнатуру свечения под ваш стиль жизни
         </p>
       </div>
@@ -68,7 +68,9 @@ export default function RitualConfigurator() {
           return (
             <button
               key={ritual.id}
+              type="button"
               onClick={() => handleSelect(ritual.id)}
+              aria-pressed={isSelected}
               className={`group relative flex flex-col items-center rounded-2xl border p-6 text-left transition-all duration-500 ${
                 isSelected
                   ? 'border-primary/50 bg-primary/10 shadow-[0_0_40px_rgba(111,124,255,0.2)]'
@@ -103,13 +105,13 @@ export default function RitualConfigurator() {
 
               {/* Content */}
               <span
-                className={`relative text-sm font-semibold uppercase tracking-[0.18em] transition-colors duration-300 ${
+                className={`relative text-base font-semibold uppercase tracking-[0.16em] transition-colors duration-300 ${
                   isSelected ? 'text-primary' : 'text-text'
                 }`}
               >
                 {ritual.name}
               </span>
-              <span className="relative mt-1 text-xs text-text-soft/60">
+              <span className="relative mt-1 text-sm text-text-soft">
                 {ritual.subtitle}
               </span>
 
@@ -144,7 +146,7 @@ export default function RitualConfigurator() {
                     boxShadow: `0 0 60px ${selectedRitualData.glowColor}`,
                   }}
                 />
-                <p className="text-xs uppercase tracking-[0.2em] text-text-soft/60">
+                <p className="text-sm uppercase tracking-[0.16em] text-text-soft">
                   Предпросмотр свечения
                 </p>
               </div>
@@ -176,14 +178,14 @@ export default function RitualConfigurator() {
               </p>
 
               <div className="mt-6 space-y-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-text-soft/70">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-secondary">
                   Характеристики
                 </p>
                 {selectedRitualData.features.map((feature) => (
-                  <div
-                    key={feature}
-                    className="flex items-center gap-3 rounded-lg border border-white/5 bg-white/[0.02] px-3 py-2"
-                  >
+                <div
+                  key={feature}
+                  className="flex items-center gap-3 rounded-lg border border-white/5 bg-white/[0.02] px-3 py-2"
+                >
                     <div
                       className="h-2 w-2 rounded-full"
                       style={{
@@ -191,7 +193,7 @@ export default function RitualConfigurator() {
                         boxShadow: `0 0 8px ${selectedRitualData.glowColor}`,
                       }}
                     />
-                    <span className="text-sm text-text-soft">{feature}</span>
+                    <span className="text-base text-text-soft">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -199,7 +201,7 @@ export default function RitualConfigurator() {
               {/* Intensity Slider */}
               <div className="mt-6">
                 <div className="mb-3 flex items-center justify-between">
-                  <label className="text-xs font-semibold uppercase tracking-[0.18em] text-text-soft/70">
+                  <label htmlFor="ritual-intensity" className="text-sm font-semibold uppercase tracking-[0.16em] text-secondary">
                     Интенсивность
                   </label>
                   <span className="text-sm font-semibold text-primary">
@@ -207,6 +209,7 @@ export default function RitualConfigurator() {
                   </span>
                 </div>
                 <input
+                  id="ritual-intensity"
                   type="range"
                   min="0"
                   max="100"

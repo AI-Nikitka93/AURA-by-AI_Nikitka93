@@ -17,7 +17,7 @@ export default function CaseStudySection() {
             <div key={card.title} className="reveal" style={{ transitionDelay: `${index * 100}ms` }}>
               <GlassCard className="min-h-[220px]">
                 <h3 className="font-display text-2xl tracking-[-0.04em] text-text">{card.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-text-soft">{card.body}</p>
+                <p className="mt-4 text-base leading-8 text-text-soft">{card.body}</p>
               </GlassCard>
             </div>
           ))}
@@ -32,7 +32,7 @@ export default function CaseStudySection() {
             className="h-[260px] w-full object-cover sm:h-[320px]"
           />
           <div className="border-t border-white/10 px-5 py-4 sm:px-6">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/80">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary sm:text-sm">
               {caseStudyContent.featuredImageCaption}
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function CaseStudySection() {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="ghost-button w-full px-6 py-3.5 text-center text-[11px] uppercase tracking-[0.18em] sm:w-auto sm:text-sm sm:tracking-[0.2em]"
+              className="ghost-button w-full px-6 py-3.5 text-center text-sm uppercase tracking-[0.16em] sm:w-auto sm:tracking-[0.18em]"
             >
               {link.label}
             </a>

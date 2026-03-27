@@ -37,3 +37,22 @@
 - Пользователь подтвердил ручную настройку `workers.dev` subdomain.
 - Повторный `npx wrangler deploy` завершился успешно.
 - Worker опубликован по адресу `https://aura-portfolio-worker.aiomdurman.workers.dev`.
+
+Обновление 2026-03-27 08:55:
+- Выполнен visual uplift лендинга и privacy surface под результаты P-VISUAL.
+- Контраст мелкой типографики усилен, focus-visible и target sizes выровнены, reduced-motion добавлен.
+- В проект добавлен Playwright visual regression контур с baseline snapshots и CI-проверкой перед deploy.
+- Локальная верификация пройдена: `npm run build` и `npm run test:visual` завершились успешно.
+
+Обновление 2026-03-27 09:04:
+- Обновлённая visual uplift версия задеплоена на Cloudflare Worker `aura-portfolio-worker`.
+- Подтверждён публичный ответ `200` от `https://aura-portfolio-worker.aiomdurman.workers.dev`.
+- Текущая публичная ссылка проекта содержит последние визуальные исправления от 2026-03-27.
+
+Обновление 2026-03-27 10:39:
+- Найдена и исправлена причина медленного открытия public URL: неправильный Vite `base` для `workers.dev`.
+- `Desaine/vite.config.js` переведён на `base: './'`, чтобы CSS/JS грузились из корня Worker, а не из GitHub Pages subpath.
+- Google Fonts перенесены из CSS `@import` в `<head>` для более раннего обнаружения браузером.
+- Повторный deploy выполнен успешно: Worker Version ID `f43f5060-e032-4d47-8750-454e14836fa7`.
+- Публичный asset URL подтверждён: `curl.exe -I https://aura-portfolio-worker.aiomdurman.workers.dev/assets/index-Cqilkw2c.js` -> `200` и `Content-Type: text/javascript`.
+- Локальная верификация зелёная: `npm run build` и `npm run test:visual` завершились успешно.

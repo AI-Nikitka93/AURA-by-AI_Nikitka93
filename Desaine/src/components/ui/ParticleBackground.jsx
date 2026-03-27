@@ -7,6 +7,9 @@ export default function ParticleBackground() {
     const canvas = canvasRef.current
     if (!canvas) return
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) return
+
     const ctx = canvas.getContext('2d')
     let animationFrameId
     let particles = []
@@ -21,16 +24,16 @@ export default function ParticleBackground() {
 
     // Создаём частицы
     const createParticles = () => {
-      const particleCount = Math.min(window.innerWidth / 10, 100)
+      const particleCount = Math.min(Math.floor(window.innerWidth / 18), 48)
       particles = []
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.3,
-          speedY: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.5 + 0.2,
+          size: Math.random() * 1.8 + 0.6,
+          speedX: (Math.random() - 0.5) * 0.18,
+          speedY: (Math.random() - 0.5) * 0.18,
+          opacity: Math.random() * 0.25 + 0.12,
           hue: Math.random() > 0.5 ? 230 : 160, // indigo or emerald
         })
       }
@@ -64,11 +67,11 @@ export default function ParticleBackground() {
           const dy = particle.y - otherParticle.y
           const distance = Math.sqrt(dx * dx + dy * dy)
 
-          if (distance < 120) {
+          if (distance < 88) {
             ctx.beginPath()
             ctx.moveTo(particle.x, particle.y)
             ctx.lineTo(otherParticle.x, otherParticle.y)
-            ctx.strokeStyle = `rgba(111, 124, 255, ${0.1 * (1 - distance / 120)})`
+            ctx.strokeStyle = `rgba(111, 124, 255, ${0.06 * (1 - distance / 88)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }

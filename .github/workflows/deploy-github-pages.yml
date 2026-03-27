@@ -37,8 +37,16 @@ jobs:
         run: npm ci
         working-directory: Desaine
 
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium
+        working-directory: Desaine
+
       - name: Build
         run: npm run build
+        working-directory: Desaine
+
+      - name: Visual regression
+        run: npm run test:visual
         working-directory: Desaine
 
       - name: Upload artifact

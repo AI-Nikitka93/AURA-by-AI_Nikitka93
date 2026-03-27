@@ -13,8 +13,8 @@ export default function SocialProofSection() {
         />
 
         <div className="mt-4 liquid-glass rounded-2xl px-5 py-4 sm:px-6 sm:mt-5">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary/80">{disclaimerContent.validationTitle}</p>
-          <p className="mt-2 text-sm leading-7 text-text-soft">{disclaimerContent.validationText}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary sm:text-sm">{disclaimerContent.validationTitle}</p>
+          <p className="mt-2 text-base leading-8 text-text-soft">{disclaimerContent.validationText}</p>
         </div>
 
         <div className="mt-4 grid gap-4 sm:mt-6 sm:gap-5 md:grid-cols-3">
@@ -28,7 +28,7 @@ export default function SocialProofSection() {
                     <Icon className="h-5 w-5 text-secondary" />
                   </span>
                   <h3 className="mt-6 font-display text-xl tracking-[-0.04em] text-text sm:mt-8 sm:text-2xl">{card.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-text-soft">{card.body}</p>
+                  <p className="mt-4 text-base leading-8 text-text-soft">{card.body}</p>
                 </GlassCard>
               </div>
             )
