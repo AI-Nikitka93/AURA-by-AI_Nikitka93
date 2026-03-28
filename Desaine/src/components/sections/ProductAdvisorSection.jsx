@@ -43,6 +43,22 @@ function sanitizeAiBrief(text) {
     .trim()
 }
 
+function buildLocalGeneratedBrief({ language, insight, recommendation }) {
+  if (language === 'ru') {
+    return [
+      `Для профиля "${recommendation.profileLabel}" AURA лучше раскрывать как собранный luxury-tech ритуал с ясным характером. ${insight.summary}`,
+      `Продуктовое направление: украшение должно ощущаться как личный объект, где ритуал ${recommendation.ritual} с интенсивностью ${recommendation.intensity}% поддерживает выбранную посадку и не перегружает визуальный образ. ${insight.direction}`,
+      `Companion-слой стоит строить вокруг сценария "${recommendation.ecosystemNote}", сохраняя быстрый и понятный путь от выбора профиля к готовому персональному результату.`,
+    ].join('\n\n')
+  }
+
+  return [
+    `For the "${recommendation.profileLabel}" profile, AURA should feel like a composed luxury-tech ritual with a clear character. ${insight.summary}`,
+    `Product direction: the piece should read as a personal object, where the ${recommendation.ritual} ritual at ${recommendation.intensity}% supports the chosen fit without overloading the visual identity. ${insight.direction}`,
+    `The companion layer should stay built around "${recommendation.ecosystemNote}", keeping the path from profile choice to a finished personal result quick and obvious.`,
+  ].join('\n\n')
+}
+
 function OptionCard({ icon: Icon, title, description, isActive, onClick, selectedLabel }) {
   return (
     <button
@@ -113,11 +129,11 @@ export default function ProductAdvisorSection() {
         prompt: 'Скопируйте brief AURA',
         generatorLabel: 'Персональный генератор',
         generatorReady: 'Сгенерируйте готовое текстовое направление для этого профиля.',
-        generatorFallback: 'Если генерация временно недоступна, локальный brief всё равно остаётся полезным сценарием.',
+        generatorFallback: 'Если удалённый AI не отвечает, сайт всё равно соберёт локальный персональный результат.',
         generatorAction: 'Сгенерировать',
         cloudflareLoading: 'Генерация...',
         cloudflareResult: 'Персональный результат',
-        cloudflareError: 'Генерация сейчас не ответила. Локальный brief остаётся доступным.',
+        cloudflareError: 'Удалённый AI не ответил, поэтому сайт собрал локальный персональный результат.',
       }
     : {
         eyebrow: 'AI Signal Brief',
@@ -128,11 +144,11 @@ export default function ProductAdvisorSection() {
         prompt: 'Copy the AURA brief',
         generatorLabel: 'Personal Generator',
         generatorReady: 'Generate a finished text direction for this profile.',
-        generatorFallback: 'If generation is temporarily unavailable, the local brief still remains useful.',
+        generatorFallback: 'If remote AI is unavailable, the site will still assemble a local personal result.',
         generatorAction: 'Generate',
         cloudflareLoading: 'Generating...',
         cloudflareResult: 'Generated Result',
-        cloudflareError: 'Generation did not answer right now. The local brief is still available.',
+        cloudflareError: 'Remote AI did not answer, so the site assembled a local personal result instead.',
       }
 
   useEffect(() => {
@@ -207,6 +223,11 @@ export default function ProductAdvisorSection() {
       ...currentState,
       error: '',
     }))
+    const localBrief = buildLocalGeneratedBrief({
+      language,
+      insight,
+      recommendation,
+    })
 
     try {
       const response = await generateAiSignalBrief({
@@ -238,12 +259,34 @@ export default function ProductAdvisorSection() {
     } catch {
       setAiState((currentState) => ({
         ...currentState,
+        available: true,
+        brief: localBrief,
         error: insightUi.cloudflareError,
       }))
     } finally {
       setIsAiLoading(false)
     }
   }
+
+  useEffect(() => {
+    const handleExternalGenerate = () => {
+      const advisorSection = document.getElementById('advisor')
+
+      if (advisorSection) {
+        advisorSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+
+      window.setTimeout(() => {
+        handleGenerateAi()
+      }, 260)
+    }
+
+    window.addEventListener('aura:generate-signal', handleExternalGenerate)
+
+    return () => {
+      window.removeEventListener('aura:generate-signal', handleExternalGenerate)
+    }
+  })
 
   return (
     <section id="advisor" className="py-8 sm:py-10 lg:py-12">
@@ -400,10 +443,11 @@ export default function ProductAdvisorSection() {
                   </div>
                   <button
                     type="button"
+                    data-aura-generate-button="true"
                     onClick={handleGenerateAi}
-                    disabled={!aiState.available || isAiLoading}
+                    disabled={isAiLoading}
                     className={`ghost-button px-4 py-2.5 text-xs uppercase tracking-[0.16em] ${
-                      aiState.available ? '' : 'cursor-not-allowed opacity-60'
+                      isAiLoading ? 'cursor-wait opacity-80' : ''
                     }`}
                   >
                     {isAiLoading ? (

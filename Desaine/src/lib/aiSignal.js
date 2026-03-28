@@ -81,10 +81,10 @@ export async function fetchAiSignalCapabilities() {
     }
   } catch {
     return {
-      available: false,
-      mode: 'fallback',
-      label: 'AI fallback',
-      message: 'Cloudflare AI is not reachable right now.',
+      available: true,
+      mode: 'local',
+      label: 'Local AI fallback',
+      message: 'Remote AI is not reachable right now. The site will generate a local result instead.',
       model: null,
     }
   }

@@ -47,11 +47,7 @@ export default function RitualConfigurator() {
   }
 
   const handleOpenAdvisor = () => {
-    const advisorSection = document.getElementById('advisor')
-
-    if (advisorSection) {
-      advisorSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    window.dispatchEvent(new window.Event('aura:generate-signal'))
   }
 
   return (
