@@ -104,6 +104,7 @@ export default function ProductAdvisorSection() {
   const [aiState, setAiState] = useState({
     checked: false,
     available: false,
+    mode: 'local',
     label: '',
     message: '',
     model: null,
@@ -163,6 +164,7 @@ export default function ProductAdvisorSection() {
         ...currentState,
         checked: true,
         available: nextState.available,
+        mode: nextState.mode || 'local',
         label: nextState.label,
         message: nextState.message,
         model: nextState.model,
@@ -229,6 +231,18 @@ export default function ProductAdvisorSection() {
       recommendation,
     })
 
+    if (aiState.mode !== 'workers-ai') {
+      setAiState((currentState) => ({
+        ...currentState,
+        available: true,
+        mode: 'local',
+        brief: localBrief,
+        error: '',
+      }))
+      setIsAiLoading(false)
+      return
+    }
+
     try {
       const response = await generateAiSignalBrief({
         language,
@@ -250,6 +264,7 @@ export default function ProductAdvisorSection() {
       setAiState((currentState) => ({
         ...currentState,
         available: true,
+        mode: 'workers-ai',
         label: response.label || currentState.label,
         message: response.message || currentState.message,
         model: response.model || currentState.model,
@@ -260,6 +275,7 @@ export default function ProductAdvisorSection() {
       setAiState((currentState) => ({
         ...currentState,
         available: true,
+        mode: 'local',
         brief: localBrief,
         error: insightUi.cloudflareError,
       }))
