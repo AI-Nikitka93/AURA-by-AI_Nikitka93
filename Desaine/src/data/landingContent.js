@@ -189,13 +189,13 @@ Object.assign(copy.ru, {
     secondaryButton: 'Открыть GitHub репозиторий',
     secondaryHref: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93',
     meta: 'Портфолио-кейс от Nikitka93',
-    backgroundImage: sharedAssets.ctaBackgroundImage,
-    companionTitle: 'Режим приложения',
-    companionText:
-      'После первого визита AURA может открываться как installable app и держать ваши ritual choices доступными даже при нестабильном соединении.',
-    installed: 'AURA уже установлено',
-    installAction: 'Установить приложение AURA',
-    installFallback: 'Установка доступна в поддерживаемых браузерах',
+      backgroundImage: sharedAssets.ctaBackgroundImage,
+      companionTitle: 'Стабильный режим',
+      companionText:
+        'AURA теперь работает как обычный сайт без залипающего офлайн-кэша, чтобы всегда открывать актуальную версию страницы.',
+      installed: 'AURA уже открывается как сайт',
+      installAction: 'Открыть свежую версию',
+      installFallback: 'Всегда открывайте AURA прямо в браузере',
   },
   disclaimerContent: {
     validationTitle: 'Блок только для концепта',
@@ -570,13 +570,13 @@ Object.assign(copy.en, {
     secondaryButton: 'Open the GitHub repository',
     secondaryHref: 'https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93',
     meta: 'Portfolio case by Nikitka93',
-    backgroundImage: sharedAssets.ctaBackgroundImage,
-    companionTitle: 'Companion mode',
-    companionText:
-      'After the first visit, AURA can open as an installable app and keep your ritual choices available even when the connection becomes unstable.',
-    installed: 'AURA is already installed',
-    installAction: 'Install the AURA app',
-    installFallback: 'Install support depends on the browser',
+      backgroundImage: sharedAssets.ctaBackgroundImage,
+      companionTitle: 'Stable mode',
+      companionText:
+        'AURA now runs as a regular website without sticky offline caching, so visitors keep landing on the latest version.',
+      installed: 'AURA is already running as a site',
+      installAction: 'Open the latest version',
+      installFallback: 'Open AURA directly in the browser',
   },
   disclaimerContent: {
     validationTitle: 'Concept-only portfolio block',

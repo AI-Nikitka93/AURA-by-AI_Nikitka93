@@ -47,10 +47,17 @@ export default function usePwaInstall() {
 
     let isMounted = true
 
-    navigator.serviceWorker.register('./service-worker.js')
+    Promise.allSettled([
+      navigator.serviceWorker.getRegistrations().then((registrations) =>
+        Promise.all(registrations.map((registration) => registration.unregister()))
+      ),
+      'caches' in window
+        ? caches.keys().then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+        : Promise.resolve(),
+    ])
       .then(() => {
         if (isMounted) {
-          setHasServiceWorker(true)
+          setHasServiceWorker(false)
         }
       })
       .catch(() => {

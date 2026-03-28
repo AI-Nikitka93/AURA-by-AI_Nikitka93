@@ -5,6 +5,7 @@ import EmailSignupForm from './EmailSignupForm'
 export default function CtaSection({ onOpenPrivacyCenter, pwa }) {
   const { copy } = useSiteCopy()
   const { ctaContent } = copy
+  const canShowRefreshAction = pwa?.canInstall || pwa?.isInstalled
   const installLabel = pwa?.isInstalled
     ? ctaContent.installed
     : pwa?.canInstall
@@ -56,17 +57,23 @@ export default function CtaSection({ onOpenPrivacyCenter, pwa }) {
                 </div>
               </div>
 
-              <button
-                type="button"
-                disabled={!pwa?.canInstall || pwa?.isInstalled}
-                onClick={() => pwa?.promptInstall?.()}
-                className={`ghost-button min-w-[220px] px-6 py-4 text-sm uppercase tracking-[0.16em] ${
-                  pwa?.canInstall && !pwa?.isInstalled ? 'border-secondary/30 text-text hover:border-secondary/40 hover:text-secondary' : 'cursor-default opacity-80'
-                }`}
-              >
-                <Download className="mr-2 h-4 w-4" />
-                {installLabel}
-              </button>
+              {canShowRefreshAction ? (
+                <button
+                  type="button"
+                  disabled={!pwa?.canInstall || pwa?.isInstalled}
+                  onClick={() => pwa?.promptInstall?.()}
+                  className={`ghost-button min-w-[220px] px-6 py-4 text-sm uppercase tracking-[0.16em] ${
+                    pwa?.canInstall && !pwa?.isInstalled ? 'border-secondary/30 text-text hover:border-secondary/40 hover:text-secondary' : 'cursor-default opacity-80'
+                  }`}
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  {installLabel}
+                </button>
+              ) : (
+                <div className="liquid-glass flex min-w-[220px] items-center justify-center rounded-[24px] px-6 py-4 text-center text-sm uppercase tracking-[0.16em] text-text-soft">
+                  {installLabel}
+                </div>
+              )}
             </div>
           </div>
         </div>
