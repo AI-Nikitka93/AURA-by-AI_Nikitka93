@@ -46,6 +46,14 @@ export default function RitualConfigurator() {
     }
   }
 
+  const handleOpenAdvisor = () => {
+    const advisorSection = document.getElementById('advisor')
+
+    if (advisorSection) {
+      advisorSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <div className="relative">
       <div className="mb-8 text-center">
@@ -214,6 +222,15 @@ export default function RitualConfigurator() {
                     <Copy className="mr-2 h-4 w-4" />
                     {ritualConfigurator.shareButton}
                   </button>
+                  <button type="button" onClick={handleOpenAdvisor} className="ghost-button px-5 py-3">
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    {ritualConfigurator.advisorButton}
+                  </button>
+                </div>
+                <div className="mt-3 space-y-2">
+                  <p className="text-sm leading-6 text-text-soft">
+                    {ritualConfigurator.advisorHint}
+                  </p>
                   <p className="text-sm leading-6 text-text-soft">
                     {shareStatus === 'copied' && ritualConfigurator.shareStatus.copied}
                     {shareStatus === 'error' && ritualConfigurator.shareStatus.error}

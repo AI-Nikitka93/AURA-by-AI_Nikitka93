@@ -321,6 +321,8 @@ Object.assign(copy.ru, {
       error: 'Не получилось автоматически открыть или скопировать ссылку, но ручной fallback всё ещё доступен.',
       idle: 'Выбранный ритуал и интенсивность сохраняются и могут быть отправлены вместе с заявкой.',
     },
+    advisorButton: 'Открыть персональный генератор',
+    advisorHint: 'После выбора ритуала можно сразу перейти в персональный генератор ниже и получить готовое направление.',
     rituals: [
       {
         id: 'glow',
@@ -691,6 +693,8 @@ Object.assign(copy.en, {
       error: 'Automatic sharing or copy did not complete, but a manual fallback is still available.',
       idle: 'Your selected ritual and intensity stay saved and can travel with the signup request.',
     },
+    advisorButton: 'Open personal generator',
+    advisorHint: 'After choosing a ritual, jump straight to the personal generator below and get a finished direction.',
     rituals: [
       { id: 'glow', name: 'Glow', subtitle: 'Inner glow', description: 'A soft luminescent glow that reacts to your biometrics. Best for evening wear and more ceremonial moments.', icon: Sparkles, gradient: 'from-indigo-500/20 via-purple-500/10 to-transparent', glowColor: 'rgba(111, 124, 255, 0.6)', features: ['Adaptive brightness', 'Warm spectrum', 'Soft transitions'] },
       { id: 'calm', name: 'Calm', subtitle: 'Quiet energy', description: 'An emerald glow with low activity. Designed for meditation, focus, and balance through the day.', icon: Waves, gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent', glowColor: 'rgba(55, 214, 181, 0.6)', features: ['Stable light', 'Cool spectrum', 'Low pulse rate'] },
