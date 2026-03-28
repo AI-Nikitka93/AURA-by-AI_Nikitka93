@@ -1,13 +1,15 @@
 import { Download, Wifi } from 'lucide-react'
-import { ctaContent } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 import EmailSignupForm from './EmailSignupForm'
 
 export default function CtaSection({ onOpenPrivacyCenter, pwa }) {
+  const { copy } = useSiteCopy()
+  const { ctaContent } = copy
   const installLabel = pwa?.isInstalled
-    ? 'AURA уже установлено'
+    ? ctaContent.installed
     : pwa?.canInstall
-      ? 'Установить AURA app'
-      : 'Install-ready в поддерживаемых браузерах'
+      ? ctaContent.installAction
+      : ctaContent.installFallback
 
   return (
     <section id="cta" className="relative py-6 sm:py-8 lg:py-10">
@@ -46,9 +48,9 @@ export default function CtaSection({ onOpenPrivacyCenter, pwa }) {
                     <Wifi className="h-5 w-5" />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Companion mode</p>
+                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{ctaContent.companionTitle}</p>
                     <p className="mt-1 text-sm leading-6 text-text-soft">
-                      После первого визита AURA может открываться как installable app и держать ваши ritual choices доступными даже при нестабильном соединении.
+                      {ctaContent.companionText}
                     </p>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-const DEFAULT_WAITLIST_WORKER = 'https://aura-portfolio-worker.aiomdurman.workers.dev'
+const DEFAULT_WAITLIST_WORKER = 'https://aura-portfolio-worker.aiartbora.workers.dev'
 const WAITLIST_API_BASE = (import.meta.env.VITE_WAITLIST_API_BASE || '').trim()
 
 export const RITUAL_OPTIONS = ['glow', 'calm', 'pulse']

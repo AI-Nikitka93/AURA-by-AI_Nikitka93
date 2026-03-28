@@ -11,319 +11,86 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./assets/logo.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icons/icon-180.png" />
-    <meta
-      name="description"
-      content="Политика приватности AURA by AI_Nikitka93 — концептуального портфолио проекта премиальных умных украшений."
-    />
-    <title>Privacy Policy — AURA by AI_Nikitka93</title>
+    <meta name="description" content="Политика приватности AURA by AI_Nikitka93." />
+    <title>Privacy Policy - AURA by AI_Nikitka93</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
     <style>
       :root {
         color-scheme: dark;
         --bg: #090b10;
-        --bg-elevated: #0f131b;
-        --surface: rgba(255, 255, 255, 0.06);
-        --surface-strong: rgba(255, 255, 255, 0.08);
-        --stroke: rgba(255, 255, 255, 0.12);
-        --stroke-strong: rgba(255, 255, 255, 0.18);
         --text: #f5f7fb;
         --text-soft: #c5ccda;
+        --stroke: rgba(255, 255, 255, 0.12);
         --primary: #6f7cff;
         --secondary: #37d6b5;
-        --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
-        --radius-xl: 28px;
       }
-
-      * {
-        box-sizing: border-box;
-      }
-
+      * { box-sizing: border-box; }
       body {
         margin: 0;
         min-width: 320px;
+        color: var(--text);
+        font-family: "Manrope", sans-serif;
         background:
           radial-gradient(circle at 18% 0%, rgba(111, 124, 255, 0.18), transparent 32%),
           radial-gradient(circle at 82% 20%, rgba(55, 214, 181, 0.12), transparent 22%),
           linear-gradient(180deg, #090b10 0%, #0b0f17 44%, #090b10 100%);
-        color: var(--text);
-        font-family: "Manrope", sans-serif;
       }
-
-      a,
-      button {
-        transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
-      }
-
-      a:focus-visible,
-      button:focus-visible {
-        outline: 2px solid var(--primary);
-        outline-offset: 3px;
-      }
-
-      .shell {
-        width: min(100%, 1120px);
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .nav {
-        position: sticky;
-        top: 0;
-        z-index: 30;
-        padding: 16px 0;
-        backdrop-filter: blur(10px);
-      }
-
-      .nav-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 16px 20px;
+      a, button { transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease; }
+      a:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+      .shell { width: min(100%, 1120px); margin: 0 auto; padding: 0 20px; }
+      .nav { position: sticky; top: 0; z-index: 20; padding: 16px 0; backdrop-filter: blur(10px); }
+      .nav-bar, .panel {
         border: 1px solid var(--stroke);
-        border-radius: 999px;
         background: rgba(17, 19, 24, 0.72);
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.18),
-          inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-          var(--shadow);
-      }
-
-      .brand-link,
-      .subtle-link {
-        color: var(--text);
-        text-decoration: none;
-      }
-
-      .brand-link {
-        font-family: "Syne", sans-serif;
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-      }
-
-      .brand-link:hover,
-      .subtle-link:hover {
-        color: var(--secondary);
-      }
-
-      .badge {
-        color: var(--secondary);
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-
-      .page {
-        padding: 32px 0 72px;
-      }
-
-      .hero {
-        margin: 0 auto 32px;
-        max-width: 780px;
-        text-align: center;
-      }
-
-      .hero h1 {
-        margin: 0;
-        font-family: "Syne", sans-serif;
-        font-size: clamp(2.4rem, 7vw, 4.5rem);
-        line-height: 0.98;
-        letter-spacing: -0.05em;
-        background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.56) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .hero p {
-        margin: 16px auto 0;
-        max-width: 640px;
-        color: var(--text-soft);
-        font-size: 16px;
-        line-height: 1.75;
-      }
-
-      .panel {
-        position: relative;
-        overflow: hidden;
-        border: 1px solid var(--stroke);
-        border-radius: var(--radius-xl);
-        background: rgba(255, 255, 255, 0.06);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -1px 0 rgba(255,255,255,0.04), 0 24px 60px rgba(0,0,0,0.34);
         backdrop-filter: blur(18px);
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.18),
-          inset 0 -1px 0 rgba(255, 255, 255, 0.04),
-          var(--shadow);
       }
-
-      .panel::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          radial-gradient(circle at top, rgba(111, 124, 255, 0.16), transparent 36%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
-        pointer-events: none;
+      .nav-bar {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        padding: 16px 20px; border-radius: 999px;
       }
-
-      .panel-inner {
-        position: relative;
-        padding: 32px 24px;
+      .brand-link, .subtle-link { color: var(--text); text-decoration: none; }
+      .brand-link { font-family: "Syne", sans-serif; font-size: 15px; font-weight: 700; letter-spacing: -0.02em; }
+      .badge { color: var(--secondary); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+      .switcher { display: inline-flex; gap: 6px; border: 1px solid var(--stroke); border-radius: 999px; padding: 4px; background: rgba(255,255,255,0.04); }
+      .switcher button {
+        min-height: 36px; min-width: 52px; border: 0; border-radius: 999px; background: transparent; color: var(--text-soft);
+        font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
       }
-
-      .legal-copy {
-        max-width: 760px;
-        margin: 0 auto;
+      .switcher button.is-active { background: var(--primary); color: #0d1020; }
+      .page { padding: 32px 0 72px; }
+      .hero { margin: 0 auto 32px; max-width: 780px; text-align: center; }
+      .hero h1 {
+        margin: 0; font-family: "Syne", sans-serif; font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: 0.98; letter-spacing: -0.05em;
+        background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.56) 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
       }
-
-      .legal-copy h2 {
-        margin: 32px 0 14px;
-        font-family: "Syne", sans-serif;
-        font-size: clamp(1.45rem, 2vw, 1.8rem);
-        line-height: 1.1;
-        letter-spacing: -0.03em;
-      }
-
-      .legal-copy p,
-      .legal-copy li {
-        color: var(--text-soft);
-        font-size: 16px;
-        line-height: 1.8;
-      }
-
-      .legal-copy p {
-        margin: 0 0 16px;
-      }
-
-      .legal-copy ul {
-        margin: 0 0 20px;
-        padding-left: 20px;
-      }
-
-      .legal-copy li + li {
-        margin-top: 10px;
-      }
-
-      .legal-copy a {
-        color: var(--secondary);
-        text-decoration-thickness: 1.5px;
-        text-underline-offset: 3px;
-      }
-
-      .legal-copy a:hover {
-        color: var(--text);
-      }
-
+      .hero p, .legal-copy p, .legal-copy li, .footer-meta { color: var(--text-soft); line-height: 1.8; }
+      .panel { position: relative; overflow: hidden; border-radius: 28px; }
+      .panel-inner { position: relative; padding: 32px 24px; }
+      .legal-copy { max-width: 760px; margin: 0 auto; }
+      .legal-copy h2 { margin: 32px 0 14px; font-family: "Syne", sans-serif; font-size: clamp(1.45rem, 2vw, 1.8rem); line-height: 1.1; letter-spacing: -0.03em; }
+      .legal-copy ul { margin: 0 0 20px; padding-left: 20px; }
+      .legal-copy li + li { margin-top: 10px; }
+      .legal-copy a { color: var(--secondary); }
       .notice {
-        margin-top: 28px;
-        padding: 18px 20px;
-        border: 1px solid var(--stroke);
-        border-radius: 20px;
-        background: rgba(17, 19, 24, 0.6);
+        margin-top: 28px; padding: 18px 20px; border: 1px solid var(--stroke); border-radius: 20px; background: rgba(17, 19, 24, 0.6);
       }
-
-      .notice p {
-        margin: 0;
-        font-size: 15px;
-      }
-
-      .footer-actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 28px;
-      }
-
+      .footer-actions, .footer-nav { display: flex; flex-wrap: wrap; gap: 12px; }
+      .footer-actions { justify-content: center; margin-top: 28px; }
       .pill-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 46px;
-        padding: 0 18px;
-        border: 1px solid var(--stroke);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.04);
-        color: var(--text);
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px;
+        border: 1px solid var(--stroke); border-radius: 999px; background: rgba(255,255,255,0.04); color: var(--text);
+        text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       }
-
-      .pill-link:hover {
-        transform: translateY(-1px);
-        border-color: rgba(111, 124, 255, 0.35);
-        background: rgba(111, 124, 255, 0.1);
-      }
-
-      footer {
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 28px 0 36px;
-      }
-
-      .footer-bar {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      .footer-meta {
-        color: var(--text-soft);
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .footer-nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-
-      .footer-nav a {
-        color: var(--text-soft);
-        text-decoration: none;
-        font-size: 14px;
-      }
-
-      .footer-nav a:hover {
-        color: var(--text);
-      }
-
+      footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 28px 0 36px; }
+      .footer-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
       @media (max-width: 767px) {
-        .page {
-          padding-top: 20px;
-        }
-
-        .nav-bar {
-          border-radius: 24px;
-          padding: 14px 16px;
-        }
-
-        .panel-inner {
-          padding: 26px 18px;
-        }
-
-        .legal-copy p,
-        .legal-copy li,
-        .hero p {
-          font-size: 15px;
-        }
-
-        .footer-bar {
-          flex-direction: column;
-          align-items: flex-start;
-        }
+        .nav-bar { border-radius: 24px; padding: 14px 16px; align-items: flex-start; flex-direction: column; }
+        .panel-inner { padding: 26px 18px; }
+        .footer-bar { flex-direction: column; align-items: flex-start; }
       }
     </style>
   </head>
@@ -331,8 +98,14 @@
     <header class="nav">
       <div class="shell">
         <div class="nav-bar">
-          <a href="index.html" class="brand-link">← Назад к сайту</a>
-          <span class="badge">AURA by AI_Nikitka93</span>
+          <div>
+            <a id="back-link" href="index.html?lang=ru" class="brand-link"></a>
+            <div id="brand-badge" class="badge" style="margin-top: 8px;"></div>
+          </div>
+          <div class="switcher" role="group" aria-label="Language switcher">
+            <button type="button" data-lang-switch="ru">RU</button>
+            <button type="button" data-lang-switch="en">EN</button>
+          </div>
         </div>
       </div>
     </header>
@@ -340,110 +113,22 @@
     <main class="page">
       <div class="shell">
         <section class="hero" aria-labelledby="privacy-title">
-          <p class="badge">Legal Surface</p>
-          <h1 id="privacy-title">Политика приватности</h1>
-          <p>
-            Документ оформлен в том же визуальном языке, что и основной лендинг: тёмная editorial-сцена,
-            читаемая типографика и честная подача conceptual portfolio статуса.
-          </p>
+          <p id="hero-badge" class="badge"></p>
+          <h1 id="privacy-title"></h1>
+          <p id="hero-intro"></p>
         </section>
 
         <section class="panel">
           <div class="panel-inner">
             <div class="legal-copy">
-              <p class="badge">Последнее обновление: 23 марта 2026 г.</p>
-
-              <h2>1. Общая информация</h2>
-              <p>
-                AURA by AI_Nikitka93 («мы», «нас» или «наш») уважает вашу приватность и обязуется защищать
-                ваши персональные данные. Эта политика объясняет, как может собираться, использоваться и
-                защищаться информация пользователя.
-              </p>
-              <p>
-                <strong>Важно:</strong> на текущий момент AURA является концептуальным портфолио-проектом и
-                не осуществляет реальный сбор или обработку персональных данных пользователей.
-              </p>
-
-              <h2>2. Какие данные мы можем собирать</h2>
-              <p>При реальном запуске функционала могут потребоваться:</p>
-              <ul>
-                <li><strong>Контактные данные:</strong> имя, адрес электронной почты для раннего доступа.</li>
-                <li><strong>Предпочтения:</strong> выбранный ритуал для персонализации опыта.</li>
-                <li><strong>Технические данные:</strong> браузер, IP-адрес, события просмотра страниц и метаданные аналитики.</li>
-              </ul>
-
-              <h2>3. Как данные могут использоваться</h2>
-              <ul>
-                <li>Для уведомлений о запуске продукта и приглашений в ранний доступ.</li>
-                <li>Для персонализации опыта на сайте и формирования более релевантного контента.</li>
-                <li>Для анализа поведения пользователей и улучшения продукта.</li>
-                <li>Для ответов на обращения и запросы.</li>
-              </ul>
-
-              <h2>4. Хранение и защита</h2>
-              <p>
-                Мы предполагаем использование отраслевых практик защиты данных: шифрование, ограничение
-                доступа, сегментация среды и хранение только необходимого объёма информации.
-              </p>
-              <p>
-                Срок хранения должен определяться политикой сервиса и запросами пользователя на удаление
-                данных.
-              </p>
-
-              <h2>5. Передача третьим лицам</h2>
-              <p>
-                Мы не предполагаем продажу персональных данных. Передача возможна только сервис-провайдерам,
-                необходимым для работы сайта, или в случаях, когда это требуется по закону.
-              </p>
-
-              <h2>6. Права пользователя</h2>
-              <ul>
-                <li>Запросить доступ к своим данным.</li>
-                <li>Исправить неточные данные.</li>
-                <li>Удалить данные.</li>
-                <li>Отозвать согласие на обработку.</li>
-                <li>Перенести данные к другому провайдеру.</li>
-              </ul>
-              <p>
-                Для вопросов по приватности используйте адрес
-                <a href="mailto:privacy@aura-by-ai.com">privacy@aura-by-ai.com</a>.
-              </p>
-
-              <h2>7. Cookies и аналитика</h2>
-              <p>Сайт может использовать cookies для базовой работы, аналитики и сохранения предпочтений.</p>
-              <ul>
-                <li><strong>Необходимые:</strong> базовая функциональность и сессия.</li>
-                <li><strong>Аналитические:</strong> анонимная статистика посещений.</li>
-                <li><strong>Функциональные:</strong> запоминание пользовательских предпочтений.</li>
-              </ul>
-
-              <h2>8. Обновления политики</h2>
-              <p>
-                Политика может меняться по мере развития проекта. Актуальная версия всегда должна быть доступна
-                на этой странице с явной датой обновления.
-              </p>
-
-              <h2>9. Контакты</h2>
-              <p>
-                По вопросам приватности и защиты данных обращайтесь на
-                <a href="mailto:privacy@aura-by-ai.com">privacy@aura-by-ai.com</a>
-                или через
-                <a href="https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93" target="_blank" rel="noreferrer">
-                  GitHub-репозиторий проекта
-                </a>.
-              </p>
-
+              <p id="updated-at" class="badge"></p>
+              <div id="legal-sections"></div>
               <div class="notice" role="note">
-                <p>
-                  <strong>Примечание:</strong> этот документ является legal-шаблоном для conceptual portfolio-проекта.
-                  При реальном запуске продукта политика должна быть адаптирована под применимое законодательство
-                  и проверена юристом.
-                </p>
+                <p id="legal-note"></p>
               </div>
-
               <div class="footer-actions">
-                <a class="pill-link" href="index.html">Вернуться на главную</a>
-                <a class="pill-link" href="https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93" target="_blank" rel="noreferrer">Открыть GitHub</a>
+                <a id="action-home" class="pill-link" href="index.html?lang=ru"></a>
+                <a id="action-github" class="pill-link" href="https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93" target="_blank" rel="noreferrer"></a>
               </div>
             </div>
           </div>
@@ -454,20 +139,123 @@
     <footer>
       <div class="shell">
         <div class="footer-bar">
-          <p class="footer-meta">© 2026 AURA by AI_Nikitka93. Conceptual portfolio project. Создано Nikita (AI_Nikitka93).</p>
+          <p id="footer-meta" class="footer-meta"></p>
           <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="index.html">Сайт</a>
-            <a href="privacy.html">Privacy</a>
+            <a id="footer-site" href="index.html?lang=ru"></a>
+            <a id="footer-privacy" href="privacy.html?lang=ru"></a>
           </nav>
         </div>
       </div>
     </footer>
-  </body>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('./service-worker.js').catch(function () {})
+
+    <script>
+      const LANGUAGE_STORAGE_KEY = 'aura:language:v1'
+      const translations = {
+        ru: {
+          title: 'Политика приватности - AURA by AI_Nikitka93',
+          description: 'Политика приватности AURA by AI_Nikitka93.',
+          back: '← Назад к сайту',
+          badge: 'AURA by AI_Nikitka93',
+          heroBadge: 'Legal Surface',
+          heroTitle: 'Политика приватности',
+          heroIntro: 'Документ оформлен в том же визуальном языке, что и основной лендинг: тёмная editorial-сцена, читаемая типографика и честная подача conceptual portfolio статуса.',
+          updatedAt: 'Последнее обновление: 28 марта 2026 г.',
+          sections: [
+            { title: '1. Общая информация', paragraphs: ['AURA by AI_Nikitka93 уважает вашу приватность и стремится объяснять обработку данных простым и понятным языком.', 'На текущий момент проект остаётся концептуальным portfolio case, но интерфейс уже включает реальные механики consent, локального хранения и waitlist queue.'] },
+            { title: '2. Какие данные может хранить сайт', paragraphs: ['Сайт может хранить локально выбранный ритуал, интенсивность, язык интерфейса, настройки consent и очередь заявок.'], list: ['Контактные данные: имя и email при отправке раннего доступа.', 'Предпочтения: ritual, wear moment, ecosystem, fit preference.', 'Технические сигналы: факт согласия на аналитику и состояние локальной очереди.'] },
+            { title: '3. Как данные используются', list: ['Для сохранения персонализации между визитами.', 'Для отправки или повторной синхронизации waitlist-заявок.', 'Для аналитики только после явного согласия.', 'Для ответа на обращения по privacy и продуктовым запросам.'] },
+            { title: '4. Управление и права пользователя', list: ['Открыть Privacy Controls и изменить consent.', 'Экспортировать локальные данные в JSON.', 'Очистить персонализацию или локальную очередь заявок.', 'Отозвать согласие на аналитику в любой момент.'] },
+            { title: '5. Контакты', paragraphs: ['По вопросам приватности и защиты данных используйте адрес privacy@aura-by-ai.com или GitHub-репозиторий проекта.'] },
+          ],
+          note: '<strong>Примечание:</strong> этот документ остаётся шаблоном для portfolio-проекта. Для реального коммерческого запуска политика должна быть дополнена юридической проверкой и требованиями применимого законодательства.',
+          actionHome: 'Вернуться на главную',
+          actionGithub: 'Открыть GitHub',
+          footerMeta: '© 2026 AURA by AI_Nikitka93. Conceptual portfolio project. Создано Nikita (AI_Nikitka93).',
+          footerSite: 'Сайт',
+          footerPrivacy: 'Privacy',
+        },
+        en: {
+          title: 'Privacy Policy - AURA by AI_Nikitka93',
+          description: 'Privacy Policy for AURA by AI_Nikitka93.',
+          back: '← Back to site',
+          badge: 'AURA by AI_Nikitka93',
+          heroBadge: 'Legal Surface',
+          heroTitle: 'Privacy Policy',
+          heroIntro: 'This document follows the same visual language as the main landing page: a dark editorial scene, readable typography, and an honest conceptual portfolio framing.',
+          updatedAt: 'Last updated: March 28, 2026',
+          sections: [
+            { title: '1. General information', paragraphs: ['AURA by AI_Nikitka93 respects your privacy and aims to explain data handling in clear language.', 'The project is still a conceptual portfolio case, but the interface already includes real consent, local storage, and waitlist queue mechanics.'] },
+            { title: '2. What the site may store', paragraphs: ['The site may store the selected ritual, intensity, interface language, consent settings, and waitlist queue locally.'], list: ['Contact data: name and email during early access signup.', 'Preferences: ritual, wear moment, ecosystem, and fit preference.', 'Technical signals: analytics consent and local queue status.'] },
+            { title: '3. How data is used', list: ['To preserve personalization between visits.', 'To submit or resync waitlist requests.', 'To enable analytics only after explicit consent.', 'To respond to privacy and product inquiries.'] },
+            { title: '4. Control and user rights', list: ['Open Privacy Controls and change consent.', 'Export local data as JSON.', 'Clear personalization or the local waitlist queue.', 'Withdraw analytics consent at any time.'] },
+            { title: '5. Contacts', paragraphs: ['For privacy and data protection questions, use privacy@aura-by-ai.com or the GitHub repository of the project.'] },
+          ],
+          note: '<strong>Note:</strong> this document remains a template for a portfolio project. A real commercial launch would require legal review and adaptation to the applicable regulations.',
+          actionHome: 'Back to home',
+          actionGithub: 'Open GitHub',
+          footerMeta: '© 2026 AURA by AI_Nikitka93. Conceptual portfolio project. Created by Nikita (AI_Nikitka93).',
+          footerSite: 'Site',
+          footerPrivacy: 'Privacy',
+        }
+      }
+
+      const params = new URLSearchParams(window.location.search)
+      const browserLanguage = (navigator.language || '').toLowerCase()
+      const initialLanguage = params.get('lang') || JSON.parse(localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'null') || (browserLanguage.startsWith('ru') ? 'ru' : 'en')
+      const language = translations[initialLanguage] ? initialLanguage : 'ru'
+
+      function setLanguage(nextLanguage) {
+        const t = translations[nextLanguage]
+        document.documentElement.lang = nextLanguage
+        document.title = t.title
+        document.querySelector('meta[name="description"]').setAttribute('content', t.description)
+        localStorage.setItem(LANGUAGE_STORAGE_KEY, JSON.stringify(nextLanguage))
+
+        const nextParams = new URLSearchParams(window.location.search)
+        nextParams.set('lang', nextLanguage)
+        history.replaceState({}, '', `${window.location.pathname}?${nextParams.toString()}`)
+
+        document.getElementById('back-link').textContent = t.back
+        document.getElementById('back-link').href = `index.html?lang=${nextLanguage}`
+        document.getElementById('brand-badge').textContent = t.badge
+        document.getElementById('hero-badge').textContent = t.heroBadge
+        document.getElementById('privacy-title').textContent = t.heroTitle
+        document.getElementById('hero-intro').textContent = t.heroIntro
+        document.getElementById('updated-at').textContent = t.updatedAt
+        document.getElementById('legal-note').innerHTML = t.note
+        document.getElementById('action-home').textContent = t.actionHome
+        document.getElementById('action-home').href = `index.html?lang=${nextLanguage}`
+        document.getElementById('action-github').textContent = t.actionGithub
+        document.getElementById('footer-meta').textContent = t.footerMeta
+        document.getElementById('footer-site').textContent = t.footerSite
+        document.getElementById('footer-site').href = `index.html?lang=${nextLanguage}`
+        document.getElementById('footer-privacy').textContent = t.footerPrivacy
+        document.getElementById('footer-privacy').href = `privacy.html?lang=${nextLanguage}`
+
+        document.querySelectorAll('[data-lang-switch]').forEach((button) => {
+          button.classList.toggle('is-active', button.dataset.langSwitch === nextLanguage)
+        })
+
+        document.getElementById('legal-sections').innerHTML = t.sections.map((section) => `
+          <section>
+            <h2>${section.title}</h2>
+            ${(section.paragraphs || []).map((paragraph) => `<p>${paragraph}</p>`).join('')}
+            ${section.list ? `<ul>${section.list.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
+          </section>
+        `).join('')
+      }
+
+      document.querySelectorAll('[data-lang-switch]').forEach((button) => {
+        button.addEventListener('click', () => setLanguage(button.dataset.langSwitch))
       })
-    }
-  </script>
+
+      setLanguage(language)
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('./service-worker.js').catch(function () {})
+        })
+      }
+    </script>
+  </body>
 </html>

@@ -1,6 +1,9 @@
-import { disclaimerContent, footerLinks, footerMeta } from '../../data/landingContent'
+import { getLocalizedHref } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function Footer({ onOpenPrivacyCenter }) {
+  const { copy, language } = useSiteCopy()
+  const { disclaimerContent, footerLinks, footerMeta } = copy
   const Icon = footerMeta.actionIcon
   const base = import.meta.env.BASE_URL
 
@@ -20,18 +23,18 @@ export default function Footer({ onOpenPrivacyCenter }) {
               {link.label}
             </a>
           ))}
-          <a href={`${base}privacy.html`} className="text-sm text-text-soft hover:text-secondary">
-            Privacy Policy
+          <a href={`${base}${getLocalizedHref('privacy.html', language)}`} className="text-sm text-text-soft hover:text-secondary">
+            {footerMeta.privacyPolicy}
           </a>
           <button
             type="button"
             onClick={onOpenPrivacyCenter}
             className="min-h-[44px] text-sm text-text-soft hover:text-secondary"
           >
-            Privacy Controls
+            {footerMeta.privacyControls}
           </button>
           <a href="#ritual" className="inline-flex min-h-[44px] items-center gap-2 text-sm text-text hover:text-primary">
-            Вернуться к началу
+            {footerMeta.backToTop}
             <Icon className="h-4 w-4" />
           </a>
         </div>

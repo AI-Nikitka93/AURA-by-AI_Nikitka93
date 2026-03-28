@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { useExperience } from '../../context/ExperienceContext'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function ConsentBanner() {
+  const { copy } = useSiteCopy()
+  const { consentBanner } = copy
   const { consent, updateConsent, gpcEnabled } = useExperience()
   const [isCustomizing, setIsCustomizing] = useState(false)
   const [draftConsent, setDraftConsent] = useState({
@@ -19,18 +22,17 @@ export default function ConsentBanner() {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
-              Privacy Controls
+              {consentBanner.eyebrow}
             </p>
             <h2 className="mt-2 font-display text-2xl tracking-[-0.04em] text-text">
-              Выберите, какую память AURA может использовать
+              {consentBanner.title}
             </h2>
             <p className="mt-3 text-sm leading-7 text-text-soft sm:text-base">
-              Необходимое хранение всегда включено. Функциональная память сохраняет ваш ритуал и очередь заявок на этом устройстве.
-              Аналитика включается только после согласия.
+              {consentBanner.description}
             </p>
             {gpcEnabled && (
               <p className="mt-3 rounded-2xl border border-secondary/20 bg-secondary/10 px-4 py-3 text-sm leading-6 text-text-soft">
-                В браузере включён Global Privacy Control, поэтому аналитика останется отключённой.
+                {consentBanner.gpcNotice}
               </p>
             )}
           </div>
@@ -41,14 +43,14 @@ export default function ConsentBanner() {
               onClick={() => updateConsent({ functional: false, analytics: false })}
               className="ghost-button px-5 py-3"
             >
-              Только необходимое
+              {consentBanner.necessaryOnly}
             </button>
             <button
               type="button"
               onClick={() => updateConsent({ functional: true, analytics: !gpcEnabled })}
               className="primary-button px-5 py-3"
             >
-              Принять всё
+              {consentBanner.acceptAll}
             </button>
           </div>
         </div>
@@ -59,16 +61,16 @@ export default function ConsentBanner() {
             onClick={() => setIsCustomizing((currentValue) => !currentValue)}
             className="text-sm font-semibold uppercase tracking-[0.16em] text-text-soft hover:text-text"
           >
-            {isCustomizing ? 'Скрыть детальные настройки' : 'Настроить вручную'}
+            {isCustomizing ? consentBanner.hideCustom : consentBanner.showCustom}
           </button>
 
           {isCustomizing && (
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               <label className="liquid-glass flex items-start justify-between gap-4 rounded-2xl p-4">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Функциональная память</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{consentBanner.functionalTitle}</p>
                   <p className="mt-2 text-sm leading-6 text-text-soft">
-                    Сохраняет выбранный ритуал, интенсивность и локальную очередь заявок.
+                    {consentBanner.functionalDescription}
                   </p>
                 </div>
                 <input
@@ -84,9 +86,9 @@ export default function ConsentBanner() {
 
               <label className="liquid-glass flex items-start justify-between gap-4 rounded-2xl p-4">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Аналитика</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{consentBanner.analyticsTitle}</p>
                   <p className="mt-2 text-sm leading-6 text-text-soft">
-                    Подключает privacy-friendly аналитический скрипт только после согласия.
+                    {consentBanner.analyticsDescription}
                   </p>
                 </div>
                 <input
@@ -107,7 +109,7 @@ export default function ConsentBanner() {
                   onClick={() => updateConsent(draftConsent)}
                   className="primary-button px-5 py-3"
                 >
-                  Сохранить настройки
+                  {consentBanner.save}
                 </button>
               </div>
             </div>

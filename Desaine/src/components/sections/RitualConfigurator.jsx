@@ -1,41 +1,11 @@
 import { useState } from 'react'
 import { Check, Copy, Sparkles, Waves, Zap } from 'lucide-react'
 import { useExperience } from '../../context/ExperienceContext'
-
-const rituals = [
-  {
-    id: 'glow',
-    name: 'Glow',
-    subtitle: 'Внутреннее свечение',
-    description: 'Мягкое люминесцентное свечение, которое реагирует на ваши биоритмы. Идеально для вечерних выходов и особых случаев.',
-    icon: Sparkles,
-    gradient: 'from-indigo-500/20 via-purple-500/10 to-transparent',
-    glowColor: 'rgba(111, 124, 255, 0.6)',
-    features: ['Адаптивная яркость', 'Тёплый спектр', 'Плавные переходы'],
-  },
-  {
-    id: 'calm',
-    name: 'Calm',
-    subtitle: 'Энергия покоя',
-    description: 'Изумрудное свечение с минимальной активностью. Для медитации, фокуса и баланса в течение дня.',
-    icon: Waves,
-    gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
-    glowColor: 'rgba(55, 214, 181, 0.6)',
-    features: ['Стабильный свет', 'Холодный спектр', 'Низкая пульсация'],
-  },
-  {
-    id: 'pulse',
-    name: 'Pulse',
-    subtitle: 'Живой ритм',
-    description: 'Динамическая пульсация в ритме вашего сердца. Для активных дней и ярких событий.',
-    icon: Zap,
-    gradient: 'from-rose-500/20 via-pink-500/10 to-transparent',
-    glowColor: 'rgba(255, 107, 143, 0.6)',
-    features: ['Сердечный ритм', 'Энергичный паттерн', 'Высокая активность'],
-  },
-]
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function RitualConfigurator() {
+  const { copy } = useSiteCopy()
+  const { ritualConfigurator } = copy
   const {
     experience,
     setRitual,
@@ -43,6 +13,15 @@ export default function RitualConfigurator() {
     shareCurrentSelection,
   } = useExperience()
   const [shareStatus, setShareStatus] = useState('idle')
+  const rituals = ritualConfigurator.rituals.map((ritual) => ({
+    ...ritual,
+    icon:
+      ritual.id === 'glow'
+        ? Sparkles
+        : ritual.id === 'pulse'
+          ? Zap
+          : Waves,
+  }))
 
   const handleSelect = (ritualId) => {
     setRitual(ritualId)
@@ -52,7 +31,13 @@ export default function RitualConfigurator() {
 
   const handleShare = async () => {
     try {
-      await shareCurrentSelection()
+      const result = await shareCurrentSelection()
+
+      if (result.method === 'cancelled') {
+        setShareStatus('idle')
+        return
+      }
+
       setShareStatus('copied')
       window.setTimeout(() => setShareStatus('idle'), 2200)
     } catch {
@@ -65,13 +50,13 @@ export default function RitualConfigurator() {
     <div className="relative">
       <div className="mb-8 text-center">
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-secondary sm:text-sm">
-          Конфигуратор
+          {ritualConfigurator.eyebrow}
         </p>
         <h3 className="font-display text-2xl tracking-[-0.03em] text-text sm:text-3xl">
-          Выберите свой ритуал
+          {ritualConfigurator.title}
         </h3>
         <p className="mt-3 text-base text-text-soft">
-          Каждый ритуал создаёт уникальную сигнатуру свечения под ваш стиль жизни
+          {ritualConfigurator.description}
         </p>
       </div>
 
@@ -93,7 +78,6 @@ export default function RitualConfigurator() {
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Glow Effect */}
               {isSelected && (
                 <div
                   className="absolute inset-0 rounded-2xl opacity-50 blur-2xl"
@@ -103,7 +87,6 @@ export default function RitualConfigurator() {
                 />
               )}
 
-              {/* Icon */}
               <div
                 className={`relative mb-4 flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 ${
                   isSelected
@@ -118,7 +101,6 @@ export default function RitualConfigurator() {
                 />
               </div>
 
-              {/* Content */}
               <span
                 className={`relative text-base font-semibold uppercase tracking-[0.16em] transition-colors duration-300 ${
                   isSelected ? 'text-primary' : 'text-text'
@@ -130,7 +112,6 @@ export default function RitualConfigurator() {
                 {ritual.subtitle}
               </span>
 
-              {/* Checkmark */}
               {isSelected && (
                 <div className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary">
                   <Check className="h-3.5 w-3.5 text-[#0d1020]" />
@@ -141,18 +122,14 @@ export default function RitualConfigurator() {
         })}
       </div>
 
-      {/* Preview Panel */}
       {selectedRitualData && (
         <div className="reveal mt-8 liquid-panel overflow-hidden p-6 sm:p-8">
           <div className="grid gap-6 lg:grid-cols-2">
-            {/* Visual Preview */}
             <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-              {/* Background Gradient */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br opacity-30 ${selectedRitualData.gradient}`}
               />
 
-              {/* Jewelry Mockup */}
               <div className="relative z-10 text-center">
                 <div
                   className="mx-auto mb-4 h-24 w-24 rounded-full blur-3xl transition-all duration-700"
@@ -162,11 +139,10 @@ export default function RitualConfigurator() {
                   }}
                 />
                 <p className="text-sm uppercase tracking-[0.16em] text-text-soft">
-                  Предпросмотр свечения
+                  {ritualConfigurator.previewLabel}
                 </p>
               </div>
 
-              {/* Animated Rings */}
               <div className="absolute inset-0 flex items-center justify-center">
                 {[1, 2, 3].map((i) => (
                   <div
@@ -183,7 +159,6 @@ export default function RitualConfigurator() {
               </div>
             </div>
 
-            {/* Details */}
             <div className="flex flex-col justify-center">
               <h4 className="font-display text-xl tracking-[-0.03em] text-text">
                 {selectedRitualData.name}
@@ -194,7 +169,7 @@ export default function RitualConfigurator() {
 
               <div className="mt-6 space-y-3">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-secondary">
-                  Характеристики
+                  {ritualConfigurator.featuresLabel}
                 </p>
                 {selectedRitualData.features.map((feature) => (
                 <div
@@ -213,11 +188,10 @@ export default function RitualConfigurator() {
                 ))}
               </div>
 
-              {/* Intensity Slider */}
               <div className="mt-6">
                 <div className="mb-3 flex items-center justify-between gap-4">
                   <label htmlFor="ritual-intensity" className="text-sm font-semibold uppercase tracking-[0.16em] text-secondary">
-                    Интенсивность
+                    {ritualConfigurator.intensityLabel}
                   </label>
                   <span className="text-sm font-semibold text-primary">
                     {experience.intensity}%
@@ -238,12 +212,12 @@ export default function RitualConfigurator() {
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
                   <button type="button" onClick={handleShare} className="ghost-button px-5 py-3">
                     <Copy className="mr-2 h-4 w-4" />
-                    Поделиться конфигурацией
+                    {ritualConfigurator.shareButton}
                   </button>
                   <p className="text-sm leading-6 text-text-soft">
-                    {shareStatus === 'copied' && 'Ссылка на текущий ритуал уже в буфере обмена.'}
-                    {shareStatus === 'error' && 'Не получилось скопировать автоматически, но ссылка доступна через диалог браузера.'}
-                    {shareStatus === 'idle' && 'Выбранный ритуал и интенсивность сохраняются и могут быть отправлены вместе с заявкой.'}
+                    {shareStatus === 'copied' && ritualConfigurator.shareStatus.copied}
+                    {shareStatus === 'error' && ritualConfigurator.shareStatus.error}
+                    {shareStatus === 'idle' && ritualConfigurator.shareStatus.idle}
                   </p>
                 </div>
               </div>

@@ -2,6 +2,13 @@ const ritualOptions = new Set(['glow', 'calm', 'pulse'])
 const wearMomentOptions = new Set(['daily', 'evening', 'travel'])
 const ecosystemOptions = new Set(['ios', 'android', 'mixed'])
 const fitPreferenceOptions = new Set(['comfort', 'balanced', 'statement'])
+const languageOptions = new Set(['ru', 'en'])
+const DEFAULT_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct'
+const DEFAULT_ALLOWED_ORIGINS = [
+  'https://ai-nikitka93.github.io',
+  'https://aura-portfolio-worker.aiartbora.workers.dev',
+  'https://aura-portfolio-worker.aiomdurman.workers.dev',
+]
 
 function json(data, init = {}) {
   const headers = new Headers(init.headers)
@@ -27,6 +34,35 @@ function getRelayMode(env) {
   }
 
   return 'device'
+}
+
+function getAiMode(env) {
+  return env.AI ? 'workers-ai' : 'fallback'
+}
+
+function getAllowedOrigins(env) {
+  if (!env.ALLOWED_ORIGINS) {
+    return DEFAULT_ALLOWED_ORIGINS
+  }
+
+  return env.ALLOWED_ORIGINS
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+}
+
+function isAllowedOrigin(request, env) {
+  const origin = request.headers.get('origin')
+
+  if (!origin) {
+    return true
+  }
+
+  if (origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')) {
+    return true
+  }
+
+  return getAllowedOrigins(env).includes(origin)
 }
 
 function validatePayload(payload) {
@@ -70,6 +106,41 @@ function validatePayload(payload) {
   return null
 }
 
+function validateAiPayload(payload) {
+  const language = typeof payload.language === 'string' ? payload.language : ''
+  const ritual = typeof payload.ritual === 'string' ? payload.ritual : ''
+  const intensity = Number(payload.intensity)
+  const wearMoment = typeof payload.wearMoment === 'string' ? payload.wearMoment : ''
+  const ecosystem = typeof payload.ecosystem === 'string' ? payload.ecosystem : ''
+  const fitPreference = typeof payload.fitPreference === 'string' ? payload.fitPreference : ''
+
+  if (!languageOptions.has(language)) {
+    return 'Language is invalid.'
+  }
+
+  if (!ritualOptions.has(ritual)) {
+    return 'Ritual is invalid.'
+  }
+
+  if (!Number.isFinite(intensity) || intensity < 0 || intensity > 100) {
+    return 'Intensity must stay between 0 and 100.'
+  }
+
+  if (!wearMomentOptions.has(wearMoment)) {
+    return 'Wear moment is invalid.'
+  }
+
+  if (!ecosystemOptions.has(ecosystem)) {
+    return 'Ecosystem is invalid.'
+  }
+
+  if (!fitPreferenceOptions.has(fitPreference)) {
+    return 'Fit preference is invalid.'
+  }
+
+  return null
+}
+
 function createMessageText(payload, request) {
   return [
     'AURA waitlist submission',
@@ -86,6 +157,69 @@ function createMessageText(payload, request) {
     `IP country: ${request.cf?.country || 'Unknown'}`,
     `User agent: ${request.headers.get('user-agent') || 'Unknown'}`,
   ].join('\n')
+}
+
+function createAiMessages(payload) {
+  const language = payload.language === 'ru' ? 'ru' : 'en'
+
+  if (language === 'ru') {
+    return [
+      {
+        role: 'system',
+        content:
+          'Ты premium product storyteller для бренда умных украшений. Пиши только на чистом русском языке. ' +
+          'Допустимы только названия бренда AURA и платформ iPhone, iOS, Android. ' +
+          'Нужен короткий, дорогой по тону, но конкретный AI brief без фейковых обещаний. ' +
+          'Не используй медицинские claims, не обещай продажи и не называй проект реальным магазином. ' +
+          'Не используй markdown, звёздочки, решётки, списки или служебные заголовки. ' +
+          'Верни ровно 3 коротких абзаца без списков: narrative, product direction, companion/app direction. ' +
+          'Держи общий объём около 90-130 слов.',
+      },
+      {
+        role: 'user',
+        content:
+          `Собери AI brief для AURA.\n` +
+          `Профиль: ${payload.profileLabel}\n` +
+          `Ритуал: ${payload.ritual} (${payload.intensity}%)\n` +
+          `Сценарий ношения: ${payload.wearLabel}\n` +
+          `Экосистема: ${payload.ecosystemLabel}\n` +
+          `Посадка: ${payload.fitLabel}\n` +
+          `Подсказка по посадке: ${payload.fitNote}\n` +
+          `Логика companion-опыта: ${payload.ecosystemNote}\n` +
+          `Локальное резюме: ${payload.localSummary}\n` +
+          `Локальное направление: ${payload.localDirection}\n` +
+          `Сделай текст полезным для портфолио-кейса и будущего luxury-tech продукта.`,
+      },
+    ]
+  }
+
+  return [
+    {
+      role: 'system',
+      content:
+        'You are a premium product storyteller for a smart jewelry concept brand. Write in English. ' +
+        'Create a short high-end AI brief with concrete direction and no fake claims. ' +
+        'Do not make medical claims, revenue claims, or present the concept as a live store. ' +
+        'Do not use markdown, asterisks, headings, or bullet points. ' +
+        'Return exactly 3 short paragraphs with no bullet points: 1) narrative, 2) product direction, 3) companion/app direction. ' +
+        'Keep the total length around 90-130 words.',
+    },
+    {
+      role: 'user',
+      content:
+        `Build an AI brief for AURA.\n` +
+        `Profile: ${payload.profileLabel}\n` +
+        `Ritual: ${payload.ritual} (${payload.intensity}%)\n` +
+        `Wear context: ${payload.wearLabel}\n` +
+        `Ecosystem: ${payload.ecosystemLabel}\n` +
+        `Fit: ${payload.fitLabel}\n` +
+        `Fit guidance: ${payload.fitNote}\n` +
+        `Companion logic: ${payload.ecosystemNote}\n` +
+        `Local summary: ${payload.localSummary}\n` +
+        `Local direction: ${payload.localDirection}\n` +
+        `Make it useful both for a portfolio case and a future luxury-tech product direction.`,
+    },
+  ]
 }
 
 async function sendWithResend(env, payload, request) {
@@ -211,6 +345,83 @@ export default {
         return json({
           code: 'relay_failed',
           message: 'Upstream waitlist relay failed.',
+          details: error.message,
+        }, { status: 502 })
+      }
+    }
+
+    if (url.pathname === '/api/aura-signal' && request.method === 'GET') {
+      const mode = getAiMode(env)
+      const model = env.AURA_AI_MODEL || DEFAULT_AI_MODEL
+
+      return json({
+        available: mode === 'workers-ai',
+        mode,
+        label: mode === 'workers-ai' ? 'Cloudflare AI active' : 'AI fallback',
+        message: mode === 'workers-ai'
+          ? 'Workers AI binding is active and ready to generate signal briefs.'
+          : 'Workers AI binding is not configured. The site can still use a local fallback brief.',
+        model,
+      })
+    }
+
+    if (url.pathname === '/api/aura-signal' && request.method === 'POST') {
+      if (!isAllowedOrigin(request, env)) {
+        return json({
+          code: 'forbidden_origin',
+          message: 'Origin is not allowed for AI signal generation.',
+        }, { status: 403 })
+      }
+
+      let payload
+
+      try {
+        payload = await request.json()
+      } catch {
+        return json({
+          code: 'invalid_json',
+          message: 'Request body must be valid JSON.',
+        }, { status: 400 })
+      }
+
+      const validationError = validateAiPayload(payload)
+
+      if (validationError) {
+        return json({
+          code: 'invalid_payload',
+          message: validationError,
+        }, { status: 400 })
+      }
+
+      if (!env.AI) {
+        return json({
+          code: 'ai_not_configured',
+          message: 'Workers AI binding is not configured yet.',
+        }, { status: 503 })
+      }
+
+      const model = env.AURA_AI_MODEL || DEFAULT_AI_MODEL
+
+      try {
+        const response = await env.AI.run(model, {
+          messages: createAiMessages(payload),
+          max_tokens: 220,
+          temperature: 0.35,
+        })
+
+        return json({
+          ok: true,
+          mode: 'workers-ai',
+          label: 'Cloudflare AI active',
+          model,
+          brief: response.response || '',
+          usage: response.usage || null,
+          message: 'Signal brief generated successfully.',
+        })
+      } catch (error) {
+        return json({
+          code: 'ai_generation_failed',
+          message: 'Workers AI could not generate the signal brief.',
           details: error.message,
         }, { status: 502 })
       }

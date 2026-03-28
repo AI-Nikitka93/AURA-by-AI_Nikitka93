@@ -1,8 +1,11 @@
 import { ChevronDown } from 'lucide-react'
 import SectionHeading from '../ui/SectionHeading'
-import { faqBackground, faqItems } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function FaqSection() {
+  const { copy } = useSiteCopy()
+  const { faqBackground, faqItems, faqSection } = copy
+
   return (
     <section id="faq" className="relative overflow-hidden py-8 sm:py-10 lg:py-12">
       <div className="pointer-events-none absolute inset-0">
@@ -18,9 +21,9 @@ export default function FaqSection() {
 
       <div className="section-shell relative z-10 max-w-4xl">
         <SectionHeading
-          eyebrow="FAQ"
-          title="Вопросы, которые снимают шум"
-          description="Тексты приведены к premium tone of voice и не обещают того, что еще не подтверждено реальными данными или юридическими документами."
+          eyebrow={faqSection.eyebrow}
+          title={faqSection.title}
+          description={faqSection.description}
           align="center"
         />
 

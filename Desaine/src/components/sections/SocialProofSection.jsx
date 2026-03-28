@@ -1,15 +1,18 @@
 import GlassCard from '../ui/GlassCard'
 import SectionHeading from '../ui/SectionHeading'
-import { disclaimerContent, validationCards } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function SocialProofSection() {
+  const { copy } = useSiteCopy()
+  const { disclaimerContent, validationCards, validationSection } = copy
+
   return (
     <section id="validation" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell">
         <SectionHeading
-          eyebrow="Validation-ready"
-          title="Доверие строится на подтвержденных сигналах"
-          description="Неподтвержденные Stitch-цифры и вымышленные отзывы удалены. Секция готова к подстановке реального proof после launch data."
+          eyebrow={validationSection.eyebrow}
+          title={validationSection.title}
+          description={validationSection.description}
         />
 
         <div className="mt-4 liquid-glass rounded-2xl px-5 py-4 sm:px-6 sm:mt-5">

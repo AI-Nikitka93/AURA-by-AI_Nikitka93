@@ -1,15 +1,10 @@
 import { useState } from 'react'
 import { Activity, Check } from 'lucide-react'
 import { useExperience } from '../../context/ExperienceContext'
+import useSiteCopy from '../../hooks/useSiteCopy'
 import { submitWaitlist, WaitlistApiError } from '../../lib/waitlist'
 
-const ritualOptions = [
-  { id: 'glow', label: 'Glow', desc: 'Свечение' },
-  { id: 'calm', label: 'Calm', desc: 'Покой' },
-  { id: 'pulse', label: 'Pulse', desc: 'Ритм' },
-]
-
-function RelayStatusBadge({ waitlistStatus }) {
+function RelayStatusBadge({ waitlistStatus, labels }) {
   const isLive = waitlistStatus.acceptingSubmissions
   const classes = isLive
     ? 'border-secondary/25 bg-secondary/10 text-secondary'
@@ -18,19 +13,23 @@ function RelayStatusBadge({ waitlistStatus }) {
   return (
     <div className={`inline-flex min-h-[38px] items-center rounded-full border px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] ${classes}`}>
       <Activity className="mr-2 h-3.5 w-3.5" />
-      {isLive ? 'Live relay active' : 'Device queue active'}
+      {isLive ? labels.live : labels.queue}
     </div>
   )
 }
 
 export default function EmailSignupForm({ onOpenPrivacyCenter }) {
+  const { copy } = useSiteCopy()
+  const { emailSignup, advisor, privacyCenter } = copy
   const {
     experience,
     setRitual,
+    waitlistState,
     waitlistStatus,
     queueWaitlistSubmission,
     markWaitlistSubmitted,
     refreshWaitlistStatus,
+    exportLocalData,
   } = useExperience()
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
@@ -38,14 +37,16 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
   const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const [status, setStatus] = useState('idle')
   const [feedback, setFeedback] = useState('')
-
-  let statusDescription = waitlistStatus.message
-
-  if (!statusDescription) {
-    statusDescription = waitlistStatus.acceptingSubmissions
-      ? 'Заявки уходят в live relay и могут быть синхронизированы без ручного экспорта.'
-      : 'Пока live relay не подключён, запрос сохраняется на этом устройстве и будет готов к повторной отправке.'
-  }
+  const ritualOptions = emailSignup.ritualOptions
+  const statusDescription = waitlistStatus.acceptingSubmissions
+    ? emailSignup.relay.liveDescription
+    : emailSignup.relay.queueDescription
+  const queueMessage = waitlistStatus.acceptingSubmissions
+    ? waitlistStatus.message || statusDescription
+    : statusDescription
+  const wearLabel = advisor.wearMomentOptions.find((option) => option.id === experience.wearMoment)?.label || experience.wearMoment
+  const ecosystemLabel = advisor.ecosystemOptions.find((option) => option.id === experience.ecosystem)?.label || experience.ecosystem
+  const fitLabel = advisor.fitPreferenceOptions.find((option) => option.id === experience.fitPreference)?.label || experience.fitPreference
 
   const validateEmail = (value) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -80,25 +81,25 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
 
     if (!validateEmail(email)) {
       setStatus('error')
-      setFeedback('Email выглядит неточно — проверьте, не пропущен ли символ.')
+      setFeedback(emailSignup.errors.invalidEmail)
       return
     }
 
     if (!experience.ritual) {
       setStatus('error')
-      setFeedback('Сначала выберите ритуал, чтобы мы сохранили ваш персональный сигнал.')
+      setFeedback(emailSignup.errors.missingRitual)
       return
     }
 
     if (name && name.trim().length < 2) {
       setStatus('error')
-      setFeedback('Имя слишком короткое — добавьте хотя бы 2 символа.')
+      setFeedback(emailSignup.errors.shortName)
       return
     }
 
     if (!privacyAccepted) {
       setStatus('error')
-      setFeedback('Подтвердите privacy notice перед отправкой заявки.')
+      setFeedback(emailSignup.errors.missingPrivacy)
       return
     }
 
@@ -111,7 +112,7 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
 
       markWaitlistSubmitted(payload, response)
       setStatus('success')
-      setFeedback('Заявка отправлена в live relay. Следующий шаг придёт на указанный email.')
+      setFeedback(emailSignup.feedback.liveSuccess)
       resetForm()
       await refreshWaitlistStatus()
       return
@@ -125,13 +126,13 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
       if (isRecoverableRelayError || !waitlistStatus.acceptingSubmissions) {
         queueWaitlistSubmission(payload)
         setStatus('success')
-        setFeedback('Live relay пока недоступен, поэтому заявка безопасно сохранена на этом устройстве. Когда relay появится, очередь сможет синхронизироваться автоматически.')
+        setFeedback(emailSignup.feedback.queuedSuccess)
         resetForm()
         return
       }
 
       setStatus('error')
-      setFeedback('Отправка не завершилась. Проверьте соединение и попробуйте снова.')
+      setFeedback(emailSignup.errors.generic)
     }
   }
 
@@ -141,11 +142,29 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
         <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary/20">
           <Check className="h-8 w-8 text-secondary" />
         </div>
-        <RelayStatusBadge waitlistStatus={waitlistStatus} />
-        <h3 className="mt-4 font-display text-2xl text-text">Сигнал сохранён</h3>
+        <RelayStatusBadge waitlistStatus={waitlistStatus} labels={emailSignup.relay} />
+        <h3 className="mt-4 font-display text-2xl text-text">{emailSignup.successTitle}</h3>
         <p className="mt-3 text-base leading-7 text-text-soft">
           {feedback}
         </p>
+        {!waitlistStatus.acceptingSubmissions && (
+          <div className="mt-5 w-full rounded-[24px] border border-white/10 bg-white/[0.03] p-4 text-left">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
+              {privacyCenter.pendingRequests}: {waitlistState.pending.length}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-text-soft">
+              {queueMessage}
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <button type="button" onClick={onOpenPrivacyCenter} className="ghost-button px-4 py-3 text-xs uppercase tracking-[0.16em]">
+                {emailSignup.openPrivacyControls}
+              </button>
+              <button type="button" onClick={exportLocalData} className="ghost-button px-4 py-3 text-xs uppercase tracking-[0.16em]">
+                {privacyCenter.exportButton}
+              </button>
+            </div>
+          </div>
+        )}
         <button
           type="button"
           onClick={() => {
@@ -154,7 +173,7 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
           }}
           className="mt-6 rounded-full px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-primary hover:text-text"
         >
-          Отправить ещё
+          {emailSignup.successButton}
         </button>
       </div>
     )
@@ -163,50 +182,60 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
   return (
     <form onSubmit={handleSubmit} className="liquid-panel p-6 sm:p-8">
       <div className="mb-6 text-center">
-        <RelayStatusBadge waitlistStatus={waitlistStatus} />
+        <RelayStatusBadge waitlistStatus={waitlistStatus} labels={emailSignup.relay} />
         <h3 className="mt-4 font-display text-xl tracking-[-0.03em] text-text sm:text-2xl">
-          Откройте свою AURA
+          {emailSignup.title}
         </h3>
         <p className="mt-2 text-base text-text-soft">
-          Выберите ритуал, оставьте контакт и зафиксируйте персональный сигнал.
+          {emailSignup.description}
         </p>
         <p className="mt-3 text-sm leading-6 text-text-soft">
           {statusDescription}
         </p>
+        {!waitlistStatus.acceptingSubmissions && (
+          <div className="mt-3 rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-4 text-left">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
+              {privacyCenter.pendingRequests}: {waitlistState.pending.length}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-text-soft">
+              {queueMessage}
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="space-y-4">
         <div>
           <label htmlFor="name" className="sr-only">
-            Как вас представить в AURA
+            {emailSignup.nameLabel}
           </label>
           <input
             type="text"
             id="name"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="Как вас представить в AURA"
+            placeholder={emailSignup.namePlaceholder}
             className="w-full rounded-xl border border-white/10 bg-surface/50 px-4 py-3 text-base text-text placeholder:text-text-soft outline-none transition-all duration-300 focus:border-primary/50 focus:bg-surface-elevated focus:shadow-[0_0_0_3px_rgba(111,124,255,0.15)]"
           />
         </div>
 
         <div>
           <label htmlFor="email" className="sr-only">
-            Email для раннего доступа
+            {emailSignup.emailLabel}
           </label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="Ваш email — пришлём следующий шаг"
+            placeholder={emailSignup.emailPlaceholder}
             className="w-full rounded-xl border border-white/10 bg-surface/50 px-4 py-3 text-base text-text placeholder:text-text-soft outline-none transition-all duration-300 focus:border-primary/50 focus:bg-surface-elevated focus:shadow-[0_0_0_3px_rgba(111,124,255,0.15)]"
           />
         </div>
 
         <fieldset>
           <legend className="mb-2 block text-sm font-semibold uppercase tracking-[0.16em] text-secondary">
-            Выберите ритуал
+            {emailSignup.ritualLegend}
           </legend>
           <div className="grid grid-cols-3 gap-2">
             {ritualOptions.map((option) => (
@@ -232,10 +261,10 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
             ))}
           </div>
           <p className="mt-2 text-sm leading-6 text-text-soft">
-            Интенсивность из конфигуратора будет отправлена вместе с заявкой: {experience.intensity}%.
+            {emailSignup.intensitySummary}: {experience.intensity}%.
           </p>
           <p className="mt-1 text-sm leading-6 text-text-soft">
-            Advisor profile: {experience.wearMoment} / {experience.ecosystem} / {experience.fitPreference}.
+            {emailSignup.advisorSummaryPrefix}: {wearLabel} / {ecosystemLabel} / {fitLabel}.
           </p>
         </fieldset>
 
@@ -246,7 +275,7 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
             onChange={(event) => setContactConsent(event.target.checked)}
             className="mt-1 h-5 w-5 rounded border-white/20 bg-white/5 text-primary"
           />
-          <span>Можно связаться со мной по email, когда AURA перейдёт к следующему этапу запуска.</span>
+          <span>{emailSignup.contactConsent}</span>
         </label>
 
         <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 text-sm leading-6 text-text-soft">
@@ -255,14 +284,14 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
               type="checkbox"
               checked={privacyAccepted}
               onChange={(event) => setPrivacyAccepted(event.target.checked)}
-              className="mt-1 h-5 w-5 rounded border-white/20 bg-white/5 text-primary"
-            />
-            <span>
-              Я прочитал privacy notice и понимаю, как AURA хранит consent, персонализацию и очередь заявок.
-            </span>
+            className="mt-1 h-5 w-5 rounded border-white/20 bg-white/5 text-primary"
+          />
+          <span>
+              {emailSignup.privacyConsent}
+          </span>
           </label>
           <button type="button" onClick={onOpenPrivacyCenter} className="mt-3 text-primary hover:text-text">
-            Открыть privacy controls
+            {emailSignup.openPrivacyControls}
           </button>
         </div>
 
@@ -277,7 +306,7 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
           disabled={status === 'loading'}
           className="primary-button w-full py-4 text-sm uppercase tracking-[0.2em]"
         >
-          {status === 'loading' ? 'Отправка...' : 'Сохранить ранний доступ'}
+          {status === 'loading' ? emailSignup.submitLoading : emailSignup.submitIdle}
         </button>
       </div>
     </form>

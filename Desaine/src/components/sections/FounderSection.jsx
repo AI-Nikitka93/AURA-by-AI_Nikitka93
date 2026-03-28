@@ -1,7 +1,10 @@
 import { ArrowRight } from 'lucide-react'
-import { founderContent } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function FounderSection() {
+  const { copy } = useSiteCopy()
+  const { founderContent } = copy
+
   return (
     <section id="founder" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell grid items-center gap-6 lg:grid-cols-2 lg:gap-10">

@@ -1,16 +1,19 @@
 import GlassCard from '../ui/GlassCard'
 import SectionHeading from '../ui/SectionHeading'
 import RitualConfigurator from './RitualConfigurator'
-import { benefitCards } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function BenefitsSection() {
+  const { copy } = useSiteCopy()
+  const { benefitCards, benefitsSection } = copy
+
   return (
     <section id="benefits" className="py-6 sm:py-8 lg:py-10">
       <div className="section-shell">
         <SectionHeading
-          eyebrow="Benefits"
-          title="Технология, которая выглядит как редкость"
-          description="Stitch-макет был очищен от неподтвержденных claims и приведен к brand/copy-системе AURA: статус, ритуал, discreet intelligence."
+          eyebrow={benefitsSection.eyebrow}
+          title={benefitsSection.title}
+          description={benefitsSection.description}
           align="left"
         />
 
@@ -52,8 +55,6 @@ export default function BenefitsSection() {
             )
           })}
         </div>
-
-        {/* Ritual Configurator */}
         <div className="reveal mt-4 sm:mt-6">
           <RitualConfigurator />
         </div>

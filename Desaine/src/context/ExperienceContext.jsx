@@ -11,8 +11,10 @@ import {
   sanitizeRitual,
   submitWaitlist,
 } from '../lib/waitlist'
+import { defaultLanguage, supportedLanguages } from '../data/landingContent'
 
 const CONSENT_STORAGE_KEY = 'aura:consent:v1'
+const LANGUAGE_STORAGE_KEY = 'aura:language:v1'
 const EXPERIENCE_STORAGE_KEY = 'aura:experience:v1'
 const WAITLIST_STORAGE_KEY = 'aura:waitlist:v1'
 
@@ -50,6 +52,7 @@ const ExperienceContext = createContext(null)
 const wearMomentOptions = new Set(['daily', 'evening', 'travel'])
 const ecosystemOptions = new Set(['ios', 'android', 'mixed'])
 const fitPreferenceOptions = new Set(['comfort', 'balanced', 'statement'])
+const supportedLanguageOptions = new Set(supportedLanguages)
 
 function readJsonStorage(key, fallbackValue) {
   if (typeof window === 'undefined') {
@@ -129,6 +132,33 @@ function resolveInitialExperience(consent) {
   }
 }
 
+function resolveInitialLanguage() {
+  if (typeof window === 'undefined') {
+    return defaultLanguage
+  }
+
+  const query = new URLSearchParams(window.location.search)
+  const languageFromUrl = query.get('lang')
+
+  if (supportedLanguageOptions.has(languageFromUrl)) {
+    return languageFromUrl
+  }
+
+  const savedLanguage = readJsonStorage(LANGUAGE_STORAGE_KEY, null)
+
+  if (supportedLanguageOptions.has(savedLanguage)) {
+    return savedLanguage
+  }
+
+  const browserLanguage = window.navigator?.language?.toLowerCase?.() || ''
+
+  if (browserLanguage.startsWith('ru')) {
+    return 'ru'
+  }
+
+  return 'en'
+}
+
 function createLocalSubmission(payload) {
   return {
     localId: globalThis.crypto?.randomUUID?.() || `pending-${Date.now()}`,
@@ -177,6 +207,7 @@ function unloadAnalyticsScript() {
 
 export function ExperienceProvider({ children }) {
   const gpcEnabled = typeof navigator !== 'undefined' && navigator.globalPrivacyControl === true
+  const [language, setLanguageState] = useState(resolveInitialLanguage)
   const [consent, setConsent] = useState(() => {
     const savedConsent = readJsonStorage(CONSENT_STORAGE_KEY, defaultConsent)
 
@@ -199,6 +230,15 @@ export function ExperienceProvider({ children }) {
 
   useEffect(() => {
     if (consent.functional) {
+      writeJsonStorage(LANGUAGE_STORAGE_KEY, language)
+      return
+    }
+
+    removeStorage(LANGUAGE_STORAGE_KEY)
+  }, [consent.functional, language])
+
+  useEffect(() => {
+    if (consent.functional) {
       writeJsonStorage(EXPERIENCE_STORAGE_KEY, experience)
       return
     }
@@ -218,6 +258,22 @@ export function ExperienceProvider({ children }) {
 
     unloadAnalyticsScript()
   }, [consent.analytics, gpcEnabled])
+
+  useEffect(() => {
+    if (typeof document === 'undefined') {
+      return
+    }
+
+    document.documentElement.lang = language
+
+    const params = new URLSearchParams(window.location.search)
+
+    if (params.get('lang') !== language) {
+      params.set('lang', language)
+      const nextUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`
+      window.history.replaceState({}, '', nextUrl)
+    }
+  }, [language])
 
   const refreshWaitlistStatus = async () => {
     const nextStatus = await fetchWaitlistCapabilities()
@@ -331,6 +387,14 @@ export function ExperienceProvider({ children }) {
     }))
   }
 
+  const setLanguage = (nextLanguage) => {
+    if (!supportedLanguageOptions.has(nextLanguage)) {
+      return
+    }
+
+    setLanguageState(nextLanguage)
+  }
+
   const queueWaitlistSubmission = (payload) => {
     const entry = createLocalSubmission(payload)
 
@@ -405,22 +469,64 @@ export function ExperienceProvider({ children }) {
     params.set('wear', experience.wearMoment)
     params.set('ecosystem', experience.ecosystem)
     params.set('fit', experience.fitPreference)
+    params.set('lang', language)
 
     const shareUrl = `${window.location.origin}${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`
-
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(shareUrl)
-      return shareUrl
+    const sharePayload = {
+      title: language === 'ru' ? 'AURA - текущая конфигурация' : 'AURA current configuration',
+      text: language === 'ru'
+        ? 'Откройте мой персональный ритуал AURA.'
+        : 'Open my personalized AURA ritual.',
+      url: shareUrl,
     }
 
-    window.prompt('Скопируйте ссылку на текущую конфигурацию', shareUrl)
-    return shareUrl
+    if (navigator.share) {
+      try {
+        await navigator.share(sharePayload)
+        return {
+          url: shareUrl,
+          method: 'share',
+        }
+      } catch (error) {
+        if (error?.name === 'AbortError') {
+          return {
+            url: shareUrl,
+            method: 'cancelled',
+          }
+        }
+      }
+    }
+
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(shareUrl)
+        return {
+          url: shareUrl,
+          method: 'clipboard',
+        }
+      } catch {
+        // Fall through to a manual fallback below.
+      }
+    }
+
+    window.prompt(
+      language === 'ru'
+        ? 'Скопируйте ссылку на текущую конфигурацию'
+        : 'Copy the current configuration link',
+      shareUrl
+    )
+    return {
+      url: shareUrl,
+      method: 'prompt',
+    }
   }
 
   const value = {
     consent,
     updateConsent,
     gpcEnabled,
+    language,
+    setLanguage,
     experience,
     setRitual,
     setIntensity,

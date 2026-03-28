@@ -1,8 +1,11 @@
 import GlassCard from '../ui/GlassCard'
 import SectionHeading from '../ui/SectionHeading'
-import { caseStudyContent } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function CaseStudySection() {
+  const { copy } = useSiteCopy()
+  const { caseStudyContent } = copy
+
   return (
     <section id="case-study" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell">

@@ -1,6 +1,9 @@
-import { heroContent, heroHighlights } from '../../data/landingContent'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
 export default function HeroSection() {
+  const { copy } = useSiteCopy()
+  const { heroContent, heroHighlights } = copy
+
   return (
     <section id="ritual" className="relative overflow-hidden pt-8 sm:pt-10 lg:pt-12">
       <div className="section-shell grid items-center gap-4 pb-8 sm:gap-6 lg:grid-cols-2 lg:pb-10">

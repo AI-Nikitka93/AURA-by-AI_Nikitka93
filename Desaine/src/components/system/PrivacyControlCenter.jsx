@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useExperience } from '../../context/ExperienceContext'
+import useSiteCopy from '../../hooks/useSiteCopy'
 
-function RelayBadge({ waitlistStatus }) {
+function RelayBadge({ waitlistStatus, labels }) {
   const isLive = waitlistStatus.acceptingSubmissions
   const tone = isLive
     ? 'border-secondary/25 bg-secondary/10 text-secondary'
@@ -10,12 +11,14 @@ function RelayBadge({ waitlistStatus }) {
 
   return (
     <span className={`inline-flex min-h-[36px] items-center rounded-full border px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] ${tone}`}>
-      {isLive ? 'Live relay active' : 'Device queue active'}
+      {isLive ? labels.live : labels.queue}
     </span>
   )
 }
 
 export default function PrivacyControlCenter({ isOpen, onClose }) {
+  const { copy } = useSiteCopy()
+  const { privacyCenter, advisor, ritualConfigurator } = copy
   const {
     consent,
     updateConsent,
@@ -27,6 +30,10 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
     clearPersonalization,
     clearPendingWaitlist,
   } = useExperience()
+  const wearLabel = advisor.wearMomentOptions.find((option) => option.id === experience.wearMoment)?.label || experience.wearMoment
+  const ecosystemLabel = advisor.ecosystemOptions.find((option) => option.id === experience.ecosystem)?.label || experience.ecosystem
+  const fitLabel = advisor.fitPreferenceOptions.find((option) => option.id === experience.fitPreference)?.label || experience.fitPreference
+  const ritualLabel = ritualConfigurator.rituals.find((ritual) => ritual.id === experience.ritual)?.name || experience.ritual
 
   useEffect(() => {
     if (!isOpen) {
@@ -63,29 +70,29 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
           type="button"
           onClick={onClose}
           className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-text-soft hover:text-text"
-          aria-label="Закрыть privacy center"
+          aria-label={privacyCenter.closeLabel}
         >
           <X className="h-4 w-4" />
         </button>
 
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Privacy Center</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">{privacyCenter.eyebrow}</p>
           <h2 className="mt-2 font-display text-[clamp(2rem,7vw,3.4rem)] leading-[0.96] tracking-[-0.05em] text-transparent heading-gradient">
-            Управляйте памятью, согласием и локальными данными
+            {privacyCenter.title}
           </h2>
           <p className="mt-3 max-w-2xl text-base leading-8 text-text-soft">
-            Здесь собраны все пользовательские сигналы AURA: what we remember, what we track and what we can export or clear.
+            {privacyCenter.description}
           </p>
         </div>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <RelayBadge waitlistStatus={waitlistStatus} />
+          <RelayBadge waitlistStatus={waitlistStatus} labels={privacyCenter.relay} />
           <span className="inline-flex min-h-[36px] items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-text-soft">
-            Pending requests: {waitlistState.pending.length}
+            {privacyCenter.pendingRequests}: {waitlistState.pending.length}
           </span>
           {gpcEnabled && (
             <span className="inline-flex min-h-[36px] items-center rounded-full border border-secondary/25 bg-secondary/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
-              GPC enabled
+              {privacyCenter.gpcEnabled}
             </span>
           )}
         </div>
@@ -93,12 +100,12 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
         <div className="mt-6 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="space-y-4">
             <div className="liquid-glass rounded-[24px] p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Consent switches</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{privacyCenter.consentSwitches}</p>
               <div className="mt-4 grid gap-3 md:grid-cols-2">
                 <label className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <span className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Функциональная память</span>
+                  <span className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{privacyCenter.functionalTitle}</span>
                   <span className="mt-2 block text-sm leading-6 text-text-soft">
-                    Сохраняет ритуал и персональный state между визитами.
+                    {privacyCenter.functionalDescription}
                   </span>
                   <input
                     type="checkbox"
@@ -112,9 +119,9 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
                 </label>
 
                 <label className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <span className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Аналитика</span>
+                  <span className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{privacyCenter.analyticsTitle}</span>
                   <span className="mt-2 block text-sm leading-6 text-text-soft">
-                    Подключает privacy-friendly analytics только после явного согласия.
+                    {privacyCenter.analyticsDescription}
                   </span>
                   <input
                     type="checkbox"
@@ -131,23 +138,23 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
             </div>
 
             <div className="liquid-glass rounded-[24px] p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Local state snapshot</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{privacyCenter.snapshotTitle}</p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">Current ritual</p>
-                  <p className="mt-2 text-lg font-semibold text-text">{experience.ritual || 'Not selected yet'}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{privacyCenter.currentRitual}</p>
+                  <p className="mt-2 text-lg font-semibold text-text">{ritualLabel || privacyCenter.notSelected}</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">Intensity</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{privacyCenter.intensity}</p>
                   <p className="mt-2 text-lg font-semibold text-text">{experience.intensity}%</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">Wear moment</p>
-                  <p className="mt-2 text-lg font-semibold text-text">{experience.wearMoment}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{privacyCenter.wearMoment}</p>
+                  <p className="mt-2 text-lg font-semibold text-text">{wearLabel}</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">Companion profile</p>
-                  <p className="mt-2 text-lg font-semibold text-text">{experience.ecosystem} / {experience.fitPreference}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{privacyCenter.companionProfile}</p>
+                  <p className="mt-2 text-lg font-semibold text-text">{ecosystemLabel} / {fitLabel}</p>
                 </div>
               </div>
             </div>
@@ -155,26 +162,26 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
 
           <div className="space-y-4">
             <div className="liquid-glass rounded-[24px] p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Export and cleanup</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{privacyCenter.exportTitle}</p>
               <div className="mt-4 flex flex-col gap-3">
                 <button type="button" onClick={exportLocalData} className="primary-button px-5 py-3">
-                  Export local JSON
+                  {privacyCenter.exportButton}
                 </button>
                 <button type="button" onClick={clearPersonalization} className="ghost-button px-5 py-3">
-                  Clear personalization memory
+                  {privacyCenter.clearPersonalization}
                 </button>
                 <button type="button" onClick={clearPendingWaitlist} className="ghost-button px-5 py-3 text-error hover:text-error">
-                  Delete local waitlist queue
+                  {privacyCenter.clearQueue}
                 </button>
               </div>
             </div>
 
             <div className="liquid-glass rounded-[24px] p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">Transparency notes</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{privacyCenter.notesTitle}</p>
               <div className="mt-4 space-y-3 text-sm leading-6 text-text-soft">
-                <p>Необходимое хранение используется для сохранения consent state и локальной очереди заявок, если live relay недоступен.</p>
-                <p>Если relay включён, pending queue синхронизируется автоматически при следующем успешном соединении.</p>
-                <p>Analytics остаётся выключенной, если браузер отправляет Global Privacy Control signal.</p>
+                {privacyCenter.notes.map((note) => (
+                  <p key={note}>{note}</p>
+                ))}
               </div>
             </div>
           </div>

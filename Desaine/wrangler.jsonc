@@ -1,9 +1,17 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "aura-portfolio-worker",
+  "account_id": "1a76e4dc8dd16af3a2b94241a35e46d0",
   "main": "./worker/index.js",
   "compatibility_date": "2026-03-21",
   "workers_dev": true,
+  "ai": {
+    "binding": "AI"
+  },
+  "vars": {
+    "AURA_AI_MODEL": "@cf/meta/llama-3.1-8b-instruct",
+    "ALLOWED_ORIGINS": "https://ai-nikitka93.github.io,https://aura-portfolio-worker.aiartbora.workers.dev,https://aura-portfolio-worker.aiomdurman.workers.dev"
+  },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

@@ -10,6 +10,7 @@ export default defineConfig({
     colorScheme: 'dark',
     locale: 'ru-RU',
     screenshot: 'only-on-failure',
+    serviceWorkers: 'block',
   },
   webServer: {
     command: 'npm run preview -- --host 127.0.0.1 --port 4173',

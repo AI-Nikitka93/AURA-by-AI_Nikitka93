@@ -1,115 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   ArrowRight,
   Check,
   CircleGauge,
+  Copy,
   Fingerprint,
+  LoaderCircle,
   Smartphone,
   Sparkles,
 } from 'lucide-react'
 import { useExperience } from '../../context/ExperienceContext'
+import useSiteCopy from '../../hooks/useSiteCopy'
+import {
+  fetchAiSignalCapabilities,
+  generateAiSignalBrief,
+} from '../../lib/aiSignal'
+import { buildAuraInsight } from '../../lib/auraInsight'
 import GlassCard from '../ui/GlassCard'
 import SectionHeading from '../ui/SectionHeading'
 
-const wearMomentOptions = [
-  {
-    id: 'daily',
-    label: 'Daily Focus',
-    description: 'Для регулярного ношения, рабочих встреч и спокойного присутствия.',
-  },
-  {
-    id: 'evening',
-    label: 'Evening Signal',
-    description: 'Для вечерних выходов, событий и более заметного luminous-жеста.',
-  },
-  {
-    id: 'travel',
-    label: 'Travel Pulse',
-    description: 'Для перелётов, интенсивных дней и ритма, который должен чувствоваться быстрее.',
-  },
-]
-
-const ecosystemOptions = [
-  {
-    id: 'ios',
-    label: 'iPhone first',
-    description: 'Приоритет на аккуратный iOS-компаньон, reminders и privacy-first настройки.',
-  },
-  {
-    id: 'android',
-    label: 'Android first',
-    description: 'Гибкий Android flow, widgets и больше кастомного surface management.',
-  },
-  {
-    id: 'mixed',
-    label: 'Mixed ecosystem',
-    description: 'Нужна нейтральная совместимость между устройствами и сменой контекста.',
-  },
-]
-
-const fitPreferenceOptions = [
-  {
-    id: 'comfort',
-    label: 'Quiet comfort',
-    description: 'Минимум вмешательства, мягкая посадка и низкий порог заметности.',
-  },
-  {
-    id: 'balanced',
-    label: 'Balanced fit',
-    description: 'Равновесие между присутствием, посадкой и everyday-ritual use.',
-  },
-  {
-    id: 'statement',
-    label: 'Statement object',
-    description: 'Украшение должно быть частью образа и считываться сильнее.',
-  },
-]
-
-function getAdvisorRecommendation(experience) {
-  const wearMomentMap = {
-    daily: {
-      ritual: 'calm',
-      intensity: 42,
-      fitNote: 'Лучше держать посадку ближе к комфортной: указательный или средний палец, дневной wear loop.',
-    },
-    evening: {
-      ritual: 'glow',
-      intensity: 72,
-      fitNote: 'Можно выбирать чуть более выразительную посадку: средний палец или рука, которая чаще попадает в кадр.',
-    },
-    travel: {
-      ritual: 'pulse',
-      intensity: 64,
-      fitNote: 'Нужен более собранный fit и устойчивость к смене контекста: плотная, но не жёсткая посадка.',
-    },
-  }
-
-  const ecosystemMap = {
-    ios: 'Лучше показывать чистый iOS companion layer: reminders, privacy controls и мягкую нотификацию.',
-    android: 'Подходит сценарий с widgets, гибкой кастомизацией свечения и расширенными настройками quick actions.',
-    mixed: 'Стоит проектировать нейтральный account layer и device-agnostic sync без ощущения “приложение только под одну систему”.',
-  }
-
-  const fitBiasMap = {
-    comfort: {
-      ritual: 'calm',
-      intensityDelta: -8,
-      profileLabel: 'Discreet wear',
-    },
-    balanced: {
-      ritual: null,
-      intensityDelta: 0,
-      profileLabel: 'Balanced signature',
-    },
-    statement: {
-      ritual: 'glow',
-      intensityDelta: 10,
-      profileLabel: 'Editorial presence',
-    },
-  }
-
-  const wearMomentRecommendation = wearMomentMap[experience.wearMoment]
-  const fitBias = fitBiasMap[experience.fitPreference]
+function getAdvisorRecommendation(experience, advisorCopy) {
+  const wearMomentRecommendation = advisorCopy.wearMomentRecommendationMap[experience.wearMoment]
+  const fitBias = advisorCopy.fitBiasMap[experience.fitPreference]
   const ritual = fitBias.ritual || wearMomentRecommendation.ritual
   const intensity = Math.max(20, Math.min(90, wearMomentRecommendation.intensity + fitBias.intensityDelta))
 
@@ -117,12 +29,21 @@ function getAdvisorRecommendation(experience) {
     ritual,
     intensity,
     fitNote: wearMomentRecommendation.fitNote,
-    ecosystemNote: ecosystemMap[experience.ecosystem],
+    ecosystemNote: advisorCopy.ecosystemMap[experience.ecosystem],
     profileLabel: fitBias.profileLabel,
   }
 }
 
-function OptionCard({ icon: Icon, title, description, isActive, onClick }) {
+function sanitizeAiBrief(text) {
+  return String(text || '')
+    .replace(/\*\*/g, '')
+    .replace(/^#{1,6}\s*/gm, '')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+}
+
+function OptionCard({ icon: Icon, title, description, isActive, onClick, selectedLabel }) {
   return (
     <button
       type="button"
@@ -143,7 +64,7 @@ function OptionCard({ icon: Icon, title, description, isActive, onClick }) {
       {isActive && (
         <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
           <Check className="mr-2 h-4 w-4" />
-          Выбрано
+          {selectedLabel}
         </span>
       )}
     </button>
@@ -151,6 +72,8 @@ function OptionCard({ icon: Icon, title, description, isActive, onClick }) {
 }
 
 export default function ProductAdvisorSection() {
+  const { copy, language } = useSiteCopy()
+  const { advisor, ritualConfigurator } = copy
   const {
     experience,
     setRitual,
@@ -160,8 +83,95 @@ export default function ProductAdvisorSection() {
     setFitPreference,
   } = useExperience()
   const [applyState, setApplyState] = useState('idle')
+  const [insightCopyState, setInsightCopyState] = useState('idle')
+  const [isAiLoading, setIsAiLoading] = useState(false)
+  const [aiState, setAiState] = useState({
+    checked: false,
+    available: false,
+    label: '',
+    message: '',
+    model: null,
+    brief: '',
+    error: '',
+  })
 
-  const recommendation = getAdvisorRecommendation(experience)
+  const recommendation = getAdvisorRecommendation(experience, advisor)
+  const insight = buildAuraInsight({
+    advisorCopy: advisor,
+    experience,
+    language,
+    recommendation,
+    ritualCopy: ritualConfigurator,
+  })
+  const insightUi = language === 'ru'
+    ? {
+        eyebrow: 'AI Signal Brief',
+        description: 'Локально сгенерированное направление без платного API: помогает превратить выбор в ясный creative/product brief.',
+        copyButton: 'Скопировать brief',
+        copied: 'Бриф уже готов для вставки в заметки, ТЗ или письмо клиенту.',
+        idle: 'Можно использовать этот brief как zero-cost AI слой внутри кейса и будущего продукта.',
+        prompt: 'Скопируйте brief AURA',
+        generatorLabel: 'Персональный генератор',
+        generatorReady: 'Сгенерируйте готовое текстовое направление для этого профиля.',
+        generatorFallback: 'Если генерация временно недоступна, локальный brief всё равно остаётся полезным сценарием.',
+        generatorAction: 'Сгенерировать',
+        cloudflareLoading: 'Генерация...',
+        cloudflareResult: 'Персональный результат',
+        cloudflareError: 'Генерация сейчас не ответила. Локальный brief остаётся доступным.',
+      }
+    : {
+        eyebrow: 'AI Signal Brief',
+        description: 'A locally generated direction with no paid API: it turns the selection into a compact creative and product brief.',
+        copyButton: 'Copy brief',
+        copied: 'The brief is ready to paste into notes, a spec, or a client email.',
+        idle: 'You can use this brief as a zero-cost AI layer inside the case and future product work.',
+        prompt: 'Copy the AURA brief',
+        generatorLabel: 'Personal Generator',
+        generatorReady: 'Generate a finished text direction for this profile.',
+        generatorFallback: 'If generation is temporarily unavailable, the local brief still remains useful.',
+        generatorAction: 'Generate',
+        cloudflareLoading: 'Generating...',
+        cloudflareResult: 'Generated Result',
+        cloudflareError: 'Generation did not answer right now. The local brief is still available.',
+      }
+
+  useEffect(() => {
+    let isMounted = true
+
+    fetchAiSignalCapabilities().then((nextState) => {
+      if (!isMounted) {
+        return
+      }
+
+      setAiState((currentState) => ({
+        ...currentState,
+        checked: true,
+        available: nextState.available,
+        label: nextState.label,
+        message: nextState.message,
+        model: nextState.model,
+      }))
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  useEffect(() => {
+    setAiState((currentState) => ({
+      ...currentState,
+      brief: '',
+      error: '',
+    }))
+  }, [
+    experience.wearMoment,
+    experience.ecosystem,
+    experience.fitPreference,
+    recommendation.ritual,
+    recommendation.intensity,
+    language,
+  ])
 
   const applyRecommendation = () => {
     setRitual(recommendation.ritual)
@@ -170,13 +180,78 @@ export default function ProductAdvisorSection() {
     window.setTimeout(() => setApplyState('idle'), 2200)
   }
 
+  const copyInsight = async () => {
+    const fullBrief = aiState.brief
+      ? `${insight.plainText}\n\n${insightUi.cloudflareResult}\n${aiState.brief}`
+      : insight.plainText
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(fullBrief)
+      } else {
+        window.prompt(insightUi.prompt, fullBrief)
+      }
+
+      setInsightCopyState('copied')
+      window.setTimeout(() => setInsightCopyState('idle'), 2200)
+    } catch {
+      window.prompt(insightUi.prompt, fullBrief)
+      setInsightCopyState('copied')
+      window.setTimeout(() => setInsightCopyState('idle'), 2200)
+    }
+  }
+
+  const handleGenerateAi = async () => {
+    setIsAiLoading(true)
+    setAiState((currentState) => ({
+      ...currentState,
+      error: '',
+    }))
+
+    try {
+      const response = await generateAiSignalBrief({
+        language,
+        profileLabel: recommendation.profileLabel,
+        ritual: recommendation.ritual,
+        intensity: recommendation.intensity,
+        wearMoment: experience.wearMoment,
+        wearLabel: advisor.wearMomentOptions.find((option) => option.id === experience.wearMoment)?.label || experience.wearMoment,
+        ecosystem: experience.ecosystem,
+        ecosystemLabel: advisor.ecosystemOptions.find((option) => option.id === experience.ecosystem)?.label || experience.ecosystem,
+        fitPreference: experience.fitPreference,
+        fitLabel: advisor.fitPreferenceOptions.find((option) => option.id === experience.fitPreference)?.label || experience.fitPreference,
+        fitNote: recommendation.fitNote,
+        ecosystemNote: recommendation.ecosystemNote,
+        localSummary: insight.summary,
+        localDirection: insight.direction,
+      })
+
+      setAiState((currentState) => ({
+        ...currentState,
+        available: true,
+        label: response.label || currentState.label,
+        message: response.message || currentState.message,
+        model: response.model || currentState.model,
+        brief: sanitizeAiBrief(response.brief),
+        error: '',
+      }))
+    } catch {
+      setAiState((currentState) => ({
+        ...currentState,
+        error: insightUi.cloudflareError,
+      }))
+    } finally {
+      setIsAiLoading(false)
+    }
+  }
+
   return (
     <section id="advisor" className="py-8 sm:py-10 lg:py-12">
       <div className="section-shell">
         <SectionHeading
-          eyebrow="Guided Fit"
-          title="Подберите посадку, ритуал и экосистему до заявки"
-          description="Этот блок добавляет сайту product-grade сценарий выбора: как AURA будет носиться, с какой системой жить и какой сигнал стоит активировать по умолчанию."
+          eyebrow={advisor.eyebrow}
+          title={advisor.title}
+          description={advisor.description}
         />
 
         <div className="mt-5 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
@@ -184,10 +259,10 @@ export default function ProductAdvisorSection() {
             <GlassCard className="space-y-4">
               <div className="flex items-center gap-3">
                 <Fingerprint className="h-5 w-5 text-secondary" />
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">1. Когда AURA будет жить активнее всего</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{advisor.steps.wearMoment}</p>
               </div>
               <div className="grid gap-3 md:grid-cols-3">
-                {wearMomentOptions.map((option) => (
+                {advisor.wearMomentOptions.map((option) => (
                   <OptionCard
                     key={option.id}
                     icon={Fingerprint}
@@ -195,6 +270,7 @@ export default function ProductAdvisorSection() {
                     description={option.description}
                     isActive={experience.wearMoment === option.id}
                     onClick={() => setWearMoment(option.id)}
+                    selectedLabel={advisor.selected}
                   />
                 ))}
               </div>
@@ -203,10 +279,10 @@ export default function ProductAdvisorSection() {
             <GlassCard className="space-y-4">
               <div className="flex items-center gap-3">
                 <Smartphone className="h-5 w-5 text-secondary" />
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">2. Какая экосистема должна поддерживать опыт</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{advisor.steps.ecosystem}</p>
               </div>
               <div className="grid gap-3 md:grid-cols-3">
-                {ecosystemOptions.map((option) => (
+                {advisor.ecosystemOptions.map((option) => (
                   <OptionCard
                     key={option.id}
                     icon={Smartphone}
@@ -214,6 +290,7 @@ export default function ProductAdvisorSection() {
                     description={option.description}
                     isActive={experience.ecosystem === option.id}
                     onClick={() => setEcosystem(option.id)}
+                    selectedLabel={advisor.selected}
                   />
                 ))}
               </div>
@@ -222,10 +299,10 @@ export default function ProductAdvisorSection() {
             <GlassCard className="space-y-4">
               <div className="flex items-center gap-3">
                 <CircleGauge className="h-5 w-5 text-secondary" />
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">3. Как украшение должно ощущаться на руке</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-text">{advisor.steps.fitPreference}</p>
               </div>
               <div className="grid gap-3 md:grid-cols-3">
-                {fitPreferenceOptions.map((option) => (
+                {advisor.fitPreferenceOptions.map((option) => (
                   <OptionCard
                     key={option.id}
                     icon={CircleGauge}
@@ -233,52 +310,131 @@ export default function ProductAdvisorSection() {
                     description={option.description}
                     isActive={experience.fitPreference === option.id}
                     onClick={() => setFitPreference(option.id)}
+                    selectedLabel={advisor.selected}
                   />
                 ))}
               </div>
             </GlassCard>
+
+            {aiState.brief && (
+              <GlassCard className="border border-primary/15 bg-primary/[0.04]">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                      {insightUi.cloudflareResult}
+                    </p>
+                    <h4 className="mt-2 font-display text-2xl tracking-[-0.03em] text-text">
+                      {insight.title}
+                    </h4>
+                  </div>
+                  <button type="button" onClick={copyInsight} className="ghost-button px-4 py-2.5 text-xs uppercase tracking-[0.16em]">
+                    <Copy className="mr-2 h-4 w-4" />
+                    {insightUi.copyButton}
+                  </button>
+                </div>
+
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-text-soft">
+                  {insightUi.description}
+                </p>
+                <p className="mt-5 whitespace-pre-line text-base leading-8 text-text-soft">
+                  {aiState.brief}
+                </p>
+              </GlassCard>
+            )}
           </div>
 
           <GlassCard className="h-fit space-y-5 xl:sticky xl:top-24">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Advisor Output</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">{advisor.output.eyebrow}</p>
               <h3 className="mt-3 font-display text-2xl tracking-[-0.04em] text-text">
                 {recommendation.profileLabel}
               </h3>
               <p className="mt-3 text-sm leading-7 text-text-soft">
-                Ниже рекомендация, которую можно сразу применить к конфигуратору и передать в early access flow.
+                {advisor.output.description}
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
               <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">Recommended ritual</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{advisor.output.ritualLabel}</p>
                 <p className="mt-2 font-display text-2xl capitalize text-text">{recommendation.ritual}</p>
-                <p className="mt-2 text-sm leading-6 text-text-soft">Интенсивность по умолчанию: {recommendation.intensity}%</p>
+                <p className="mt-2 text-sm leading-6 text-text-soft">{advisor.output.intensityLabel}: {recommendation.intensity}%</p>
               </div>
               <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">Fit guidance</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{advisor.output.fitGuidance}</p>
                 <p className="mt-2 text-sm leading-6 text-text-soft">{recommendation.fitNote}</p>
               </div>
               <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">Companion logic</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{advisor.output.companionLogic}</p>
                 <p className="mt-2 text-sm leading-6 text-text-soft">{recommendation.ecosystemNote}</p>
+              </div>
+            </div>
+
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{insightUi.eyebrow}</p>
+              <h4 className="mt-2 font-display text-xl tracking-[-0.03em] text-text">
+                {insight.title}
+              </h4>
+              <p className="mt-3 text-sm leading-6 text-text-soft">
+                {insightUi.description}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {insight.highlights.map((highlight) => (
+                  <span
+                    key={highlight}
+                    className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary"
+                  >
+                    {highlight}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-4 rounded-[20px] border border-white/10 bg-black/20 p-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
+                      {insightUi.generatorLabel}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-text-soft">
+                      {aiState.available ? insightUi.generatorReady : insightUi.generatorFallback}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleGenerateAi}
+                    disabled={!aiState.available || isAiLoading}
+                    className={`ghost-button px-4 py-2.5 text-xs uppercase tracking-[0.16em] ${
+                      aiState.available ? '' : 'cursor-not-allowed opacity-60'
+                    }`}
+                  >
+                    {isAiLoading ? (
+                      <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                      <Sparkles className="mr-2 h-4 w-4" />
+                    )}
+                    {isAiLoading ? insightUi.cloudflareLoading : insightUi.generatorAction}
+                  </button>
+                </div>
+                {aiState.error && (
+                  <p className="mt-3 text-sm leading-6 text-error">
+                    {aiState.error}
+                  </p>
+                )}
               </div>
             </div>
 
             <div className="flex flex-col gap-3">
               <button type="button" onClick={applyRecommendation} className="primary-button px-6 py-3.5">
                 <Sparkles className="mr-2 h-4 w-4" />
-                Применить к ритуалу AURA
+                {advisor.output.applyButton}
               </button>
               <a href="#cta" className="ghost-button px-6 py-3.5">
-                Перейти в early access
+                {advisor.output.ctaButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
               <p className="text-sm leading-6 text-text-soft">
                 {applyState === 'applied'
-                  ? 'Рекомендация уже перенесена в конфигуратор и форму заявки.'
-                  : 'После применения ритуал и интенсивность автоматически попадут в configurator и waitlist form.'}
+                  ? advisor.output.applied
+                  : advisor.output.idle}
               </p>
             </div>
           </GlassCard>
