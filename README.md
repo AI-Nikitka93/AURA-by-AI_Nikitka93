@@ -1,5 +1,7 @@
 # AURA by AI_Nikitka93
 
+[English](README.md) | [Русский](README.ru.md)
+
 Conceptual portfolio landing page for a premium smart jewelry brand, built as a privacy-first React experience.
 
 - Live demo: https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/
