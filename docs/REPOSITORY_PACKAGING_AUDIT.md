@@ -32,5 +32,5 @@ The public GitHub repository is not fully packaged yet on the remote side. The c
 
 - The new README and community files are only local until committed and pushed.
 - The GitHub About panel is empty on the public repo.
-- There is still no explicit `LICENSE` file, so the trust surface is clear but not open-source ready.
+- The repository now has an explicit proprietary `LICENSE`, so the reuse posture is clear, but it remains intentionally non-open-source.
 - A screenshot of the site exists now, but the public repo page will not show it until the updated README is pushed.

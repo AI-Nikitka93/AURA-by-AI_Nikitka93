@@ -78,4 +78,5 @@ Push to `main`; the GitHub Actions workflow publishes `Desaine/dist` to GitHub P
 
 ## License
 
-This repository is published as a portfolio showcase. No reuse license is granted; source, copy, and design assets remain all rights reserved unless the maintainer says otherwise.
+This repository is published as a portfolio showcase under a proprietary
+all-rights-reserved notice. See [LICENSE](LICENSE).
