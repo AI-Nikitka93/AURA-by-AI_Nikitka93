@@ -1,0 +1,40 @@
+name: Feature request
+description: Propose a new section, interaction, or packaging improvement.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: Describe the change you want to see and why it matters.
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+      placeholder: What should change?
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Why it helps
+      placeholder: What problem does it solve?
+      render: markdown
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - README / docs
+        - Visual design
+        - UI interaction
+        - Deploy / CI
+        - Privacy / security
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes or references
+      render: markdown

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issue
+    url: https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93/security/advisories/new
+    about: Use a private security advisory for vulnerabilities, privacy issues, or exploit reports.
+  - name: Project history
+    url: https://github.com/AI-Nikitka93/AURA-by-AI_Nikitka93/blob/main/docs/PROJECT_HISTORY.md
+    about: Review the project history before opening a support request.
