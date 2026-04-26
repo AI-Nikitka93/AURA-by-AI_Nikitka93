@@ -77,3 +77,18 @@
 - Новый публичный Cloudflare URL проекта: `https://aura-portfolio-worker.aiartbora.workers.dev`.
 - Проверено: `GET /api/aura-signal` возвращает `available: true`, а `POST /api/aura-signal` успешно генерирует AI brief.
 - GitHub Pages фронтенд перенастроен на новый Worker URL для waitlist и AI-запросов.
+
+Обновление 2026-04-27 00:08:
+- Выполнен release build: `npm run build` собрал `Desaine/dist/index.html` и `Desaine/dist/privacy.html`.
+- Создан `RELEASE_RUNBOOK.md`, восстановлены минимальные memory-файлы (`AGENTS.md`, `docs/EXEC_PLAN.md`, `docs/PROJECT_MAP.md`, `docs/DECISIONS.md`, локальные account/secret registry).
+- GitHub release path выполнен: commit `aa72830` запушен в `main`.
+- Live smoke подтвердил GitHub Pages frontend: `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/` -> `200`, `.../privacy.html` -> `200`.
+- Cloudflare Worker deploy не выполнен: `npx wrangler deploy` вернул authentication error `10000`, потому что активный Wrangler OAuth account id `35cf1c14e9e9c6adcb3ab43d0082ba0c` не совпадает с `Desaine/wrangler.jsonc` account id `1a76e4dc8dd16af3a2b94241a35e46d0`.
+- Smoke по текущему live Worker показал, что backend release не дошёл: `POST https://aura-portfolio-worker.aiartbora.workers.dev/api/aura-signal` без `Origin` всё ещё отвечает `200`, а не `403`.
+
+Текущий статус:
+- Frontend release: подтверждён.
+- Backend Worker release: BLOCKED по Cloudflare account mismatch.
+
+Следующий шаг:
+- Авторизовать Wrangler под account `1a76e4dc8dd16af3a2b94241a35e46d0` или выдать token этого аккаунта, затем повторить `npx wrangler deploy` и smoke `POST /api/aura-signal` без `Origin`.

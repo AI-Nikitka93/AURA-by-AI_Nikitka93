@@ -161,3 +161,12 @@
 Следующий шаг: на основе аудита выбрать 1-2 фичи для реализации через P-00, начиная с настоящего lead capture + CRM и product personalization flow.
 Что блокирует: нет
 Что не проверено: живые conversion-метрики и поведение реальных пользователей, так как лендинг пока не подключён к production backend.
+
+Дата и время: 2026-04-27 00:08
+Роль: P-DEPLOY.
+Сделано: Выполнен release build, создан `RELEASE_RUNBOOK.md`, сделан release commit и push в `main`, проведён live smoke для GitHub Pages и текущего Worker. Worker deploy попытался выполниться через `npx wrangler deploy`, но остановился на Cloudflare account mismatch.
+Изменены файлы: AGENTS.md, RELEASE_RUNBOOK.md, docs/ACCOUNT_REGISTRY.local.md, docs/DECISIONS.md, docs/EXEC_PLAN.md, docs/PROJECT_MAP.md, docs/PROJECT_HISTORY.md, docs/SECRETS_INDEX.local.md, docs/STATE.md
+Результат/доказательство: `npm run build` -> success; `npx wrangler deploy` -> `Authentication error [code: 10000]`; `git push origin main` -> success (`aa72830`); `curl.exe -s -o NUL -w "%{http_code}" https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/` -> `200`; `curl.exe -s -o NUL -w "%{http_code}" https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html` -> `200`; `node` POST to `https://aura-portfolio-worker.aiartbora.workers.dev/api/aura-signal` without `Origin` -> `200`
+Локальный account context: обновлён в /docs/ACCOUNT_REGISTRY.local.md
+Локальная карта секретов: без изменений
+Следующий шаг: переподключить Wrangler к Cloudflare account `1a76e4dc8dd16af3a2b94241a35e46d0` и повторить deploy/smoke именно для live Worker.
