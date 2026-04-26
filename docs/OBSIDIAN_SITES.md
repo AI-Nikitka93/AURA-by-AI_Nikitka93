@@ -3,7 +3,7 @@
 ## САЙТ номер 1 — AURA by AI_Nikitka93
 - **Дата:** 2026-03-21
 - **Сайт:** https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/
-- **Cloudflare:** https://aura-portfolio-worker.aiomdurman.workers.dev
+- **Cloudflare:** https://aura-portfolio-worker.aiartbora.workers.dev
 - **Email:** nikitka9318@gmail.com
 - **Тип:** одностраничный portfolio concept landing page
 - **Что это:** премиальный concept-сайт про smart jewelry бренд AURA by AI_Nikitka93

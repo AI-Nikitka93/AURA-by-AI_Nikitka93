@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-04-26T16:16:03.939Z",
+  "scenarios": [
+    {
+      "name": "local_waitlist_get_baseline",
+      "iterations": 30,
+      "concurrency": 1,
+      "errorRate": 0,
+      "okRate": 1,
+      "statusCounts": {
+        "200": 30
+      },
+      "latency_ms": {
+        "p50": 2.3730000000000047,
+        "p95": 4.232600000000005,
+        "p99": 44.4937,
+        "max": 44.4937,
+        "min": 1.6784000000000106,
+        "avg": 3.9172500000000015
+      },
+      "size_bytes": {
+        "p50": 142,
+        "p95": 142
+      },
+      "sample": [
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 44.4937,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 3.6554,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 3.1758999999999986,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 4.232600000000005,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 3.4446999999999974,
+          "size_bytes": 142
+        }
+      ]
+    },
+    {
+      "name": "local_waitlist_get_burst",
+      "iterations": 120,
+      "concurrency": 12,
+      "errorRate": 0,
+      "okRate": 1,
+      "statusCounts": {
+        "200": 120
+      },
+      "latency_ms": {
+        "p50": 11.90300000000002,
+        "p95": 24.4015,
+        "p99": 25.669399999999996,
+        "max": 25.825199999999995,
+        "min": 4.731800000000021,
+        "avg": 12.539524999999998
+      },
+      "size_bytes": {
+        "p50": 142,
+        "p95": 142
+      },
+      "sample": [
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 4.731800000000021,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 13.056600000000003,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 22.707300000000004,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 24.020700000000005,
+          "size_bytes": 142
+        },
+        {
+          "ok": true,
+          "status": 200,
+          "duration_ms": 24.297499999999985,
+          "size_bytes": 142
+        }
+      ]
+    },
+    {
+      "name": "local_waitlist_post_degraded",
+      "iterations": 24,
+      "concurrency": 6,
+      "errorRate": 0,
+      "okRate": 0,
+      "statusCounts": {
+        "503": 24
+      },
+      "latency_ms": {
+        "p50": 7.84040000000001,
+        "p95": 22.159,
+        "p99": 38.0071,
+        "max": 38.0071,
+        "min": 5.066699999999997,
+        "avg": 11.5251625
+      },
+      "size_bytes": {
+        "p50": 84,
+        "p95": 84
+      },
+      "sample": [
+        {
+          "ok": false,
+          "status": 503,
+          "duration_ms": 38.0071,
+          "size_bytes": 84,
+          "body": "{\"code\":\"waitlist_not_configured\",\"message\":\"Waitlist relay is not configured yet.\"}"
+        },
+        {
+          "ok": false,
+          "status": 503,
+          "duration_ms": 20.677,
+          "size_bytes": 84,
+          "body": "{\"code\":\"waitlist_not_configured\",\"message\":\"Waitlist relay is not configured yet.\"}"
+        },
+        {
+          "ok": false,
+          "status": 503,
+          "duration_ms": 20.882400000000004,
+          "size_bytes": 84,
+          "body": "{\"code\":\"waitlist_not_configured\",\"message\":\"Waitlist relay is not configured yet.\"}"
+        }
+      ]
+    }
+  ]
+}

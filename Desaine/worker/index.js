@@ -4,11 +4,22 @@ const ecosystemOptions = new Set(['ios', 'android', 'mixed'])
 const fitPreferenceOptions = new Set(['comfort', 'balanced', 'statement'])
 const languageOptions = new Set(['ru', 'en'])
 const DEFAULT_AI_MODEL = '@cf/meta/llama-3.1-8b-instruct'
-const DEFAULT_ALLOWED_ORIGINS = [
+const ALLOWED_AI_ORIGINS = new Set([
   'https://ai-nikitka93.github.io',
-  'https://aura-portfolio-worker.aiartbora.workers.dev',
-  'https://aura-portfolio-worker.aiomdurman.workers.dev',
+  'http://localhost:5173',
+])
+const AI_PROMPT_TEXT_FIELDS = [
+  'profileLabel',
+  'wearLabel',
+  'ecosystemLabel',
+  'fitLabel',
+  'fitNote',
+  'ecosystemNote',
+  'localSummary',
+  'localDirection',
 ]
+const MAX_AI_PROMPT_FIELD_LENGTH = 320
+const MAX_AI_PROMPT_TOTAL_LENGTH = 1400
 
 function json(data, init = {}) {
   const headers = new Headers(init.headers)
@@ -40,29 +51,18 @@ function getAiMode(env) {
   return env.AI ? 'workers-ai' : 'fallback'
 }
 
-function getAllowedOrigins(env) {
-  if (!env.ALLOWED_ORIGINS) {
-    return DEFAULT_ALLOWED_ORIGINS
-  }
-
-  return env.ALLOWED_ORIGINS
-    .split(',')
-    .map((value) => value.trim())
-    .filter(Boolean)
+function readAiPromptTextField(payload, fieldName) {
+  return typeof payload[fieldName] === 'string' ? payload[fieldName].trim() : ''
 }
 
-function isAllowedOrigin(request, env) {
+function isAllowedAiOrigin(request) {
   const origin = request.headers.get('origin')
 
   if (!origin) {
-    return true
+    return false
   }
 
-  if (origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')) {
-    return true
-  }
-
-  return getAllowedOrigins(env).includes(origin)
+  return ALLOWED_AI_ORIGINS.has(origin)
 }
 
 function validatePayload(payload) {
@@ -113,6 +113,8 @@ function validateAiPayload(payload) {
   const wearMoment = typeof payload.wearMoment === 'string' ? payload.wearMoment : ''
   const ecosystem = typeof payload.ecosystem === 'string' ? payload.ecosystem : ''
   const fitPreference = typeof payload.fitPreference === 'string' ? payload.fitPreference : ''
+  const promptFieldLengths = AI_PROMPT_TEXT_FIELDS.map((fieldName) => readAiPromptTextField(payload, fieldName).length)
+  const totalPromptLength = promptFieldLengths.reduce((sum, fieldLength) => sum + fieldLength, 0)
 
   if (!languageOptions.has(language)) {
     return 'Language is invalid.'
@@ -136,6 +138,14 @@ function validateAiPayload(payload) {
 
   if (!fitPreferenceOptions.has(fitPreference)) {
     return 'Fit preference is invalid.'
+  }
+
+  if (promptFieldLengths.some((fieldLength) => fieldLength > MAX_AI_PROMPT_FIELD_LENGTH)) {
+    return 'AI prompt input is too long.'
+  }
+
+  if (totalPromptLength > MAX_AI_PROMPT_TOTAL_LENGTH) {
+    return 'AI prompt input is too long.'
   }
 
   return null
@@ -179,15 +189,15 @@ function createAiMessages(payload) {
         role: 'user',
         content:
           `Собери AI brief для AURA.\n` +
-          `Профиль: ${payload.profileLabel}\n` +
+          `Профиль: ${readAiPromptTextField(payload, 'profileLabel')}\n` +
           `Ритуал: ${payload.ritual} (${payload.intensity}%)\n` +
-          `Сценарий ношения: ${payload.wearLabel}\n` +
-          `Экосистема: ${payload.ecosystemLabel}\n` +
-          `Посадка: ${payload.fitLabel}\n` +
-          `Подсказка по посадке: ${payload.fitNote}\n` +
-          `Логика companion-опыта: ${payload.ecosystemNote}\n` +
-          `Локальное резюме: ${payload.localSummary}\n` +
-          `Локальное направление: ${payload.localDirection}\n` +
+          `Сценарий ношения: ${readAiPromptTextField(payload, 'wearLabel')}\n` +
+          `Экосистема: ${readAiPromptTextField(payload, 'ecosystemLabel')}\n` +
+          `Посадка: ${readAiPromptTextField(payload, 'fitLabel')}\n` +
+          `Подсказка по посадке: ${readAiPromptTextField(payload, 'fitNote')}\n` +
+          `Логика companion-опыта: ${readAiPromptTextField(payload, 'ecosystemNote')}\n` +
+          `Локальное резюме: ${readAiPromptTextField(payload, 'localSummary')}\n` +
+          `Локальное направление: ${readAiPromptTextField(payload, 'localDirection')}\n` +
           `Сделай текст полезным для портфолио-кейса и будущего luxury-tech продукта.`,
       },
     ]
@@ -208,15 +218,15 @@ function createAiMessages(payload) {
       role: 'user',
       content:
         `Build an AI brief for AURA.\n` +
-        `Profile: ${payload.profileLabel}\n` +
+        `Profile: ${readAiPromptTextField(payload, 'profileLabel')}\n` +
         `Ritual: ${payload.ritual} (${payload.intensity}%)\n` +
-        `Wear context: ${payload.wearLabel}\n` +
-        `Ecosystem: ${payload.ecosystemLabel}\n` +
-        `Fit: ${payload.fitLabel}\n` +
-        `Fit guidance: ${payload.fitNote}\n` +
-        `Companion logic: ${payload.ecosystemNote}\n` +
-        `Local summary: ${payload.localSummary}\n` +
-        `Local direction: ${payload.localDirection}\n` +
+        `Wear context: ${readAiPromptTextField(payload, 'wearLabel')}\n` +
+        `Ecosystem: ${readAiPromptTextField(payload, 'ecosystemLabel')}\n` +
+        `Fit: ${readAiPromptTextField(payload, 'fitLabel')}\n` +
+        `Fit guidance: ${readAiPromptTextField(payload, 'fitNote')}\n` +
+        `Companion logic: ${readAiPromptTextField(payload, 'ecosystemNote')}\n` +
+        `Local summary: ${readAiPromptTextField(payload, 'localSummary')}\n` +
+        `Local direction: ${readAiPromptTextField(payload, 'localDirection')}\n` +
         `Make it useful both for a portfolio case and a future luxury-tech product direction.`,
     },
   ]
@@ -366,7 +376,7 @@ export default {
     }
 
     if (url.pathname === '/api/aura-signal' && request.method === 'POST') {
-      if (!isAllowedOrigin(request, env)) {
+      if (!isAllowedAiOrigin(request)) {
         return json({
           code: 'forbidden_origin',
           message: 'Origin is not allowed for AI signal generation.',

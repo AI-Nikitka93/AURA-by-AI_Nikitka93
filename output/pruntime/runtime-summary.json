@@ -1,0 +1,32 @@
+{
+  "local_first_run": {
+    "consent": "Принять всё",
+    "url": "http://127.0.0.1:4173/?lang=ru",
+    "ai_result_visible": true,
+    "local_result_hint": true
+  },
+  "public_sad_path": {
+    "consent": "Принять всё",
+    "invalid_email_error": "Please include an '@' in the email address. 'bad-email' is missing an '@'.",
+    "missing_privacy_error": "Подтвердите privacy notice перед отправкой заявки."
+  },
+  "public_happy_path": {
+    "consent": "Принять всё",
+    "generated_result_visible": true,
+    "privacy_modal_opened": true,
+    "first_success_contains_queue": true,
+    "second_success_contains_queue": true,
+    "queue_count_before_delete": 2,
+    "export_pending_count": 2,
+    "export_last_submission_mode": null,
+    "pending_after_delete": 0,
+    "pending_after_reload": 0,
+    "reloaded_privacy_opened": true,
+    "download": "M:\\Projects\\sites\\AURA by AI_Nikitka93\\output\\pruntime\\downloads\\aura-local-data-2026-04-26.json"
+  },
+  "public_ai_fallback": {
+    "consent": "Принять всё",
+    "generated_result_visible": true,
+    "fallback_message_visible": true
+  }
+}

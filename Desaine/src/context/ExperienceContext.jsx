@@ -11,6 +11,10 @@ import {
   sanitizeRitual,
   submitWaitlist,
 } from '../lib/waitlist'
+import {
+  sanitizeWaitlistState,
+  upsertPendingWaitlistEntry,
+} from '../lib/waitlistQueue'
 import { defaultLanguage, supportedLanguages } from '../data/landingContent'
 
 const CONSENT_STORAGE_KEY = 'aura:consent:v1'
@@ -159,14 +163,6 @@ function resolveInitialLanguage() {
   return 'en'
 }
 
-function createLocalSubmission(payload) {
-  return {
-    localId: globalThis.crypto?.randomUUID?.() || `pending-${Date.now()}`,
-    payload,
-    queuedAt: new Date().toISOString(),
-  }
-}
-
 function loadAnalyticsScript() {
   if (typeof document === 'undefined') {
     return
@@ -219,7 +215,7 @@ export function ExperienceProvider({ children }) {
   })
   const [experience, setExperience] = useState(() => resolveInitialExperience(consent))
   const [waitlistState, setWaitlistState] = useState(() =>
-    readJsonStorage(WAITLIST_STORAGE_KEY, defaultWaitlistState)
+    sanitizeWaitlistState(readJsonStorage(WAITLIST_STORAGE_KEY, defaultWaitlistState))
   )
   const [waitlistStatus, setWaitlistStatus] = useState(defaultWaitlistStatus)
   const flushInFlightRef = useRef(false)
@@ -396,14 +392,9 @@ export function ExperienceProvider({ children }) {
   }
 
   const queueWaitlistSubmission = (payload) => {
-    const entry = createLocalSubmission(payload)
-
     setWaitlistState((currentState) => ({
-      ...currentState,
-      pending: [entry, ...currentState.pending].slice(0, 10),
+      ...upsertPendingWaitlistEntry(currentState, payload),
     }))
-
-    return entry
   }
 
   const markWaitlistSubmitted = (payload, response) => {

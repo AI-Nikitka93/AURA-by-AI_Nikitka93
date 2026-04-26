@@ -18,18 +18,19 @@ import useScrollReveal from './hooks/useScrollReveal'
 
 export default function App() {
   const [isPrivacyCenterOpen, setIsPrivacyCenterOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pwa = usePwaInstall()
   const { copy } = useSiteCopy()
 
   useScrollReveal()
 
   useEffect(() => {
-    document.body.style.overflow = isPrivacyCenterOpen ? 'hidden' : ''
+    document.body.style.overflow = isPrivacyCenterOpen || isMobileMenuOpen ? 'hidden' : ''
 
     return () => {
       document.body.style.overflow = ''
     }
-  }, [isPrivacyCenterOpen])
+  }, [isPrivacyCenterOpen, isMobileMenuOpen])
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -68,7 +69,11 @@ export default function App() {
       {/* Background Gradients */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(111,124,255,0.16),transparent_38%),radial-gradient(circle_at_80%_18%,rgba(55,214,181,0.08),transparent_22%),linear-gradient(180deg,#090B10_0%,#0B0E14_48%,#090B10_100%)]" />
       
-      <Navbar items={copy.navigationItems} />
+      <Navbar
+        items={copy.navigationItems}
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuOpenChange={setIsMobileMenuOpen}
+      />
       <main className="relative z-10">
         <HeroSection />
         <BenefitsSection />
@@ -83,7 +88,7 @@ export default function App() {
         />
       </main>
       <Footer onOpenPrivacyCenter={() => setIsPrivacyCenterOpen(true)} />
-      <ConsentBanner />
+      <ConsentBanner isMenuOpen={isMobileMenuOpen} />
       <PrivacyControlCenter
         isOpen={isPrivacyCenterOpen}
         onClose={() => setIsPrivacyCenterOpen(false)}

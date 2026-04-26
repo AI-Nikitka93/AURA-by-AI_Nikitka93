@@ -37,3 +37,25 @@ _Последнее обновление: 2026-03-21 | Инженерный ИИ
 - Ключевая находка: можно попробовать assets-only Worker deployment c `workers.dev`, не требующий карты и отдельной авторизации, используя тот же `wrangler` аккаунт.
 - Вердикт актуальности: fallback реалистичен и совместим с текущим стеком проекта.
 - Рекомендация для следующего шага: создать `wrangler.jsonc` для assets-only Worker поверх `dist/` и проверить доступность `workers.dev` URL после deploy.
+
+## [ТЕМА: Functional standards 2026 for AURA product landing]
+_Последнее обновление: 2026-03-27 | Функциональный аудитор P-FUNCTIONAL._
+Статус: Актуально
+
+- Запрос: определить функциональные стандарты 2026 для product/portfolio landing в сегменте premium wearable-tech и сравнить текущий AURA с рынком.
+- Источники:
+  - https://web.dev/learn/pwa/installation/ | проверено 2026-03-27 | installability в современных web experiences опирается на manifest и install criteria
+  - https://developers.google.com/search/docs/appearance/structured-data/product | проверено 2026-03-27 | для продуктовых страниц Google рекомендует `Product` structured data и richer commerce markup
+  - https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/right-to-data-portability/ | проверено 2026-03-27 | у пользователей есть ожидание и право на машиночитаемый экспорт персональных данных
+  - https://help.shopify.com/en/manual/international/localization-and-translation | проверено 2026-03-27 | локализация и translation flows остаются базовым ожиданием для глобальных storefronts
+  - https://www.shopify.com/plus/solutions/international-ecommerce | проверено 2026-03-27 | market-specific content, localized URLs и tailored experiences — текущий стандарт growth-oriented commerce sites
+  - https://apps.shopify.com/pickzen | проверено 2026-03-27 | product quizzes и guided recommendation funnels стали массовым механизмом lead capture и product discovery
+  - https://support.ouraring.com/hc/lv/articles/42985877449619-Export-Share-Your-Oura-Data | проверено 2026-03-27 | Oura уже даёт data export / share flow
+  - https://support.ouraring.com/hc/en-us/articles/360025438734-How-to-Use-Apple-Health-with-Oura | проверено 2026-03-27 | Oura поддерживает platform integrations
+  - https://support.ouraring.com/hc/cs/articles/39512345699219-Oura-Advisor | проверено 2026-03-27 | Oura внедрила AI advisor поверх health data
+  - https://ringconn.com/pages/app-features | проверено 2026-03-27 | RingConn продвигает AI companion, sleep analytics и in-app guidance
+  - https://ringconn.com/blogs/newsroom/ringconn-app-update | проверено 2026-03-27 | RingConn app уже включает AI Health Partner, smart summaries и language expansion
+  - https://www.whoop.com/us/en/how-it-works | проверено 2026-03-27 | WHOOP строит ценность вокруг continuous monitoring + personalized coaching
+- Ключевая находка: в 2026 для wearable/product sites рынок ожидает уже не только красивый лендинг, а связку из реального lead/data flow, guided personalization, app/integration story, AI guidance и локализации.
+- Вердикт актуальности: данные свежие и достаточные для функционального аудита AURA без повторного поиска в ближайшие дни.
+- Рекомендация для следующего шага: первым делом превратить демонстрационный lead form и configurator в настоящий waitlist/personalization funnel, затем добавить integration layer и локализацию.

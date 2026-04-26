@@ -141,3 +141,23 @@
 Следующий шаг: при необходимости заменить внешнюю загрузку Google Fonts на self-hosted WOFF2 и проверить WebPageTest/Lighthouse с внешней сети пользователя
 Что блокирует: нет
 Что не проверено: субъективная скорость открытия у пользователя в его браузере после обновления кэша
+
+Дата и время: 2026-03-27 10:42
+Роль: Инженерный ИИ-ассистент для автономного выполнения задач в Windows 11.
+Сделано: После жалобы пользователя на недоступность сайта подтверждено, что Cloudflare `workers.dev` и `pages.dev` отвечают нестабильно или с reset/timeout. Выполнен fallback на GitHub Pages: изменения запушены в `main`, исправлен блокирующий deploy workflow, Pages deployment успешно завершён и публичный URL проверен через HTTP и Playwright.
+Изменены файлы: .github/workflows/deploy-github-pages.yml, docs/PROJECT_HISTORY.md, docs/STATE.md
+Результат/доказательство: `git push origin main` -> success (`d6b36be`); `gh run watch 23638131523 --exit-status` -> success; `curl.exe -I https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/` -> `200`; `curl.exe -I https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/index-Cqilkw2c.js` -> `200`; Playwright: `rootChildren: 1`, `images: 10`
+Решения/изменения контекста: рабочим публичным URL проекта теперь следует считать GitHub Pages, а не Cloudflare Worker
+Следующий шаг: при желании отключить/заменить проблемный Cloudflare public URL и привести metadata/canonical references к новому основному адресу
+Что блокирует: нет
+Что не проверено: открытие GitHub Pages из браузера пользователя на его конкретной сети после DNS/edge propagation
+
+Дата и время: 2026-03-27 10:55
+Роль: Функциональный аудитор P-FUNCTIONAL.
+Сделано: Выполнен функциональный аудит AURA как product/portfolio landing для premium wearable-tech. Код просканирован на реальные интерактивные сценарии, выполнен internet research по стандартам 2026 и собран конкурентный baseline по Oura, RingConn и WHOOP.
+Изменены файлы: docs/RESEARCH_LOG.md, docs/PROJECT_HISTORY.md, docs/STATE.md
+Результат/доказательство: выявлено, что текущие интерактивные элементы AURA в основном демонстрационные (`EmailSignupForm` использует локальную имитацию submit без backend/API), а конкуренты рынка уже опираются на AI-guidance, data export, app integrations и multi-market flows.
+Решения/изменения контекста: проект нужно оценивать как лендинг-концепт, а не как полноценный wearable product platform; приоритет развития — реальный waitlist/personalization funnel вместо декоративной формы.
+Следующий шаг: на основе аудита выбрать 1-2 фичи для реализации через P-00, начиная с настоящего lead capture + CRM и product personalization flow.
+Что блокирует: нет
+Что не проверено: живые conversion-метрики и поведение реальных пользователей, так как лендинг пока не подключён к production backend.

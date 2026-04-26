@@ -1,0 +1,1451 @@
+{
+  "generatedAt": "2026-04-26T16:14:49.076Z",
+  "environment": {
+    "localPreview": "http://127.0.0.1:4177/",
+    "localWorker": "http://127.0.0.1:8790/",
+    "publicSite": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/",
+    "browser": "chromium"
+  },
+  "grouped": {
+    "local_home": {
+      "url": "http://127.0.0.1:4177/",
+      "runs": [
+        {
+          "name": "local_home",
+          "url": "http://127.0.0.1:4177/",
+          "iteration": 0,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 266.7999999523163,
+            "loadEventEnd": 266.7999999523163,
+            "responseEnd": 7.399999976158142,
+            "transferSize": 1904,
+            "encodedBodySize": 1604,
+            "decodedBodySize": 5104,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 11,
+            "transferSize": 1077160,
+            "largestResourceMs": 233.20000004768372,
+            "thirdPartyCount": 1
+          },
+          "perfAudit": {
+            "lcp": 752,
+            "cls": 0.0012841036447281701,
+            "inpLike": 152,
+            "fcp": 380,
+            "events": [
+              {
+                "name": "pointerover",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerdown",
+                "duration": 152,
+                "interactionId": 5996
+              },
+              {
+                "name": "mousedown",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerup",
+                "duration": 152,
+                "interactionId": 5996
+              },
+              {
+                "name": "mouseup",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "click",
+                "duration": 152,
+                "interactionId": 5996
+              },
+              {
+                "name": "pointerover",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 112,
+                "interactionId": 0
+              }
+            ]
+          },
+          "heapUsage": {
+            "usedSize": 4419296,
+            "totalSize": 6860800,
+            "embedderHeapUsedSize": 9013392,
+            "backingStorageSize": 416656
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        },
+        {
+          "name": "local_home",
+          "url": "http://127.0.0.1:4177/",
+          "iteration": 1,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 184.5,
+            "loadEventEnd": 184.60000002384186,
+            "responseEnd": 5.399999976158142,
+            "transferSize": 1904,
+            "encodedBodySize": 1604,
+            "decodedBodySize": 5104,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 11,
+            "transferSize": 1077160,
+            "largestResourceMs": 162.60000002384186,
+            "thirdPartyCount": 1
+          },
+          "perfAudit": {
+            "lcp": 668,
+            "cls": 0.0012841036447281701,
+            "inpLike": 152,
+            "fcp": 300,
+            "events": [
+              {
+                "name": "pointerover",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerdown",
+                "duration": 152,
+                "interactionId": 1561
+              },
+              {
+                "name": "mousedown",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerup",
+                "duration": 152,
+                "interactionId": 1561
+              },
+              {
+                "name": "mouseup",
+                "duration": 152,
+                "interactionId": 0
+              },
+              {
+                "name": "click",
+                "duration": 152,
+                "interactionId": 1561
+              },
+              {
+                "name": "pointerover",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 112,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 112,
+                "interactionId": 0
+              }
+            ]
+          },
+          "heapUsage": {
+            "usedSize": 4605644,
+            "totalSize": 9220096,
+            "embedderHeapUsedSize": 9197360,
+            "backingStorageSize": 469640
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        },
+        {
+          "name": "local_home",
+          "url": "http://127.0.0.1:4177/",
+          "iteration": 2,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 1180.699999988079,
+            "loadEventEnd": 1182.300000011921,
+            "responseEnd": 5.300000011920929,
+            "transferSize": 1904,
+            "encodedBodySize": 1604,
+            "decodedBodySize": 5104,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 11,
+            "transferSize": 1077160,
+            "largestResourceMs": 1160.699999988079,
+            "thirdPartyCount": 1
+          },
+          "perfAudit": {
+            "lcp": 1564,
+            "cls": 0.0012841036447281701,
+            "inpLike": 160,
+            "fcp": 1296,
+            "events": [
+              {
+                "name": "pointerover",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerdown",
+                "duration": 160,
+                "interactionId": 3318
+              },
+              {
+                "name": "mousedown",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerup",
+                "duration": 160,
+                "interactionId": 3318
+              },
+              {
+                "name": "mouseup",
+                "duration": 160,
+                "interactionId": 0
+              },
+              {
+                "name": "click",
+                "duration": 160,
+                "interactionId": 3318
+              },
+              {
+                "name": "pointerover",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 120,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 120,
+                "interactionId": 0
+              }
+            ]
+          },
+          "heapUsage": {
+            "usedSize": 4291368,
+            "totalSize": 6860800,
+            "embedderHeapUsedSize": 9099888,
+            "backingStorageSize": 394402
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        }
+      ],
+      "summary": {
+        "lcp_ms": {
+          "p50": 752,
+          "p95": 1564,
+          "p99": 1564
+        },
+        "cls": {
+          "p50": 0.0012841036447281701,
+          "p95": 0.0012841036447281701,
+          "p99": 0.0012841036447281701
+        },
+        "domContentLoaded_ms": {
+          "p50": 266.7999999523163,
+          "p95": 1180.699999988079,
+          "p99": 1180.699999988079
+        },
+        "loadEventEnd_ms": {
+          "p50": 266.7999999523163,
+          "p95": 1182.300000011921,
+          "p99": 1182.300000011921
+        },
+        "taskDuration_ms": {
+          "p50": null,
+          "p95": null,
+          "p99": null
+        },
+        "jsHeapUsedSize_bytes": {
+          "p50": null,
+          "p95": null,
+          "p99": null
+        }
+      }
+    },
+    "local_privacy": {
+      "url": "http://127.0.0.1:4177/privacy.html",
+      "runs": [
+        {
+          "name": "local_privacy",
+          "url": "http://127.0.0.1:4177/privacy.html",
+          "iteration": 0,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 199,
+            "loadEventEnd": 472,
+            "responseEnd": 5.399999976158142,
+            "transferSize": 5934,
+            "encodedBodySize": 5634,
+            "decodedBodySize": 17281,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 1,
+            "transferSize": 1072,
+            "largestResourceMs": 180.5999999642372,
+            "thirdPartyCount": 1
+          },
+          "perfAudit": {
+            "lcp": 268,
+            "cls": 0.7750309700671537,
+            "inpLike": 0,
+            "fcp": 236,
+            "events": []
+          },
+          "heapUsage": {
+            "usedSize": 2309440,
+            "totalSize": 3715072,
+            "embedderHeapUsedSize": 2361112,
+            "backingStorageSize": 11859
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        },
+        {
+          "name": "local_privacy",
+          "url": "http://127.0.0.1:4177/privacy.html",
+          "iteration": 1,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 163,
+            "loadEventEnd": 343.80000001192093,
+            "responseEnd": 5.300000011920929,
+            "transferSize": 5934,
+            "encodedBodySize": 5634,
+            "decodedBodySize": 17281,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 1,
+            "transferSize": 1072,
+            "largestResourceMs": 126.30000001192093,
+            "thirdPartyCount": 1
+          },
+          "perfAudit": {
+            "lcp": 224,
+            "cls": 0.7750309700671537,
+            "inpLike": 0,
+            "fcp": 192,
+            "events": []
+          },
+          "heapUsage": {
+            "usedSize": 2309868,
+            "totalSize": 3715072,
+            "embedderHeapUsedSize": 2360672,
+            "backingStorageSize": 11859
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        },
+        {
+          "name": "local_privacy",
+          "url": "http://127.0.0.1:4177/privacy.html",
+          "iteration": 2,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 194.10000002384186,
+            "loadEventEnd": 458.10000002384186,
+            "responseEnd": 5.100000023841858,
+            "transferSize": 5934,
+            "encodedBodySize": 5634,
+            "decodedBodySize": 17281,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 1,
+            "transferSize": 1072,
+            "largestResourceMs": 175.39999997615814,
+            "thirdPartyCount": 1
+          },
+          "perfAudit": {
+            "lcp": 260,
+            "cls": 0.7750309700671537,
+            "inpLike": 0,
+            "fcp": 228,
+            "events": []
+          },
+          "heapUsage": {
+            "usedSize": 2310292,
+            "totalSize": 3715072,
+            "embedderHeapUsedSize": 2361664,
+            "backingStorageSize": 11859
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        }
+      ],
+      "summary": {
+        "lcp_ms": {
+          "p50": 260,
+          "p95": 268,
+          "p99": 268
+        },
+        "cls": {
+          "p50": 0.7750309700671537,
+          "p95": 0.7750309700671537,
+          "p99": 0.7750309700671537
+        },
+        "domContentLoaded_ms": {
+          "p50": 194.10000002384186,
+          "p95": 199,
+          "p99": 199
+        },
+        "loadEventEnd_ms": {
+          "p50": 458.10000002384186,
+          "p95": 472,
+          "p99": 472
+        },
+        "taskDuration_ms": {
+          "p50": null,
+          "p95": null,
+          "p99": null
+        },
+        "jsHeapUsedSize_bytes": {
+          "p50": null,
+          "p95": null,
+          "p99": null
+        }
+      }
+    },
+    "public_home": {
+      "url": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/",
+      "runs": [
+        {
+          "name": "public_home",
+          "url": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/",
+          "iteration": 0,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 627.3000000119209,
+            "loadEventEnd": 627.3000000119209,
+            "responseEnd": 300.19999998807907,
+            "transferSize": 2031,
+            "encodedBodySize": 1731,
+            "decodedBodySize": 5493,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 11,
+            "transferSize": 1077394,
+            "largestResourceMs": 3325.699999988079,
+            "thirdPartyCount": 3
+          },
+          "perfAudit": {
+            "lcp": 3360,
+            "cls": 0.0008723332911361883,
+            "inpLike": 184,
+            "fcp": 756,
+            "events": [
+              {
+                "name": "pointerover",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerdown",
+                "duration": 184,
+                "interactionId": 2086
+              },
+              {
+                "name": "mousedown",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerup",
+                "duration": 184,
+                "interactionId": 2086
+              },
+              {
+                "name": "mouseup",
+                "duration": 184,
+                "interactionId": 0
+              },
+              {
+                "name": "click",
+                "duration": 184,
+                "interactionId": 2086
+              },
+              {
+                "name": "pointerover",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 136,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 136,
+                "interactionId": 0
+              }
+            ]
+          },
+          "heapUsage": {
+            "usedSize": 4487804,
+            "totalSize": 7122944,
+            "embedderHeapUsedSize": 10089320,
+            "backingStorageSize": 473851
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        },
+        {
+          "name": "public_home",
+          "url": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/",
+          "iteration": 1,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 498.19999998807907,
+            "loadEventEnd": 498.30000001192093,
+            "responseEnd": 258.69999998807907,
+            "transferSize": 2031,
+            "encodedBodySize": 1731,
+            "decodedBodySize": 5493,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 12,
+            "transferSize": 1077394,
+            "largestResourceMs": 372,
+            "thirdPartyCount": 4
+          },
+          "perfAudit": {
+            "lcp": 992,
+            "cls": 0.0012373848746342914,
+            "inpLike": 104,
+            "fcp": 624,
+            "events": [
+              {
+                "name": "pointerover",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerdown",
+                "duration": 104,
+                "interactionId": 5904
+              },
+              {
+                "name": "mousedown",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerup",
+                "duration": 104,
+                "interactionId": 5904
+              },
+              {
+                "name": "mouseup",
+                "duration": 104,
+                "interactionId": 0
+              },
+              {
+                "name": "click",
+                "duration": 104,
+                "interactionId": 5904
+              },
+              {
+                "name": "pointerover",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 72,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 72,
+                "interactionId": 0
+              }
+            ]
+          },
+          "heapUsage": {
+            "usedSize": 4468408,
+            "totalSize": 6336512,
+            "embedderHeapUsedSize": 9344192,
+            "backingStorageSize": 428466
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        },
+        {
+          "name": "public_home",
+          "url": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/",
+          "iteration": 2,
+          "status": 200,
+          "nav": {
+            "domContentLoaded": 517.0999999642372,
+            "loadEventEnd": 517.0999999642372,
+            "responseEnd": 210.19999998807907,
+            "transferSize": 2031,
+            "encodedBodySize": 1731,
+            "decodedBodySize": 5493,
+            "type": "navigate"
+          },
+          "resourceSummary": {
+            "count": 12,
+            "transferSize": 1077394,
+            "largestResourceMs": 4506.699999988079,
+            "thirdPartyCount": 4
+          },
+          "perfAudit": {
+            "lcp": 1344,
+            "cls": 0.0012373848746342914,
+            "inpLike": 128,
+            "fcp": 632,
+            "events": [
+              {
+                "name": "pointerover",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerdown",
+                "duration": 128,
+                "interactionId": 1249
+              },
+              {
+                "name": "mousedown",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerup",
+                "duration": 128,
+                "interactionId": 1249
+              },
+              {
+                "name": "mouseup",
+                "duration": 128,
+                "interactionId": 0
+              },
+              {
+                "name": "click",
+                "duration": 128,
+                "interactionId": 1249
+              },
+              {
+                "name": "pointerover",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "pointerenter",
+                "duration": 80,
+                "interactionId": 0
+              },
+              {
+                "name": "mouseover",
+                "duration": 80,
+                "interactionId": 0
+              }
+            ]
+          },
+          "heapUsage": {
+            "usedSize": 5206740,
+            "totalSize": 7647232,
+            "embedderHeapUsedSize": 11810824,
+            "backingStorageSize": 649405
+          },
+          "taskDuration": null,
+          "jsHeapUsedSize": null,
+          "nodes": null
+        }
+      ],
+      "summary": {
+        "lcp_ms": {
+          "p50": 1344,
+          "p95": 3360,
+          "p99": 3360
+        },
+        "cls": {
+          "p50": 0.0012373848746342914,
+          "p95": 0.0012373848746342914,
+          "p99": 0.0012373848746342914
+        },
+        "domContentLoaded_ms": {
+          "p50": 517.0999999642372,
+          "p95": 627.3000000119209,
+          "p99": 627.3000000119209
+        },
+        "loadEventEnd_ms": {
+          "p50": 517.0999999642372,
+          "p95": 627.3000000119209,
+          "p99": 627.3000000119209
+        },
+        "taskDuration_ms": {
+          "p50": null,
+          "p95": null,
+          "p99": null
+        },
+        "jsHeapUsedSize_bytes": {
+          "p50": null,
+          "p95": null,
+          "p99": null
+        }
+      }
+    }
+  }
+}

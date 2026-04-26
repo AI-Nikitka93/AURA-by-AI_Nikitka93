@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useExperience } from '../../context/ExperienceContext'
 import useSiteCopy from '../../hooks/useSiteCopy'
 
-export default function ConsentBanner() {
+export default function ConsentBanner({ isMenuOpen = false }) {
   const { copy } = useSiteCopy()
   const { consentBanner } = copy
   const { consent, updateConsent, gpcEnabled } = useExperience()
@@ -12,7 +12,7 @@ export default function ConsentBanner() {
     analytics: consent.analytics,
   })
 
-  if (consent.resolved) {
+  if (consent.resolved || isMenuOpen) {
     return null
   }
 

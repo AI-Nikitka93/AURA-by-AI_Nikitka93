@@ -1,14 +1,12 @@
-import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import LanguageSwitcher from '../system/LanguageSwitcher'
 import useSiteCopy from '../../hooks/useSiteCopy'
 
-export default function Navbar({ items }) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+export default function Navbar({ items, isMobileMenuOpen, onMobileMenuOpenChange }) {
   const { language, setLanguage, copy } = useSiteCopy()
 
   const handleNavClick = (href) => {
-    setIsMobileMenuOpen(false)
+    onMobileMenuOpenChange(false)
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
@@ -46,7 +44,7 @@ export default function Navbar({ items }) {
           </div>
 
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => onMobileMenuOpenChange(!isMobileMenuOpen)}
             className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-text-soft hover:bg-white/[0.08] hover:text-text md:hidden"
             aria-label={isMobileMenuOpen ? copy.navbar.closeMenu : copy.navbar.openMenu}
           >
@@ -73,16 +71,16 @@ export default function Navbar({ items }) {
           <>
             <div
               className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => onMobileMenuOpenChange(false)}
             />
             
-            <div className="fixed inset-x-3 top-20 z-50 mx-auto max-w-sm rounded-3xl border border-white/10 bg-surface-elevated/95 p-6 shadow-2xl backdrop-blur-xl md:hidden">
+            <div className="fixed inset-x-3 top-20 z-[80] mx-auto max-w-sm rounded-3xl border border-white/10 bg-surface-elevated/95 p-6 shadow-2xl backdrop-blur-xl md:hidden">
               <div className="mb-6 flex items-center justify-between">
                 <span className="font-display text-sm tracking-[-0.02em] text-text">
                   {copy.navbar.navigationLabel}
                 </span>
                 <button
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => onMobileMenuOpenChange(false)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-text-soft hover:bg-white/[0.08] hover:text-text"
                   aria-label={copy.navbar.closeMenu}
                 >

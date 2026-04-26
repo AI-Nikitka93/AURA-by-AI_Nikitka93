@@ -37,6 +37,10 @@
           radial-gradient(circle at 82% 20%, rgba(55, 214, 181, 0.12), transparent 22%),
           linear-gradient(180deg, #090b10 0%, #0b0f17 44%, #090b10 100%);
       }
+      body[data-ready="false"] .page,
+      body[data-ready="false"] footer {
+        display: none;
+      }
       a, button { transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease; }
       a:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
       .shell { width: min(100%, 1120px); margin: 0 auto; padding: 0 20px; }
@@ -94,7 +98,7 @@
       }
     </style>
   </head>
-  <body>
+  <body data-ready="false">
     <header class="nav">
       <div class="shell">
         <div class="nav-bar">
@@ -243,6 +247,7 @@
             ${section.list ? `<ul>${section.list.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
           </section>
         `).join('')
+        document.body.dataset.ready = 'true'
       }
 
       document.querySelectorAll('[data-lang-switch]').forEach((button) => {

@@ -1,0 +1,90 @@
+[
+  {
+    "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap",
+    "initiatorType": "link",
+    "duration": 496.19999998807907,
+    "transferSize": 1072,
+    "encodedBodySize": 772,
+    "decodedBodySize": 10806
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/glow-sequence.jpg",
+    "initiatorType": "img",
+    "duration": 326.0999999642372,
+    "transferSize": 207178,
+    "encodedBodySize": 206878,
+    "decodedBodySize": 206878
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/aura-pattern.jpg",
+    "initiatorType": "img",
+    "duration": 303.5,
+    "transferSize": 308486,
+    "encodedBodySize": 308186,
+    "decodedBodySize": 308186
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/hero-jewelry.jpg",
+    "initiatorType": "img",
+    "duration": 299.30000001192093,
+    "transferSize": 220354,
+    "encodedBodySize": 220054,
+    "decodedBodySize": 220054
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/hero-shot.jpg",
+    "initiatorType": "img",
+    "duration": 239.30000001192093,
+    "transferSize": 45548,
+    "encodedBodySize": 45248,
+    "decodedBodySize": 45248
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/limited-piece.jpg",
+    "initiatorType": "img",
+    "duration": 234.60000002384186,
+    "transferSize": 99964,
+    "encodedBodySize": 99664,
+    "decodedBodySize": 99664
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/index-C_UdD4Ef.js",
+    "initiatorType": "script",
+    "duration": 232.0999999642372,
+    "transferSize": 95793,
+    "encodedBodySize": 95493,
+    "decodedBodySize": 319121
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/metal-detail.jpg",
+    "initiatorType": "img",
+    "duration": 180.69999998807907,
+    "transferSize": 90098,
+    "encodedBodySize": 89798,
+    "decodedBodySize": 89798
+  },
+  {
+    "name": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/index-C6GFXWTA.css",
+    "initiatorType": "link",
+    "duration": 165.5,
+    "transferSize": 8901,
+    "encodedBodySize": 8601,
+    "decodedBodySize": 45520
+  },
+  {
+    "name": "https://aura-portfolio-worker.aiartbora.workers.dev/api/aura-signal",
+    "initiatorType": "fetch",
+    "duration": 106.19999998807907,
+    "transferSize": 0,
+    "encodedBodySize": 0,
+    "decodedBodySize": 0
+  },
+  {
+    "name": "https://aura-portfolio-worker.aiartbora.workers.dev/api/waitlist",
+    "initiatorType": "fetch",
+    "duration": 105.90000003576279,
+    "transferSize": 0,
+    "encodedBodySize": 0,
+    "decodedBodySize": 0
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "exportedAt": "2026-04-26T15:54:08.910Z",
+  "gpcEnabled": false,
+  "consent": {
+    "resolved": true,
+    "necessary": true,
+    "functional": true,
+    "analytics": true,
+    "lastUpdatedAt": "2026-04-26T15:54:04.567Z"
+  },
+  "personalization": {
+    "ritual": "calm",
+    "intensity": 42,
+    "wearMoment": "daily",
+    "ecosystem": "ios",
+    "fitPreference": "balanced"
+  },
+  "waitlistState": {
+    "pending": [
+      {
+        "localId": "d79419f2-70fa-4895-8096-ba960048fbc4",
+        "payload": {
+          "submissionId": "d2568300-4f0c-4963-b61f-1476f623d18f",
+          "email": "qa-runtime@example.com",
+          "name": "QA",
+          "ritual": "calm",
+          "intensity": 42,
+          "wearMoment": "daily",
+          "ecosystem": "ios",
+          "fitPreference": "balanced",
+          "consentToContact": true,
+          "privacyAccepted": true,
+          "sourceUrl": "http://127.0.0.1:8790/?lang=ru",
+          "submittedAt": "2026-04-26T15:54:07.804Z"
+        },
+        "queuedAt": "2026-04-26T15:54:07.858Z"
+      },
+      {
+        "localId": "cf03915f-f74e-4413-96ab-2f48b4fb3234",
+        "payload": {
+          "submissionId": "f9ec93f5-6a3b-467a-b98f-c4d04c594ffe",
+          "email": "qa-runtime@example.com",
+          "name": "QA",
+          "ritual": "calm",
+          "intensity": 42,
+          "wearMoment": "daily",
+          "ecosystem": "ios",
+          "fitPreference": "balanced",
+          "consentToContact": true,
+          "privacyAccepted": true,
+          "sourceUrl": "http://127.0.0.1:8790/?lang=ru",
+          "submittedAt": "2026-04-26T15:54:06.949Z"
+        },
+        "queuedAt": "2026-04-26T15:54:06.984Z"
+      }
+    ],
+    "lastSubmission": null
+  },
+  "waitlistStatus": {
+    "checked": true,
+    "acceptingSubmissions": false,
+    "mode": "device",
+    "label": "Device queue",
+    "message": "Worker API is live, but no upstream relay is configured yet."
+  }
+}

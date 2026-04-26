@@ -1,0 +1,204 @@
+{
+  "baseURL": "http://127.0.0.1:8790",
+  "flows": [
+    {
+      "flow": "Onboarding / consent banner",
+      "action": "Открытие главной страницы и принятие consent-banner",
+      "method": "Playwright headless",
+      "evidence": [
+        "output/playwright/runtime-home-initial.png",
+        "banner hidden after click"
+      ],
+      "status": "PASS"
+    },
+    {
+      "flow": "Flow 1 / ritual -> advisor -> generated brief",
+      "action": "Выбор GLOW, смена intensity на 82, генерация персонального brief в advisor",
+      "method": "Playwright headless",
+      "evidence": [
+        "output/playwright/runtime-flow1-advisor-brief.png",
+        "generated brief card visible"
+      ],
+      "status": "PASS"
+    },
+    {
+      "flow": "Flow 3 / waitlist invalid email",
+      "action": "Отправка формы с невалидным email",
+      "method": "Playwright headless + native browser validation",
+      "evidence": [
+        "output/playwright/runtime-flow2-invalid-email.png",
+        "Please include an '@' in the email address. 'bad-email' is missing an '@'."
+      ],
+      "status": "PASS"
+    },
+    {
+      "flow": "Flow 3 / waitlist missing privacy consent",
+      "action": "Отправка формы без privacy acceptance",
+      "method": "Playwright headless",
+      "evidence": [
+        "output/playwright/runtime-flow2-missing-privacy.png",
+        "Подтвердите privacy notice перед отправкой заявки."
+      ],
+      "status": "PASS"
+    },
+    {
+      "flow": "Flow 2 / waitlist queue fallback",
+      "action": "Отправка валидной заявки при device queue режиме",
+      "method": "Playwright headless",
+      "evidence": [
+        "output/playwright/runtime-flow2-queued-success.png",
+        "success card with queue messaging"
+      ],
+      "status": "PASS WITH WARNINGS",
+      "issue": "Онлайн-отправка недоступна; заявка сохраняется только локально."
+    },
+    {
+      "flow": "State integrity / duplicate submission",
+      "action": "Повторная отправка той же заявки в queue-режиме",
+      "method": "Playwright headless",
+      "evidence": [
+        "output/playwright/runtime-flow2-duplicate-queue.png",
+        "pending requests increased to 2"
+      ],
+      "status": "BROKEN",
+      "issue": "Нет защиты от дублей: в локальной очереди копятся повторные заявки без предупреждения."
+    },
+    {
+      "flow": "Flow 3 / privacy center export & clear",
+      "action": "Экспорт JSON, очистка очереди и персонализации",
+      "method": "Playwright headless + Blob interception",
+      "evidence": [
+        "output/playwright/runtime-flow3-privacy-center.png",
+        "output/runtime-audit/downloads/aura-local-data.json",
+        "output/playwright/runtime-flow3-cleared-state.png"
+      ],
+      "status": "PASS"
+    },
+    {
+      "flow": "State integrity / reload after clear",
+      "action": "Перезагрузка после очистки privacy center",
+      "method": "Playwright headless + localStorage inspection",
+      "evidence": [
+        "localStorage waitlist pending = 0",
+        "selected ritual count = 0"
+      ],
+      "status": "PASS"
+    },
+    {
+      "flow": "Error recovery / waitlist timeout fallback",
+      "action": "Искусственная задержка POST /api/waitlist дольше 8 секунд",
+      "method": "Playwright headless + route delay",
+      "evidence": [
+        "output/playwright/runtime-flow-timeout-queue.png",
+        "pending after timeout = 1"
+      ],
+      "status": "PASS"
+    },
+    {
+      "flow": "Standalone privacy page",
+      "action": "Открытие /privacy.html",
+      "method": "Playwright headless",
+      "evidence": [
+        "output/playwright/runtime-privacy-page.png"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "network": [
+    {
+      "label": "main",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/aura-signal",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "label": "main",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/waitlist",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "label": "main",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/aura-signal",
+      "status": 502,
+      "method": "POST"
+    },
+    {
+      "label": "main",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/waitlist",
+      "status": 503,
+      "method": "POST"
+    },
+    {
+      "label": "main",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/waitlist",
+      "status": 503,
+      "method": "POST"
+    },
+    {
+      "label": "main",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/aura-signal",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "label": "main",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/waitlist",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "label": "timeout",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/aura-signal",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "label": "timeout",
+      "type": "response",
+      "url": "http://127.0.0.1:8790/api/waitlist",
+      "status": 200,
+      "method": "GET"
+    },
+    {
+      "label": "timeout",
+      "type": "requestfailed",
+      "url": "http://127.0.0.1:8790/api/waitlist",
+      "method": "POST",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "storage": {
+    "afterReload": {
+      "consent": {
+        "resolved": true,
+        "necessary": true,
+        "functional": true,
+        "analytics": true,
+        "lastUpdatedAt": "2026-04-26T15:54:04.567Z"
+      },
+      "experience": {
+        "ritual": null,
+        "intensity": 50,
+        "wearMoment": "daily",
+        "ecosystem": "ios",
+        "fitPreference": "balanced"
+      },
+      "waitlist": {
+        "pending": [],
+        "lastSubmission": null
+      }
+    }
+  },
+  "downloads": [
+    "M:\\Projects\\sites\\AURA by AI_Nikitka93\\output\\runtime-audit\\downloads\\aura-local-data.json"
+  ]
+}

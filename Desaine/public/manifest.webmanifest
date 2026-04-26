@@ -43,7 +43,7 @@
     {
       "name": "Open Early Access",
       "short_name": "Waitlist",
-      "url": "./?focus=waitlist#cta",
+      "url": "./?focus=cta#cta",
       "description": "Open the early access form with saved ritual data."
     },
     {

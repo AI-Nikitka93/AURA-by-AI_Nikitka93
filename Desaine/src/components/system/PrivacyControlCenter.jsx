@@ -77,7 +77,7 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
 
         <div className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">{privacyCenter.eyebrow}</p>
-          <h2 className="mt-2 font-display text-[clamp(2rem,7vw,3.4rem)] leading-[0.96] tracking-[-0.05em] text-transparent heading-gradient">
+          <h2 className="mt-2 pt-1 font-display text-[clamp(2rem,7vw,3.4rem)] leading-[1.02] tracking-[-0.05em] text-transparent heading-gradient">
             {privacyCenter.title}
           </h2>
           <p className="mt-3 max-w-2xl text-base leading-8 text-text-soft">

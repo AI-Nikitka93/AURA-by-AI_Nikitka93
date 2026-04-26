@@ -56,3 +56,24 @@
 - Повторный deploy выполнен успешно: Worker Version ID `f43f5060-e032-4d47-8750-454e14836fa7`.
 - Публичный asset URL подтверждён: `curl.exe -I https://aura-portfolio-worker.aiomdurman.workers.dev/assets/index-Cqilkw2c.js` -> `200` и `Content-Type: text/javascript`.
 - Локальная верификация зелёная: `npm run build` и `npm run test:visual` завершились успешно.
+
+Обновление 2026-03-27 10:42:
+- Пользователь сообщил, что сайт фактически не открывается.
+- Повторная проверка подтвердила нестабильность Cloudflare `workers.dev` и reset/timeout на `pages.dev`.
+- Выполнен fallback на GitHub Pages через push в `main`; workflow `Deploy Vite site to GitHub Pages` успешно завершён.
+- Рабочий публичный адрес проекта теперь: `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/`.
+- Подтверждено: HTML `200`, JS asset `200`, Playwright успешно смонтировал React-приложение (`rootChildren: 1`).
+
+Обновление 2026-03-27 10:55:
+- Выполнен P-FUNCTIONAL аудит проекта как product/portfolio landing для premium wearable-tech.
+- Подтверждено по коду: есть навигация, FAQ, privacy page, case-study links, демонстрационный configurator и демонстрационная waitlist form.
+- Подтверждено по коду: нет реального backend/API для формы, нет PWA/installability, нет localization, нет data export, нет AI assistant и нет app/integration layer.
+- Internet research показал, что в 2026 для сегмента wearable/product websites рынком ожидаются guided personalization, реальные lead/data flows, AI guidance, app integrations и multi-market localization.
+- Рекомендуемый следующий шаг: реализовать реальный waitlist + CRM/funnel, затем добавить personalization memory и product/app integration story.
+
+Обновление 2026-03-28 14:40:
+- В проект добавлен реальный Cloudflare Workers AI endpoint `/api/aura-signal` с graceful fallback на локальный brief.
+- Worker успешно задеплоен в текущий Cloudflare account `1a76e4dc8dd16af3a2b94241a35e46d0`.
+- Новый публичный Cloudflare URL проекта: `https://aura-portfolio-worker.aiartbora.workers.dev`.
+- Проверено: `GET /api/aura-signal` возвращает `available: true`, а `POST /api/aura-signal` успешно генерирует AI brief.
+- GitHub Pages фронтенд перенастроен на новый Worker URL для waitlist и AI-запросов.

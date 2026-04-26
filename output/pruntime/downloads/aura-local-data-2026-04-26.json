@@ -1,0 +1,66 @@
+{
+  "exportedAt": "2026-04-26T15:28:01.699Z",
+  "gpcEnabled": false,
+  "consent": {
+    "resolved": true,
+    "necessary": true,
+    "functional": true,
+    "analytics": true,
+    "lastUpdatedAt": "2026-04-26T15:27:56.977Z"
+  },
+  "personalization": {
+    "ritual": "calm",
+    "intensity": 42,
+    "wearMoment": "daily",
+    "ecosystem": "ios",
+    "fitPreference": "balanced"
+  },
+  "waitlistState": {
+    "pending": [
+      {
+        "localId": "6b5f101f-f5dd-40e7-a89c-207525903a76",
+        "payload": {
+          "submissionId": "2dc2852c-7f86-4ef4-a728-c961ca83899e",
+          "email": "runtime.audit@example.test",
+          "name": "Runtime QA",
+          "ritual": "calm",
+          "intensity": 42,
+          "wearMoment": "daily",
+          "ecosystem": "ios",
+          "fitPreference": "balanced",
+          "consentToContact": true,
+          "privacyAccepted": true,
+          "sourceUrl": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/?lang=ru#cta",
+          "submittedAt": "2026-04-26T15:28:00.227Z"
+        },
+        "queuedAt": "2026-04-26T15:28:00.280Z"
+      },
+      {
+        "localId": "e819ec28-49a1-4945-a340-42e148f95e07",
+        "payload": {
+          "submissionId": "efaea470-1414-4c33-af1b-94b1d58b50f7",
+          "email": "runtime.audit@example.test",
+          "name": "Runtime QA",
+          "ritual": "calm",
+          "intensity": 42,
+          "wearMoment": "daily",
+          "ecosystem": "ios",
+          "fitPreference": "balanced",
+          "consentToContact": true,
+          "privacyAccepted": true,
+          "sourceUrl": "https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/?lang=ru#cta",
+          "submittedAt": "2026-04-26T15:27:59.655Z"
+        },
+        "queuedAt": "2026-04-26T15:27:59.761Z"
+      }
+    ],
+    "lastSubmission": null
+  },
+  "waitlistStatus": {
+    "checked": true,
+    "acceptingSubmissions": false,
+    "mode": "device",
+    "label": "Device queue",
+    "message": "Worker API is live, but no upstream relay is configured yet."
+  }
+}
