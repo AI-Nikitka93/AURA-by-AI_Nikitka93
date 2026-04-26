@@ -1,5 +1,7 @@
 # EXEC PLAN
 
 - DONE: Rebuild release context and verify local project/account state.
-- DONE: Execute release actions: build, Worker deploy attempt, release docs, git commit/push.
-- BLOCKED: Complete backend rollout by deploying the Worker from the correct Cloudflare account and re-running live smoke for origin hardening.
+- DONE: Deploy frontend to Vercel and verify the live Vercel URLs.
+- DONE: Re-verify GitHub Pages compatibility URLs and capture browser proof.
+- DONE: Update release memory/runbook for the new Vercel frontend path.
+- PENDING: Resolve Cloudflare Worker account mismatch only if backend live redeploy becomes part of the next task.

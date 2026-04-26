@@ -170,3 +170,12 @@
 Локальный account context: обновлён в /docs/ACCOUNT_REGISTRY.local.md
 Локальная карта секретов: без изменений
 Следующий шаг: переподключить Wrangler к Cloudflare account `1a76e4dc8dd16af3a2b94241a35e46d0` и повторить deploy/smoke именно для live Worker.
+
+Дата и время: 2026-04-27 00:14
+Роль: P-DEPLOY.
+Сделано: Выполнен production deploy фронтенда на Vercel, подтверждена существующая Vercel-авторизация, затем повторно подтверждена работоспособность GitHub Pages как публичного mirror. Обновлены release-memory файлы под новый frontend-канал.
+Изменены файлы: AGENTS.md, RELEASE_RUNBOOK.md, docs/ACCOUNT_REGISTRY.local.md, docs/DECISIONS.md, docs/EXEC_PLAN.md, docs/PROJECT_HISTORY.md, docs/PROJECT_MAP.md, docs/STATE.md, Desaine/.gitignore, docs/screenshots/github-pages-home-release-proof.png, docs/screenshots/github-pages-privacy-release-proof.png, docs/screenshots/vercel-home-release-proof.png
+Результат/доказательство: `vercel whoami` -> `alexaiartbel-3231`; `vercel project add aura-by-ai-nikitka93` -> success; `vercel link --yes --project aura-by-ai-nikitka93` -> success; `vercel --prod --yes` -> success (`dpl_HvyqrmcSosNHKzcjY3Ro8wLKviVM`, `https://aura-by-ai-nikitka93.vercel.app`); `curl.exe -I https://aura-by-ai-nikitka93.vercel.app/` -> `200`; `curl.exe -I https://aura-by-ai-nikitka93.vercel.app/privacy.html` -> `200`; `curl.exe -I https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/` -> `200`; `curl.exe -I https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html` -> `200`; Playwright screenshots -> `docs/screenshots/vercel-home-release-proof.png`, `docs/screenshots/github-pages-home-release-proof.png`, `docs/screenshots/github-pages-privacy-release-proof.png`
+Локальный account context: обновлён в /docs/ACCOUNT_REGISTRY.local.md
+Локальная карта секретов: без изменений
+Следующий шаг: если понадобится единый backend release, отдельно восстановить Cloudflare Worker deploy под правильным аккаунтом; frontend уже можно использовать с Vercel или GitHub Pages.

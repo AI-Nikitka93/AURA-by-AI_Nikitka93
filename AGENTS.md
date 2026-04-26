@@ -1,7 +1,7 @@
 # AURA by AI_Nikitka93
 
 ## Goal
-Release and maintain the AURA portfolio landing with GitHub Pages for the frontend and a Cloudflare Worker for backend/demo flows.
+Release and maintain the AURA portfolio landing with Vercel and GitHub Pages as frontend surfaces, plus a Cloudflare Worker for backend/demo flows.
 
 ## Stack
 - Frontend: React 19, Vite 8, Tailwind CSS
@@ -15,6 +15,8 @@ Release and maintain the AURA portfolio landing with GitHub Pages for the fronte
 
 ## Key Commands
 - `npm run build` in `Desaine/`
+- `vercel whoami` in `Desaine/`
+- `vercel --prod --yes` in `Desaine/`
 - `node --test tests/worker-origin.test.js tests/waitlist-queue.test.js` in `Desaine/`
 - `npx playwright test tests/waitlist-demo-queue.spec.js` in `Desaine/`
 - `npx wrangler whoami` in `Desaine/`

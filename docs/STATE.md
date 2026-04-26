@@ -1,37 +1,33 @@
 Статус: RESOLVED
-Дата и время: 2026-03-21 16:26
-Роль: Инженерный ИИ-ассистент для автономного выполнения задач в Windows 11.
+Дата и время: 2026-04-27 00:14
+Роль: P-DEPLOY
 
 Итог:
-- Cloudflare Pages по-прежнему остается ненадежным каналом публикации из-за reset на `pages.dev` доменах.
-- Однако ручная настройка `workers.dev` subdomain в Cloudflare Dashboard сняла blocker для fallback-пути.
-- Публичная публикация успешно выполнена через Cloudflare Workers static assets.
+- Vercel production deploy подтверждён и теперь доступен как стабильный frontend-канал.
+- GitHub Pages по-прежнему открывается и работает как совместимый публичный mirror.
+- Cloudflare Worker остаётся backend/demo-поверхностью, но его отдельный redeploy в этом шаге не выполнялся.
 
 Сделано:
-- Локально установлен `wrangler`.
-- Подтверждена OAuth-авторизация Cloudflare с правами `pages (write)`.
-- Созданы Pages projects `aura-aura` и `aura-portfolio-concept`.
-- Выполнены production deploy для `dist/`.
-- Подтверждено существование production deployments через `wrangler pages deployment list`.
-- Зарегистрирован `workers.dev` subdomain аккаунта.
-- Выполнен `npx wrangler deploy` для assets-only Worker из `Desaine/dist`.
-- Получен рабочий публичный URL Worker deployment.
+- Подтверждена Vercel CLI авторизация: `vercel whoami` -> `alexaiartbel-3231`.
+- Создан и привязан Vercel project `aura-by-ai-nikitka93`.
+- Выполнен production deploy через `vercel --prod --yes`.
+- Подтверждены live frontend URLs на Vercel и GitHub Pages для `/` и `/privacy.html`.
+- Через Playwright собраны browser-proof screenshots для Vercel home и GitHub Pages home/privacy.
 
 Подтвержденные URL:
-- Production project domain: `https://aura-aura.pages.dev`
-- Alternative project domain: `https://aura-portfolio-concept.pages.dev`
-- Latest Pages deployment URL: `https://c3f0a516.aura-portfolio-concept.pages.dev`
-- Active Worker URL: `https://aura-portfolio-worker.aiomdurman.workers.dev`
+- Vercel production: `https://aura-by-ai-nikitka93.vercel.app`
+- GitHub Pages home: `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/`
+- GitHub Pages privacy: `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html`
 
 Что не подтверждено:
-- Реальная HTTP/TLS доступность `pages.dev` доменов для открытия в браузере.
+- Отдельный redeploy Cloudflare Worker в рамках этого шага не проверялся и не менялся.
 
 Текущий рекомендуемый публичный адрес:
-1. Использовать `https://aura-portfolio-worker.aiomdurman.workers.dev` как основной URL для просмотра и демонстрации проекта.
-2. Pages-домены считать вторичными, пока Cloudflare не перестанет отдавать reset.
+1. Использовать `https://aura-by-ai-nikitka93.vercel.app` как основной frontend URL для демонстрации.
+2. Держать `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/` как резервный и совместимый публичный адрес.
 
 Ближайший следующий шаг:
-- При необходимости привязать кастомный домен или продолжить улучшение самого лендинга, опираясь на уже рабочий `workers.dev` URL.
+- При необходимости привязать кастомный домен к Vercel и отдельно вернуть Cloudflare Worker deploy в зелёное состояние под правильным аккаунтом.
 
 Обновление 2026-03-21 16:26:
 - Пользователь подтвердил ручную настройку `workers.dev` subdomain.
@@ -84,11 +80,17 @@
 - GitHub release path выполнен: commit `aa72830` запушен в `main`.
 - Live smoke подтвердил GitHub Pages frontend: `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/` -> `200`, `.../privacy.html` -> `200`.
 - Cloudflare Worker deploy не выполнен: `npx wrangler deploy` вернул authentication error `10000`, потому что активный Wrangler OAuth account id `35cf1c14e9e9c6adcb3ab43d0082ba0c` не совпадает с `Desaine/wrangler.jsonc` account id `1a76e4dc8dd16af3a2b94241a35e46d0`.
-- Smoke по текущему live Worker показал, что backend release не дошёл: `POST https://aura-portfolio-worker.aiartbora.workers.dev/api/aura-signal` без `Origin` всё ещё отвечает `200`, а не `403`.
+
+Обновление 2026-04-27 00:14:
+- Проверено по актуальному состоянию на `2026-04-27`: `vercel login` и `vercel --prod` остаются рабочим official path; локально использована уже существующая авторизация (`vercel whoami` -> `alexaiartbel-3231`).
+- Создан Vercel project `aura-by-ai-nikitka93`, выполнен `vercel link --yes --project aura-by-ai-nikitka93`, затем production deploy `dpl_HvyqrmcSosNHKzcjY3Ro8wLKviVM`.
+- Подтверждено: `https://aura-by-ai-nikitka93.vercel.app/` -> `200`, `.../privacy.html` -> `200`.
+- Подтверждено: GitHub Pages всё ещё открывается и работает (`/` -> `200`, `/privacy.html` -> `200`).
+- Собраны browser-proof артефакты: `docs/screenshots/vercel-home-release-proof.png`, `docs/screenshots/github-pages-home-release-proof.png`, `docs/screenshots/github-pages-privacy-release-proof.png`.
 
 Текущий статус:
-- Frontend release: подтверждён.
-- Backend Worker release: BLOCKED по Cloudflare account mismatch.
+- Frontend release: подтверждён на Vercel и GitHub Pages.
+- Backend Worker release: без изменений в рамках этого шага.
 
 Следующий шаг:
-- Авторизовать Wrangler под account `1a76e4dc8dd16af3a2b94241a35e46d0` или выдать token этого аккаунта, затем повторить `npx wrangler deploy` и smoke `POST /api/aura-signal` без `Origin`.
+- Если нужен единый production stack, отдельно решить Cloudflare Worker account mismatch и повторить backend smoke уже после правильного Wrangler auth.

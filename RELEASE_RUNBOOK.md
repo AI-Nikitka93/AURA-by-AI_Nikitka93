@@ -1,7 +1,8 @@
 # RELEASE RUNBOOK
 
 ## Current Architecture
-- Frontend production surface: GitHub Pages at `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/`
+- Frontend primary surface: Vercel at `https://aura-by-ai-nikitka93.vercel.app`
+- Frontend compatibility mirror: GitHub Pages at `https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/`
 - Frontend source/build: `Desaine/` with Vite output in `Desaine/dist`
 - Backend/demo API surface: Cloudflare Worker from `Desaine/worker/index.js`
 - Current frontend Worker target in code:
@@ -35,7 +36,14 @@ cd M:\Projects\sites\AURA by AI_Nikitka93\Desaine
 npx wrangler deploy
 ```
 
-### 4. GitHub Pages release
+### 4. Vercel release
+```powershell
+cd M:\Projects\sites\AURA by AI_Nikitka93\Desaine
+vercel whoami
+vercel --prod --yes
+```
+
+### 5. GitHub Pages release
 ```powershell
 cd M:\Projects\sites\AURA by AI_Nikitka93
 git add .
@@ -44,6 +52,12 @@ git push origin main
 ```
 
 ## Live Smoke Commands
+
+### Vercel
+```powershell
+curl.exe -I https://aura-by-ai-nikitka93.vercel.app/
+curl.exe -I https://aura-by-ai-nikitka93.vercel.app/privacy.html
+```
 
 ### GitHub Pages
 ```powershell
@@ -63,4 +77,5 @@ Expected result: `403 Forbidden` when `Origin` is absent.
 ## Known Release Risks
 - Cloudflare deploy requires Wrangler auth against the same Cloudflare account as `Desaine/wrangler.jsonc.account_id`.
 - GitHub Pages publish is driven by `git push origin main`, so frontend availability may lag behind the push while Actions completes.
+- Vercel link state lives in `.vercel/` locally and should stay ignored; only the ignore rule is worth keeping in git.
 - The Worker may remain on the previous live version if Cloudflare account access is mismatched.
