@@ -2,24 +2,27 @@
 
 [English](README.md) | [Русский](README.ru.md)
 
-Концептуальный portfolio landing page для premium smart jewelry бренда, собранный как privacy-first React experience.
+Публичный портфолио-кейс premium smart-jewelry концепта, собранный как privacy-first React/Vite experience с demo-safe backend path.
 
-- Live demo: https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/
+- Основной демо-URL: https://aura-by-ai-nikitka93.vercel.app/
+- GitHub Pages mirror: https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/
 - Исходное приложение: [`Desaine/`](Desaine/)
-- Deploy workflow: [`.github/workflows/deploy-github-pages.yml`](.github/workflows/deploy-github-pages.yml)
-- Заметки по проекту: [`docs/PROJECT_HISTORY.md`](docs/PROJECT_HISTORY.md), [`docs/STATE.md`](docs/STATE.md)
+- Worker/API surface: [`Desaine/worker/`](Desaine/worker/)
+- Release runbook: [`RELEASE_RUNBOOK.md`](RELEASE_RUNBOOK.md)
 
 ## Preview
 
 ![AURA live site hero](docs/screenshots/site-hero-desktop.png)
 
-## Что Это
+## Что Это За Репозиторий
 
-AURA - это публичный portfolio case, который объединяет brand direction, UX copy, liquid-glass visual system и реальную реализацию на Vite + React. Репозиторий организован так, чтобы за минуту было понятно, что это за проект и как запустить его локально.
+AURA объединяет brand direction, UX copy, interaction design и реальную frontend-реализацию в одном репозитории. Это public showcase, а не open-source starter и не reusable component kit.
 
-## Почему Это Важно
-
-Этот репозиторий подойдёт, если нужно посмотреть polished marketing-style site с consent-driven UX, отдельной privacy page, interactive product-advisor surfaces и рабочей frontend-структурой. Это showcase-проект, а не универсальный boilerplate.
+Репозиторий полезен, если нужно посмотреть:
+- premium marketing-style React landing page с отдельным `privacy.html`
+- consent-aware personalization flow с локальным fallback state
+- dual-hosted frontend surface: Vercel как основной demo URL и GitHub Pages как публичный mirror
+- Cloudflare Worker integration path для demo-safe waitlist и AI flows
 
 ## Быстрый Старт
 
@@ -29,7 +32,7 @@ npm ci
 npm run dev
 ```
 
-Открой `http://127.0.0.1:4173`.
+Открой `http://localhost:5173`.
 
 ### Сборка И Preview
 
@@ -38,6 +41,8 @@ npm run build
 npm run preview
 ```
 
+Preview поднимается на `http://localhost:4173`.
+
 ### Visual Tests
 
 ```bash
@@ -45,40 +50,60 @@ npx playwright install chromium
 npm run test:visual
 ```
 
-### Deploy
+## Runtime Surfaces
 
-Push в `main`; GitHub Actions workflow публикует `Desaine/dist` в GitHub Pages.
+```mermaid
+flowchart LR
+  Browser["Браузер посетителя"] --> Vercel["Vercel frontend"]
+  Browser --> GHPages["GitHub Pages mirror"]
+  Vercel --> Worker["Cloudflare Worker API"]
+  GHPages --> Worker
+  Vercel --> LocalState["localStorage fallback"]
+  GHPages --> LocalState
+```
 
-## Ключевые Элементы
+## Пути Деплоя
+
+| Surface | Роль | Source of truth |
+| --- | --- | --- |
+| Vercel | Основной публичный demo URL | production deploy из `Desaine/` |
+| GitHub Pages | Публичный mirror, привязанный к `main` | `.github/workflows/deploy-github-pages.yml` |
+| Cloudflare Worker | Demo-safe API/backend path | `Desaine/worker/index.js` |
+
+## Ключевые Возможности
 
 - Hero, benefits, case study, founder, FAQ и CTA sections
-- Email signup flow с явным privacy consent
-- Ritual configurator и product-advisor surfaces
-- Отдельная privacy policy page и privacy controls
-- Scroll reveal, parallax и particle background motion
-- Playwright visual regression coverage для privacy surface
+- Ritual configurator и guided advisor
+- Email signup flow с явным privacy consent и demo-mode queue fallback
+- Отдельный `privacy.html` и встроенный privacy control center
+- Playwright visual coverage и release runbook documentation
 
-## Поверхность Репозитория
+## Карта Репозитория
 
 | Путь | Назначение |
 | --- | --- |
 | `Desaine/src/` | Исходники приложения, секции, hooks и UI-примитивы |
-| `Desaine/public/` | PWA assets, offline surface и статические файлы |
+| `Desaine/public/` | Статические assets и manifest-related файлы |
 | `Desaine/privacy.html` | Отдельная страница privacy policy |
-| `Desaine/worker/` | Remote advisor и fallback logic |
-| `docs/` | Заметки мейнтейнера, state и project history |
+| `Desaine/worker/` | Worker API, origin checks и AI relay logic |
+| `docs/` | Runbooks, packaging audit, state и history |
 | `.github/workflows/` | Автоматизация деплоя в GitHub Pages |
 
 ## Документация И Поддержка
 
+- Packaging audit и README plan: [`docs/REPOSITORY_PACKAGING_AUDIT.md`](docs/REPOSITORY_PACKAGING_AUDIT.md)
+- Release runbook: [`RELEASE_RUNBOOK.md`](RELEASE_RUNBOOK.md)
 - История реализации: [`docs/PROJECT_HISTORY.md`](docs/PROJECT_HISTORY.md)
 - Текущее состояние проекта: [`docs/STATE.md`](docs/STATE.md)
-- Packaging audit: [`docs/REPOSITORY_PACKAGING_AUDIT.md`](docs/REPOSITORY_PACKAGING_AUDIT.md)
 - Contribution guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Support policy: [`SUPPORT.md`](SUPPORT.md)
 - Security policy: [`SECURITY.md`](SECURITY.md)
-- Issue forms: [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/)
+- Code of conduct: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+
+## Contribution Posture
+
+Репозиторий публичный для обзора и как portfolio surface, но не является open-source. Наиболее полезные формы вклада здесь — issues, документационные правки и узкие PR без переписывания продуктового направления.
 
 ## Лицензия
 
-Репозиторий опубликован как portfolio showcase под proprietary
-all-rights-reserved notice. См. [LICENSE](LICENSE).
+Репозиторий опубликован как proprietary all-rights-reserved showcase. См. [LICENSE](LICENSE).

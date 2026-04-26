@@ -88,9 +88,16 @@
 - Подтверждено: GitHub Pages всё ещё открывается и работает (`/` -> `200`, `/privacy.html` -> `200`).
 - Собраны browser-proof артефакты: `docs/screenshots/vercel-home-release-proof.png`, `docs/screenshots/github-pages-home-release-proof.png`, `docs/screenshots/github-pages-privacy-release-proof.png`.
 
+Обновление 2026-04-27 00:28:
+- Выполнен GitHub packaging pass: `README.md` и `README.ru.md` синхронизированы с текущей архитектурой Vercel + GitHub Pages + Worker, quickstart исправлен на реальный dev URL `http://localhost:5173`.
+- Обновлён `docs/REPOSITORY_PACKAGING_AUDIT.md` с audit, README structure plan, required/recommended files matrix и open gaps.
+- Добавлены public trust surfaces: `SUPPORT.md`, `CODE_OF_CONDUCT.md`, `.github/CODEOWNERS`; `config.yml` issue forms теперь ведёт на `SUPPORT.md`.
+- Repo metadata выровнено под текущий public face: homepage переключён на `https://aura-by-ai-nikitka93.vercel.app/`, добавлены topics `vercel` и `cloudflare-worker`.
+
 Текущий статус:
 - Frontend release: подтверждён на Vercel и GitHub Pages.
 - Backend Worker release: без изменений в рамках этого шага.
+- GitHub packaging: обновлён локально, готов к commit/push.
 
 Следующий шаг:
 - Если нужен единый production stack, отдельно решить Cloudflare Worker account mismatch и повторить backend smoke уже после правильного Wrangler auth.

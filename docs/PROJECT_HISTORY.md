@@ -179,3 +179,12 @@
 Локальный account context: обновлён в /docs/ACCOUNT_REGISTRY.local.md
 Локальная карта секретов: без изменений
 Следующий шаг: если понадобится единый backend release, отдельно восстановить Cloudflare Worker deploy под правильным аккаунтом; frontend уже можно использовать с Vercel или GitHub Pages.
+
+Дата и время: 2026-04-27 00:28
+Роль: P-GITHUB.
+Сделано: Обновлены README surfaces, packaging audit и public community/trust files под текущую архитектуру Vercel + GitHub Pages + Worker. Репозиторий выровнен как public portfolio surface, а не как псевдо-open-source starter.
+Изменены файлы: README.md, README.ru.md, docs/REPOSITORY_PACKAGING_AUDIT.md, SUPPORT.md, CODE_OF_CONDUCT.md, .github/CODEOWNERS, .github/ISSUE_TEMPLATE/config.yml, docs/EXEC_PLAN.md, docs/PROJECT_HISTORY.md, docs/STATE.md
+Результат/доказательство: `gh repo view --json description,homepageUrl,repositoryTopics` -> homepage `https://aura-by-ai-nikitka93.vercel.app/`, topics include `vercel` and `cloudflare-worker`; `git diff --check` -> clean after whitespace fix
+Локальный account context: без изменений
+Локальная карта секретов: без изменений
+Следующий шаг: при необходимости отдельно обновить social preview image и затем решить frontend state drift между доменами, чтобы Vercel и GitHub Pages выглядели одинаково при одинаковых URL params.

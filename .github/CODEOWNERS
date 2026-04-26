@@ -1,0 +1,8 @@
+# Default ownership for the public portfolio repository
+* @AI-Nikitka93
+
+# Repository health and release surfaces
+/.github/ @AI-Nikitka93
+/docs/ @AI-Nikitka93
+/README.md @AI-Nikitka93
+/README.ru.md @AI-Nikitka93
