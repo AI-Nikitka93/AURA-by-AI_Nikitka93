@@ -8,7 +8,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Lenis handles smooth scrolling */
   }
 
   body {
@@ -293,7 +293,8 @@
   
   .reveal {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
+    will-change: opacity, transform;
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -305,7 +306,8 @@
 
   .reveal-left {
     opacity: 0;
-    transform: translateX(-60px);
+    transform: translateX(-40px);
+    will-change: opacity, transform;
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -317,7 +319,8 @@
 
   .reveal-right {
     opacity: 0;
-    transform: translateX(60px);
+    transform: translateX(40px);
+    will-change: opacity, transform;
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }

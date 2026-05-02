@@ -19,8 +19,8 @@ export function useScrollReveal(selector = '.reveal, .reveal-left, .reveal-right
         })
       },
       {
-        threshold: 0.08,
-        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.01,
+        rootMargin: '0px 0px 0px 0px',
       }
     )
 
