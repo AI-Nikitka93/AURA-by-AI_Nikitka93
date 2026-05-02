@@ -3,6 +3,7 @@ import { Activity, Check } from 'lucide-react'
 import { useExperience } from '../../context/ExperienceContext'
 import useSiteCopy from '../../hooks/useSiteCopy'
 import { submitWaitlist, WaitlistApiError } from '../../lib/waitlist'
+import { formatPendingRequestCount, formatPercent } from '../../lib/i18n'
 
 function RelayStatusBadge({ waitlistStatus, labels }) {
   const isLive = waitlistStatus.acceptingSubmissions
@@ -19,7 +20,7 @@ function RelayStatusBadge({ waitlistStatus, labels }) {
 }
 
 export default function EmailSignupForm({ onOpenPrivacyCenter }) {
-  const { copy } = useSiteCopy()
+  const { copy, language } = useSiteCopy()
   const { emailSignup, advisor, privacyCenter } = copy
   const {
     experience,
@@ -47,6 +48,8 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
   const wearLabel = advisor.wearMomentOptions.find((option) => option.id === experience.wearMoment)?.label || experience.wearMoment
   const ecosystemLabel = advisor.ecosystemOptions.find((option) => option.id === experience.ecosystem)?.label || experience.ecosystem
   const fitLabel = advisor.fitPreferenceOptions.find((option) => option.id === experience.fitPreference)?.label || experience.fitPreference
+  const pendingRequestCount = formatPendingRequestCount(waitlistState.pending.length, language)
+  const intensityLabel = formatPercent(experience.intensity, language)
 
   const validateEmail = (value) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -150,7 +153,7 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
         {!waitlistStatus.acceptingSubmissions && (
           <div className="mt-5 w-full rounded-[24px] border border-white/10 bg-white/[0.03] p-4 text-left">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
-              {privacyCenter.pendingRequests}: {waitlistState.pending.length}
+              {pendingRequestCount}
             </p>
             <p className="mt-2 text-sm leading-6 text-text-soft">
               {queueMessage}
@@ -195,7 +198,7 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
         {!waitlistStatus.acceptingSubmissions && (
           <div className="mt-3 rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-4 text-left">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
-              {privacyCenter.pendingRequests}: {waitlistState.pending.length}
+              {pendingRequestCount}
             </p>
             <p className="mt-2 text-sm leading-6 text-text-soft">
               {queueMessage}
@@ -261,7 +264,7 @@ export default function EmailSignupForm({ onOpenPrivacyCenter }) {
             ))}
           </div>
           <p className="mt-2 text-sm leading-6 text-text-soft">
-            {emailSignup.intensitySummary}: {experience.intensity}%.
+            {emailSignup.intensitySummary}: {intensityLabel}.
           </p>
           <p className="mt-1 text-sm leading-6 text-text-soft">
             {emailSignup.advisorSummaryPrefix}: {wearLabel} / {ecosystemLabel} / {fitLabel}.

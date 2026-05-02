@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useExperience } from '../../context/ExperienceContext'
 import useSiteCopy from '../../hooks/useSiteCopy'
+import { formatPendingRequestCount, formatPercent } from '../../lib/i18n'
 
 function RelayBadge({ waitlistStatus, labels }) {
   const isLive = waitlistStatus.acceptingSubmissions
@@ -17,7 +18,7 @@ function RelayBadge({ waitlistStatus, labels }) {
 }
 
 export default function PrivacyControlCenter({ isOpen, onClose }) {
-  const { copy } = useSiteCopy()
+  const { copy, language } = useSiteCopy()
   const { privacyCenter, advisor, ritualConfigurator } = copy
   const {
     consent,
@@ -34,6 +35,8 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
   const ecosystemLabel = advisor.ecosystemOptions.find((option) => option.id === experience.ecosystem)?.label || experience.ecosystem
   const fitLabel = advisor.fitPreferenceOptions.find((option) => option.id === experience.fitPreference)?.label || experience.fitPreference
   const ritualLabel = ritualConfigurator.rituals.find((ritual) => ritual.id === experience.ritual)?.name || experience.ritual
+  const pendingRequestCount = formatPendingRequestCount(waitlistState.pending.length, language)
+  const intensityLabel = formatPercent(experience.intensity, language)
 
   useEffect(() => {
     if (!isOpen) {
@@ -88,7 +91,7 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <RelayBadge waitlistStatus={waitlistStatus} labels={privacyCenter.relay} />
           <span className="inline-flex min-h-[36px] items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-text-soft">
-            {privacyCenter.pendingRequests}: {waitlistState.pending.length}
+            {pendingRequestCount}
           </span>
           {gpcEnabled && (
             <span className="inline-flex min-h-[36px] items-center rounded-full border border-secondary/25 bg-secondary/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-secondary">
@@ -146,7 +149,7 @@ export default function PrivacyControlCenter({ isOpen, onClose }) {
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{privacyCenter.intensity}</p>
-                  <p className="mt-2 text-lg font-semibold text-text">{experience.intensity}%</p>
+                  <p className="mt-2 text-lg font-semibold text-text">{intensityLabel}</p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{privacyCenter.wearMoment}</p>

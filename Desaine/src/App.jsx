@@ -15,12 +15,13 @@ import ParticleBackground from './components/ui/ParticleBackground'
 import usePwaInstall from './hooks/usePwaInstall'
 import useSiteCopy from './hooks/useSiteCopy'
 import useScrollReveal from './hooks/useScrollReveal'
+import { applySeoMetadata } from './lib/i18n'
 
 export default function App() {
   const [isPrivacyCenterOpen, setIsPrivacyCenterOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pwa = usePwaInstall()
-  const { copy } = useSiteCopy()
+  const { copy, language } = useSiteCopy()
 
   useScrollReveal()
 
@@ -52,14 +53,14 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    document.title = copy.document.title
-
-    const descriptionTag = document.querySelector('meta[name="description"]')
-
-    if (descriptionTag) {
-      descriptionTag.setAttribute('content', copy.document.description)
-    }
-  }, [copy])
+    applySeoMetadata({
+      language,
+      pagePath: 'index.html',
+      title: copy.document.title,
+      description: copy.document.description,
+      imageUrl: copy.heroContent.image,
+    })
+  }, [copy, language])
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-bg text-text">

@@ -12,6 +12,20 @@
     <link rel="icon" href="./assets/logo.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icons/icon-180.png" />
     <meta name="description" content="Политика приватности AURA by AI_Nikitka93." />
+    <link rel="canonical" href="https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html?lang=ru" />
+    <link rel="alternate" hreflang="ru" href="https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html?lang=ru" />
+    <link rel="alternate" hreflang="en" href="https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html?lang=ru" />
+    <meta property="og:title" content="Политика приватности - AURA by AI_Nikitka93" />
+    <meta property="og:description" content="Политика приватности AURA by AI_Nikitka93." />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content="https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/privacy.html?lang=ru" />
+    <meta property="og:image" content="https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/founder-portrait.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Политика приватности - AURA by AI_Nikitka93" />
+    <meta name="twitter:description" content="Политика приватности AURA by AI_Nikitka93." />
+    <meta name="twitter:image" content="https://ai-nikitka93.github.io/AURA-by-AI_Nikitka93/assets/founder-portrait.jpg" />
     <title>Privacy Policy - AURA by AI_Nikitka93</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -106,7 +120,7 @@
             <a id="back-link" href="index.html?lang=ru" class="brand-link"></a>
             <div id="brand-badge" class="badge" style="margin-top: 8px;"></div>
           </div>
-          <div class="switcher" role="group" aria-label="Language switcher">
+          <div id="language-switcher" class="switcher" role="group" aria-label="Language switcher">
             <button type="button" data-lang-switch="ru">RU</button>
             <button type="button" data-lang-switch="en">EN</button>
           </div>
@@ -144,7 +158,7 @@
       <div class="shell">
         <div class="footer-bar">
           <p id="footer-meta" class="footer-meta"></p>
-          <nav class="footer-nav" aria-label="Footer navigation">
+          <nav id="footer-nav" class="footer-nav" aria-label="Footer navigation">
             <a id="footer-site" href="index.html?lang=ru"></a>
             <a id="footer-privacy" href="privacy.html?lang=ru"></a>
           </nav>
@@ -152,18 +166,27 @@
       </div>
     </footer>
 
-    <script>
+    <script type="module">
+      import {
+        applySeoMetadata,
+        formatLongDate,
+        normalizeLanguage,
+      } from './src/lib/i18n.js'
+
       const LANGUAGE_STORAGE_KEY = 'aura:language:v1'
+      const LAST_UPDATED_AT = '2026-03-28'
       const translations = {
         ru: {
           title: 'Политика приватности - AURA by AI_Nikitka93',
           description: 'Политика приватности AURA by AI_Nikitka93.',
           back: '← Назад к сайту',
           badge: 'AURA by AI_Nikitka93',
-          heroBadge: 'Legal Surface',
+          heroBadge: 'Юридическая страница',
           heroTitle: 'Политика приватности',
-          heroIntro: 'Документ оформлен в том же визуальном языке, что и основной лендинг: тёмная editorial-сцена, читаемая типографика и честная подача conceptual portfolio статуса.',
-          updatedAt: 'Последнее обновление: 28 марта 2026 г.',
+          heroIntro: 'Документ оформлен в том же визуальном языке, что и основной лендинг: тёмная editorial-сцена, читаемая типографика и честная подача статуса концептуального portfolio-проекта.',
+          updatedAtLabel: 'Последнее обновление',
+          languageSwitcherLabel: 'Переключатель языка',
+          footerNavLabel: 'Нижняя навигация',
           sections: [
             { title: '1. Общая информация', paragraphs: ['AURA by AI_Nikitka93 уважает вашу приватность и стремится объяснять обработку данных простым и понятным языком.', 'На текущий момент проект остаётся концептуальным portfolio case, но интерфейс уже включает реальные механики consent, локального хранения и waitlist queue.'] },
             { title: '2. Какие данные может хранить сайт', paragraphs: ['Сайт может хранить локально выбранный ритуал, интенсивность, язык интерфейса, настройки consent и очередь заявок.'], list: ['Контактные данные: имя и email при отправке раннего доступа.', 'Предпочтения: ritual, wear moment, ecosystem, fit preference.', 'Технические сигналы: факт согласия на аналитику и состояние локальной очереди.'] },
@@ -176,7 +199,7 @@
           actionGithub: 'Открыть GitHub',
           footerMeta: '© 2026 AURA by AI_Nikitka93. Conceptual portfolio project. Создано Nikita (AI_Nikitka93).',
           footerSite: 'Сайт',
-          footerPrivacy: 'Privacy',
+          footerPrivacy: 'Приватность',
         },
         en: {
           title: 'Privacy Policy - AURA by AI_Nikitka93',
@@ -186,7 +209,9 @@
           heroBadge: 'Legal Surface',
           heroTitle: 'Privacy Policy',
           heroIntro: 'This document follows the same visual language as the main landing page: a dark editorial scene, readable typography, and an honest conceptual portfolio framing.',
-          updatedAt: 'Last updated: March 28, 2026',
+          updatedAtLabel: 'Last updated',
+          languageSwitcherLabel: 'Language switcher',
+          footerNavLabel: 'Footer navigation',
           sections: [
             { title: '1. General information', paragraphs: ['AURA by AI_Nikitka93 respects your privacy and aims to explain data handling in clear language.', 'The project is still a conceptual portfolio case, but the interface already includes real consent, local storage, and waitlist queue mechanics.'] },
             { title: '2. What the site may store', paragraphs: ['The site may store the selected ritual, intensity, interface language, consent settings, and waitlist queue locally.'], list: ['Contact data: name and email during early access signup.', 'Preferences: ritual, wear moment, ecosystem, and fit preference.', 'Technical signals: analytics consent and local queue status.'] },
@@ -203,29 +228,44 @@
         }
       }
 
-      const params = new URLSearchParams(window.location.search)
-      const browserLanguage = (navigator.language || '').toLowerCase()
-      const initialLanguage = params.get('lang') || JSON.parse(localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'null') || (browserLanguage.startsWith('ru') ? 'ru' : 'en')
-      const language = translations[initialLanguage] ? initialLanguage : 'ru'
+      function getInitialLanguage() {
+        const params = new URLSearchParams(window.location.search)
+        const browserLanguage = (navigator.language || '').toLowerCase()
+        const savedLanguage = JSON.parse(localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'null')
+
+        return normalizeLanguage(
+          params.get('lang') ||
+          savedLanguage ||
+          (browserLanguage.startsWith('ru') ? 'ru' : 'en')
+        )
+      }
 
       function setLanguage(nextLanguage) {
         const t = translations[nextLanguage]
-        document.documentElement.lang = nextLanguage
-        document.title = t.title
-        document.querySelector('meta[name="description"]').setAttribute('content', t.description)
+
+        applySeoMetadata({
+          language: nextLanguage,
+          pagePath: 'privacy.html',
+          title: t.title,
+          description: t.description,
+          imageUrl: `${window.location.origin}${window.location.pathname.replace('privacy.html', '')}assets/founder-portrait.jpg`,
+        })
+
         localStorage.setItem(LANGUAGE_STORAGE_KEY, JSON.stringify(nextLanguage))
 
         const nextParams = new URLSearchParams(window.location.search)
         nextParams.set('lang', nextLanguage)
         history.replaceState({}, '', `${window.location.pathname}?${nextParams.toString()}`)
 
+        document.getElementById('language-switcher').setAttribute('aria-label', t.languageSwitcherLabel)
+        document.getElementById('footer-nav').setAttribute('aria-label', t.footerNavLabel)
         document.getElementById('back-link').textContent = t.back
         document.getElementById('back-link').href = `index.html?lang=${nextLanguage}`
         document.getElementById('brand-badge').textContent = t.badge
         document.getElementById('hero-badge').textContent = t.heroBadge
         document.getElementById('privacy-title').textContent = t.heroTitle
         document.getElementById('hero-intro').textContent = t.heroIntro
-        document.getElementById('updated-at').textContent = t.updatedAt
+        document.getElementById('updated-at').textContent = `${t.updatedAtLabel}: ${formatLongDate(LAST_UPDATED_AT, nextLanguage)}`
         document.getElementById('legal-note').innerHTML = t.note
         document.getElementById('action-home').textContent = t.actionHome
         document.getElementById('action-home').href = `index.html?lang=${nextLanguage}`
@@ -254,7 +294,7 @@
         button.addEventListener('click', () => setLanguage(button.dataset.langSwitch))
       })
 
-      setLanguage(language)
+      setLanguage(getInitialLanguage())
 
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {

@@ -1,3 +1,5 @@
+import { formatPercent } from './i18n'
+
 function getOptionLabel(options, id) {
   return options.find((option) => option.id === id)?.label || id
 }
@@ -48,6 +50,7 @@ export function buildAuraInsight({
   const ecosystemLabel = getOptionLabel(advisorCopy.ecosystemOptions, experience.ecosystem)
   const fitLabel = getOptionLabel(advisorCopy.fitPreferenceOptions, experience.fitPreference)
   const tone = toneMap[locale][ritualId]
+  const intensityLabel = formatPercent(recommendation.intensity, locale)
 
   if (locale === 'ru') {
     const title = `${recommendation.profileLabel} / ${ritualLabel} ${recommendation.intensity}%`
@@ -66,7 +69,7 @@ export function buildAuraInsight({
       plainText: [
         `AURA signal brief`,
         `Профиль: ${recommendation.profileLabel}`,
-        `Ритуал: ${ritualLabel} (${recommendation.intensity}%)`,
+        `Ритуал: ${ritualLabel} (${intensityLabel})`,
         `Контекст: ${wearLabel}`,
         `Экосистема: ${ecosystemLabel}`,
         `Посадка: ${fitLabel}`,
@@ -93,7 +96,7 @@ export function buildAuraInsight({
     plainText: [
       `AURA signal brief`,
       `Profile: ${recommendation.profileLabel}`,
-      `Ritual: ${ritualLabel} (${recommendation.intensity}%)`,
+      `Ritual: ${ritualLabel} (${intensityLabel})`,
       `Context: ${wearLabel}`,
       `Ecosystem: ${ecosystemLabel}`,
       `Fit: ${fitLabel}`,

@@ -16,6 +16,8 @@ import {
   generateAiSignalBrief,
 } from '../../lib/aiSignal'
 import { buildAuraInsight } from '../../lib/auraInsight'
+import { buildLocalGeneratedBrief, getAuraSignalUi } from '../../lib/auraSignalI18n'
+import { formatPercent } from '../../lib/i18n'
 import GlassCard from '../ui/GlassCard'
 import SectionHeading from '../ui/SectionHeading'
 
@@ -41,22 +43,6 @@ function sanitizeAiBrief(text) {
     .replace(/[ \t]+\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim()
-}
-
-function buildLocalGeneratedBrief({ language, insight, recommendation }) {
-  if (language === 'ru') {
-    return [
-      `Для профиля "${recommendation.profileLabel}" AURA лучше раскрывать как собранный luxury-tech ритуал с ясным характером. ${insight.summary}`,
-      `Продуктовое направление: украшение должно ощущаться как личный объект, где ритуал ${recommendation.ritual} с интенсивностью ${recommendation.intensity}% поддерживает выбранную посадку и не перегружает визуальный образ. ${insight.direction}`,
-      `Companion-слой стоит строить вокруг сценария "${recommendation.ecosystemNote}", сохраняя быстрый и понятный путь от выбора профиля к готовому персональному результату.`,
-    ].join('\n\n')
-  }
-
-  return [
-    `For the "${recommendation.profileLabel}" profile, AURA should feel like a composed luxury-tech ritual with a clear character. ${insight.summary}`,
-    `Product direction: the piece should read as a personal object, where the ${recommendation.ritual} ritual at ${recommendation.intensity}% supports the chosen fit without overloading the visual identity. ${insight.direction}`,
-    `The companion layer should stay built around "${recommendation.ecosystemNote}", keeping the path from profile choice to a finished personal result quick and obvious.`,
-  ].join('\n\n')
 }
 
 function OptionCard({ icon: Icon, title, description, isActive, onClick, selectedLabel }) {
@@ -113,6 +99,10 @@ export default function ProductAdvisorSection() {
   })
 
   const recommendation = getAdvisorRecommendation(experience, advisor)
+  const formattedIntensity = formatPercent(recommendation.intensity, language)
+  const recommendedRitualLabel =
+    ritualConfigurator.rituals.find((ritual) => ritual.id === recommendation.ritual)?.name ||
+    recommendation.ritual
   const insight = buildAuraInsight({
     advisorCopy: advisor,
     experience,
@@ -120,37 +110,7 @@ export default function ProductAdvisorSection() {
     recommendation,
     ritualCopy: ritualConfigurator,
   })
-  const insightUi = language === 'ru'
-    ? {
-        eyebrow: 'AI Signal Brief',
-        description: 'Локально сгенерированное направление без платного API: помогает превратить выбор в ясный creative/product brief.',
-        copyButton: 'Скопировать brief',
-        copied: 'Бриф уже готов для вставки в заметки, ТЗ или письмо клиенту.',
-        idle: 'Можно использовать этот brief как zero-cost AI слой внутри кейса и будущего продукта.',
-        prompt: 'Скопируйте brief AURA',
-        generatorLabel: 'Персональный генератор',
-        generatorReady: 'Сгенерируйте готовое текстовое направление для этого профиля.',
-        generatorFallback: 'Если удалённый AI не отвечает, сайт всё равно соберёт локальный персональный результат.',
-        generatorAction: 'Сгенерировать',
-        cloudflareLoading: 'Генерация...',
-        cloudflareResult: 'Персональный результат',
-        cloudflareError: 'Удалённый AI не ответил, поэтому сайт собрал локальный персональный результат.',
-      }
-    : {
-        eyebrow: 'AI Signal Brief',
-        description: 'A locally generated direction with no paid API: it turns the selection into a compact creative and product brief.',
-        copyButton: 'Copy brief',
-        copied: 'The brief is ready to paste into notes, a spec, or a client email.',
-        idle: 'You can use this brief as a zero-cost AI layer inside the case and future product work.',
-        prompt: 'Copy the AURA brief',
-        generatorLabel: 'Personal Generator',
-        generatorReady: 'Generate a finished text direction for this profile.',
-        generatorFallback: 'If remote AI is unavailable, the site will still assemble a local personal result.',
-        generatorAction: 'Generate',
-        cloudflareLoading: 'Generating...',
-        cloudflareResult: 'Generated Result',
-        cloudflareError: 'Remote AI did not answer, so the site assembled a local personal result instead.',
-      }
+  const insightUi = getAuraSignalUi(language)
 
   useEffect(() => {
     let isMounted = true
@@ -229,6 +189,7 @@ export default function ProductAdvisorSection() {
       language,
       insight,
       recommendation,
+      ritualLabel: recommendedRitualLabel,
     })
 
     if (aiState.mode !== 'workers-ai') {
@@ -416,8 +377,8 @@ export default function ProductAdvisorSection() {
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
               <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{advisor.output.ritualLabel}</p>
-                <p className="mt-2 font-display text-2xl capitalize text-text">{recommendation.ritual}</p>
-                <p className="mt-2 text-sm leading-6 text-text-soft">{advisor.output.intensityLabel}: {recommendation.intensity}%</p>
+                <p className="mt-2 font-display text-2xl capitalize text-text">{recommendedRitualLabel}</p>
+                <p className="mt-2 text-sm leading-6 text-text-soft">{advisor.output.intensityLabel}: {formattedIntensity}</p>
               </div>
               <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary">{advisor.output.fitGuidance}</p>

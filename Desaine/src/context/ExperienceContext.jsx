@@ -16,6 +16,7 @@ import {
   upsertPendingWaitlistEntry,
 } from '../lib/waitlistQueue'
 import { defaultLanguage, supportedLanguages } from '../data/landingContent'
+import { getLocaleMeta } from '../lib/i18n'
 
 const CONSENT_STORAGE_KEY = 'aura:consent:v1'
 const LANGUAGE_STORAGE_KEY = 'aura:language:v1'
@@ -463,11 +464,10 @@ export function ExperienceProvider({ children }) {
     params.set('lang', language)
 
     const shareUrl = `${window.location.origin}${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`
+    const localeMeta = getLocaleMeta(language)
     const sharePayload = {
-      title: language === 'ru' ? 'AURA - текущая конфигурация' : 'AURA current configuration',
-      text: language === 'ru'
-        ? 'Откройте мой персональный ритуал AURA.'
-        : 'Open my personalized AURA ritual.',
+      title: localeMeta.shareTitle,
+      text: localeMeta.shareText,
       url: shareUrl,
     }
 
@@ -501,9 +501,7 @@ export function ExperienceProvider({ children }) {
     }
 
     window.prompt(
-      language === 'ru'
-        ? 'Скопируйте ссылку на текущую конфигурацию'
-        : 'Copy the current configuration link',
+      localeMeta.sharePrompt,
       shareUrl
     )
     return {
